@@ -1,0 +1,78 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: principal.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+A level-1 auxiliary file: textos.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+The style file: abntex2-alf.bst
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Illegal, another \bibstyle command---line 18 of file principal.aux
+ : \bibstyle
+ :          {abntex2-alf}
+I'm skipping whatever remains of this command
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Database file #1: abntex2-options.bib
+Database file #2: bibliografia.bib
+Warning--I didn't find a database entry for "abnt-and-type=;"
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Warning--campo title vazio em biblia
+Warning--campo year vazio ou faltando em biblia
++---------------------------------------------------------+
+| Estilo bibliográfico abntex2-alf.bst versão v-1.9.7           |
+| Em caso de dúvidas ou problemas com este estilo procure |
+| http://www.abntex.net.br/                               |
++---------------------------------------------------------+
+You've used 19 entries,
+            6714 wiz_defined-function locations,
+            1306 strings with 11990 characters,
+and the built_in function-call counts, 11681 in all, are:
+= -- 992
+> -- 270
+< -- 17
++ -- 149
+- -- 83
+* -- 741
+:= -- 1517
+add.period$ -- 63
+call.type$ -- 20
+change.case$ -- 138
+chr.to.int$ -- 41
+cite$ -- 16
+duplicate$ -- 564
+empty$ -- 1136
+format.name$ -- 391
+if$ -- 2940
+int.to.chr$ -- 4
+int.to.str$ -- 2
+missing$ -- 300
+newline$ -- 74
+num.names$ -- 55
+pop$ -- 358
+preamble$ -- 1
+purify$ -- 64
+quote$ -- 0
+skip$ -- 786
+stack$ -- 1
+substring$ -- 374
+swap$ -- 250
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 10
+warning$ -- 2
+while$ -- 77
+width$ -- 0
+write$ -- 236
+(There was 1 error message)
