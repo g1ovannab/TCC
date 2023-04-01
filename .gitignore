@@ -1,4 +1,5 @@
 principal.fdb_latexmk
 principal.fls
 principal.log
-principal.synctex
+principal.synctex.gz
+principal.pdf

@@ -1,0 +1,6 @@
+%citeonline -> no meio do paragrafo
+%cite -> final do paragrafo
+
+
+
+De acordo com a Sociedade Brasileira de Mastologia (SBM),\cite{artigo01} a mamografia \citeonline{artigo02} é o exame mais comum para a detecção do câncer de mama, mas apresenta algumas limitações, especialmente para mulheres mais jovens e com o tecido mamário denso. Perante o avanço computacional, a utilização da técnica de termografia - técnica não 
