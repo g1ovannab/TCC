@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt,Times]{article}
+\usepackage[hidelinks]{hyperref}
 \usepackage{abakos}  %pacote com padrão da Abakos baseado no padrão da PUC
 \usepackage[utf8]{inputenc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,19 +28,19 @@
 \newcommand{\AutorD}{Matheus Felipe Santos Bussolotti\textsuperscript{1}}
 \newcommand{\EmailD}{matheus.bussolotti@sga.pucminas.br}
 %
-\newcommand{\AutorE}{Yago Assis Mendes Faria\textsuperscript{1}}
+\newcommand{\AutorE}{Yago Assis Mendes Faria}
 \newcommand{\EmailE}{yago.faria@sga.pucminas.br}
 %
 \newcommand{\AutorF}{Felipe Augusto Lara Soares}
-\newcommand{\EmailF}{felipe.soares.756049@sga.pucminas.br}
+\newcommand{\EmailF}{felipe.soares@pucminas.br}
 
 
 
-\newcommand{\Funcao}{Graduando(a) em Engenharia de Computação}
+\newcommand{\FuncaoA}{Graduandos(as) em Engenharia de Computação}
+\newcommand{\FuncaoB}{Professor Orientador - Graduado em Engenharia de Computação}
+
 \newcommand{\Curso}{Programa de Graduação em Engenharia de Computação da PUC Minas}
 
-
-%colocar nome do orientador
 
 % Definir macros para o nome da Instituição, da Faculdade, etc.
 \newcommand{\univ}{Pontifícia Universidade Católica de Minas Gerais}
@@ -67,10 +68,9 @@
 \begin{flushright}
 \singlespacing 
 
-%%%%%%TODO: colcoar como 1 todo mundo, e o e-mail de todo mundo
-% %% e o prof colocar ele
-
-\normalsize{\AutorA \\ \AutorB \\ \AutorC \\ \AutorD \\ \AutorE \\ \AutorF\ \footnote{E-mails:\EmailA, \EmailB, \EmailC, \EmailD, \EmailE, \EmailF \\  \Funcao \\ \Curso, \origem.}} 
+%Alunos
+\normalsize{\AutorA \\ \AutorB \\ \AutorC \\ \AutorD \\ \AutorE \footnote{E-mails:\EmailA, \EmailB, \EmailC, \EmailD, \EmailE \\ \FuncaoA \\ \origem.}} \\
+\normalsize{\AutorF\ \footnote{E-mail: \EmailF \\ \FuncaoB \\ \Curso, \origem.}} 
 
 % \normalsize{\AutorD \footnote{\funcaoD \\ Pais de origem: \origemD. E-mail: \emailD}} \\
 %deixar com o valor `0` e usar o '*' no inicio da frase
