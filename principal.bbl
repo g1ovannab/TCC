@@ -18,6 +18,12 @@ Dia Nacional de Luta contra o Câncer de Mama.
 Dispon{\'\i}vel em:
   \url{https://www.planalto.gov.br/ccivil\_03/\_ato2007-2010/2009/lei/l12116.htm}.}
 
+\bibitem[Holland et al. 2011]{breasCancerBasicsCap4}
+\abntrefinfo{Holland et al.}{HOLLAND et al.}{2011}
+{HOLLAND, James~F. et al. Breast cancer: Basics and beyond.
+In:  \underline{\ \ \ \ \ \ \ \ }. 1st. ed. New York: Springer, 2011. cap.~4.
+ISBN 978-1-4419-1583-7.}
+
 \bibitem[INCA 2021]{incaoquee}
 \abntrefinfo{INCA}{INCA}{2021}
 {INCA, Instituto~Nacional de Câncer. \textbf{Câncer de Mama}. 2021.
@@ -36,5 +42,17 @@ Acesso em 01 de abril de 2023.}
   Vigilância em Saúde}. 2020.
   \url{https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/boletins/epidemiologicos/edicoes/2020/boletim_epidemiologico_svs_45.pdf}.
 Acesso em 01 de abril de 2023.}
+
+\bibitem[Souza 2018]{souza}
+\abntrefinfo{Souza}{SOUZA}{2018}
+{SOUZA, J.~CA. Diagnóstico de câncer de mama a partir de imagens de
+  mamografia 2d utilizando descritores de forma 3d. In:  \textbf{Universidade
+  Federal do Maranhão UFMA}. [S.l.: s.n.], 2018. p.~71.}
+
+\bibitem[Stephens e Aigner 2009]{basicOncology}
+\abntrefinfo{Stephens e Aigner}{STEPHENS; AIGNER}{2009}
+{STEPHENS, Frederick~O.; AIGNER, Karl~R. \textbf{Basics of Oncology}. New York:
+  Springer Science & Business Media, 2009.
+ISBN 978-3-540-92925-3.}
 
 \end{thebibliography}
