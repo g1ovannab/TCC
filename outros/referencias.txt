@@ -28,3 +28,5 @@ http://www.oncoguia.org.br/conteudo/4-perfis-de-mulheres-inspiradoras-que-vencer
 
 
 https://books.google.com.br/books?hl=pt-BR&lr=&id=VP6Jb9CjMZgC&oi=fnd&pg=PR11&dq=what+is+breast+cancer+basics&ots=YJ3as01Qr-&sig=e8t54rcpmBgAfwW1HNN-qiSns_0#v=onepage&q=what%20is%20breast%20cancer%20basics&f=false
+
+https://machinelearningmastery.com/transfer-learning-for-deep-learning/

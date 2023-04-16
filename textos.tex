@@ -28,50 +28,66 @@ Por meio dos tópicos apresentados, o presente artigo aspira discorrer sobre uma
 
 %(Não entra na introdução. Não é necessário) - Tava entre "transferência. (AQUI). Outrossim, para ". De maneira mais intrínseca, serão feitas análises de trabalhos correlatos a fim de alargar os conhecimentos no tema escolhido e contextualizar o leitor, além da exploração de artigos com o intuito de poder referenciá-los no presente artigo, ocasionando veracidade, autenticidade e acurácia para o artigo.
 
-
 Para criar um modelo de classificação de graus, será utilizado o método de \textit{Deep Learning}, que consiste em uma técnica avançada de aprendizado de máquina. Após o treinamento do modelo, sua acurácia será avaliada por meio de testes, e assim que devidamente treinado, o programa será capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama, identificando o grau da doença, caso presente no paciente.
 
 
-\section{Fundamentação teórica} %10 artigos
-A fim de fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, serão retratados conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de imagens termográficas. Além disso, será discutida a técnica de \textit{Deep Learning} para demonstrar sua relevância no contexto da detecção do câncer de mama.
+
+
+
+
+
+\section{Fundamentação teórica} 
+%10 artigos
+%Usado 1 artigo: Souza (2018)
+A fim de fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, serão retratados conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de imagens termográficas. Além disso, será discutida a técnica de \textit{Transfer Learning} com o uso de imagens para demonstrar sua relevância no contexto da detecção do câncer de mama.
 
 \subsection{Câncer de mama}
-As células vivas que compõem o corpo humano se dividem para permitir o crescimento e a substituição de células danificadas ou mortas. A proliferação celular é regulada pelos genes do DNA, que são transmitidos pelos pais e gerenciados para manter o equilíbrio no processo de divisão celular. O câncer, em geral, se forma quando esse controle genético é danificado ou perdido em uma ou mais células, que então continuam a se dividir normalmente, produzindo mais células anormais, causando danos a outros tecidos e funções corporais \cite{basicOncology}.
+As células vivas que compõem o corpo humano se dividem para permitir o crescimento e a substituição de células danificadas ou mortas. A proliferação celular é regulada pelos genes do DNA, transmitidos pelos pais e gerenciados para manter o equilíbrio no processo de divisão celular. O câncer, em geral, se forma quando esse controle genético é danificado ou perdido em uma, ou mais células que então continuam a se dividir normalmente, produzindo mais células anormais, causando danos a outros tecidos e funções corporais \cite{basicOncology}.
 
-O câncer de mama, em específico, se dá pelo crescimento de células anormais na glândula mamária, e os sub-tipos diferentes desse câncer estão localizados sob o tecido adiposo\footnote{tecido que armazena gordura e mantém a maior reserva de energia do organismo} e no sistema ductal\footnote{ductos responsáveis por conduzir o leite até a papila}. 
+O câncer de mama, em específico, se dá pelo crescimento de células anormais na glândula mamária, e os sub-tipos diferentes desse câncer estão localizados sob o tecido adiposo\footnote{tecido que armazena gordura e mantém a maior reserva de energia do organismo} e no sistema ductal\footnote{ductos responsáveis por conduzir o leite até a papila}. Conforme apontado por \citeonline{souza}, o câncer de mama apresenta células com uma taxa de duplicação de tamanho estimada em 4 meses. Embora o crescimento seja inicialmente lento, quando o tumor se torna palpável e não é tratado, o câncer pode se disseminar para os linfonodos, pulmões, ossos, fígado e cérebro, desenvolvendo metástase.
 
-Conforme a figura \ref{fig:glandulamama}, o primeiro tipo de câncer (A) é o carcinoma ductal invasivo, detectado por um caroço duro sob uma superfície irregular, e é a forma mais comum do câncer de mama. O segundo tipo (B) é um fibroadenoma, sentido por um caroço liso e firme, além de benignos e comumente diagnosticados em mulheres jovens. Já a terceira massa (C), é um papiloma intra-ductal, que cresce atrás da aréola e que podem ser removidos cirurgicamente. Por fim, a quarta massa (D) é um abcesso na mama que pode ocorrem quando as bactérias entram pelo mamilo, crescendo e se desenvolvendo em grandes áreas do tecido mamário.
+%3o paragrafo: falar um pouco sobre exames (mamografia e por que não é tão confiável quanto imagens termograficas) - pegar outro artigo
 
-\begin{figure}[ht]
-	\centering	
-	\caption[\hspace{0.1cm}Grade Computacional.]{Glândula mamária}
-	\vspace{-0.4cm}
-	\includegraphics[width=0.5\textwidth]{figuras/mama.PNG}
-	 \vspace{-0.2cm}
-	\\\textbf{\footnotesize Fonte: \cite{breasCancerBasicsCap4} }
-	\label{fig:glandulamama}
-\end{figure}
-\vspace{-0.5cm}
-
-Conforme apontado por \citeonline{souza}, o câncer de mama apresenta células com uma taxa de duplicação de tamanho estimada em 4 meses. Embora o crescimento seja inicialmente lento, quando o tumor se torna palpável e não é tratado, o câncer pode se disseminar para os linfonodos, pulmões, ossos, fígado e cérebro, desenvolvendo metástase.
-
-\subsubsection{Exames e tratamentos}
-aaa
 \subsection{Técnicas de processamento de imagem}
-aaa
-\subsubsection{Alguma coisa mais profunda}
-aaa
-\subsection{Técnicas de aprendizado de máquina}
-aaa
-\subsubsection{Deep Learning}
-aaa
+%3 paragrafos
+
+\subsection{Transfer Learning}
+%3 paragrafos
+%O que a gnt vai usar é transfer learning. Explicar um pouco sobre transfer learning (que é um método de machine learning) e ver a aplicação dele dentro do deep learning.
+%Qual approach?
+%   Develop Model Approach
+%   Pre-trained Model Approach
+%Uma aplicacao de transfer learning com deep learning é o transfer learning com image data.
+%It is common to perform transfer learning with predictive modeling problems that use image data as input.
+
 
 
 
 
 
 \section{\esp Trabalhos correlatos} %10 artigos
-bbb
+%Usado 1 artigo: Rajinikanth (2021)
+%   Trabalhos com o tema PARECIDO. 
+%       Qual o problema que o artigo correlato resolve (cancer de mama, outra doenca)? 
+%       Qual o contexto? 
+%       O que eles estão propondo? 
+%       Estão usando quais técnicas/metodos? 
+%       O quão bom foram os resultados que eles tiveram (assertividade ou outras métricas)? 
+%
+
+Neste tópico, serão abordados trabalhos correlatos ao diagnóstico de câncer utilizando inteligência artificial, porém se diferenciado em termos médicos, como o diagnóstico de outras doenças, em termos de tipo de entrada a ser computada, como radiografias, ou até mesmo imagens digitais. As análises dos trabalhos relacionados também se diferenciarão em termos de abordagem, utilizando-se de outros algoritmos de \textit{Machine Learning}. Além disso, serão feitas analises das propostas dos trabalhos, além dos resultados e assertividades.
+
+
+Em \citeonline{marinePredators}, a avaliação de desempenho das diferentes classificações são executadas e baseadas na classificação de acurácia. Foi proposto chegar em uma acurácia maior ou igual à 92\% para o diagnóstico de câncer de mama utilizando imagens termográficas, normalizando-as e utilizando duas abordagens de extração de recursos: (i) o método \textit{Grey Level Co-Occurence Matrix} (GLCM) e (ii) o método \textit{Local Binary Patterns} (LBP). O GLCM é uma matriz que representa a distância e a relação espacial angular sobre uma sub-região de imagem de uma região específica. Além disso, ela ajuda a pegar informações sobre forma e textura da imagem. Já o LBP consegue extrair características estruturais de uma imagem por meio de histogramas locais, baseados na vizinhança dos \textit{pixels} vizinhos.
+
+%Giovanna em 2023-04-26: Outro artigo \citeonline{comparing} - A acurácia é somente de 61,7%. Falar sobre o que foi feito.
+
+%Giovanna em 2023-04-26: \citeonline{botelho} não é sobre cancer de mama, é cancer de pele. usa redes neurais
+
+
+
+
+
 \subsection{Outros métodos de aprendizado de máquina}
 falar sobre o marine-predators-algorithm
 \subsection{Outros tipos de imagens a serem processadas?}
