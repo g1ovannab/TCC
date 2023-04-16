@@ -1,6 +1,7 @@
-principal.fdb_latexmk
-principal.fls
-principal.log
-principal.synctex.gz
-principal.pdf
-principal.blg
+*.fdb_latexmk
+*.fls
+*.gz
+*.log
+*.blg
+*.bbl
+*.pdf
