@@ -1,0 +1,24 @@
+
+
+A definição básica de processamento de imagem refere-se ao processamento da imagem digital, ou seja, remover o ruído e qualquer tipo de irregularidades presentes em uma imagem usando o computador digital. O ruído ou irregularidade pode se infiltrar na imagem durante sua formação ou durante a transformação, etc. Para análise matemática, uma imagem pode ser definida como uma função bidimensional f(x, y) onde x e y são coordenadas espaciais (planas) e a amplitude de f em qualquer par de coordenadas (x, y) é chamada de intensidade ou nível de cinza da imagem naquele ponto. Quando x, y e os valores de intensidade de f são todas quantidades finitas e discretas, chamamos a imagem de imagem digital. É muito importante que uma imagem digital seja composta de um número finito de elementos, cada um com uma localização e valor específicos. Esses elementos são chamados de imagem elementos, elementos de imagem, pels e \textit{pixels}. \textit{Pixel} é o termo mais amplamente usado para denotar os elementos de uma imagem digital.
+
+Colocar imagem aqui.
+
+Várias técnicas foram desenvolvidas em processamento de imagem durante as últimas quatro a cinco décadas. A maioria dos técnicas são desenvolvidas para aprimorar imagens obtidas de espaçonaves não tripuladas, sondas espaciais e militares de voos de reconhecimento. Os sistemas de processamento de imagem estão se tornando populares devido à fácil disponibilidade de pessoal poderoso computadores, dispositivos de memória de grande porte, software gráfico, etc. A principal vantagem dos métodos de processamento de imagem digital é a sua versatilidade, repetibilidade e preservação da precisão dos dados originais. As várias técnicas de processamento de imagem são:
+
+\begin{enumerate}
+        \item Pré-processamento de imagem
+        \item Melhoria de imagem
+        \item Segmentação de imagem
+        \item Extração de recursos
+        \item Classificação de imagem
+\end{enumerate}
+
+Às vezes, imagens obtidas de satélites e câmeras convencionais ou digitais carecem de contraste e brilho devido às limitações dos subsistemas de imagem e condições de iluminação durante a captura da imagem. As imagens podem ter diferentes tipos de ruído. No aprimoramento de imagem, o objetivo é acentuar certas características da imagem para análise posterior ou para exibição de imagens. Os exemplos incluem contraste e aprimoramento de borda, pseudo-coloração, filtragem de ruído, nitidez e ampliação. O aprimoramento de imagem é útil na extração de recursos, análise de imagem e exibição de imagem. O próprio processo de aprimoramento não aumenta o conteúdo de informações inerentes aos dados. Ele simplesmente enfatiza certas características de imagem especificadas. Algoritmos de aprimoramento são geralmente interativos e dependentes de aplicativos. Algumas das técnicas de aprimoramento são:
+
+\begin{enumerate}
+        \item Alongamento de contraste
+        \item Filtragem de Ruído
+        \item Modificação do histograma
+\end{enumerate}
+
