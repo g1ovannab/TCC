@@ -11,12 +11,12 @@ Causado pela multiplicação rápida e desordenada de células anormais, o cânc
 O diagnóstico prévio dessa doença tem alta significância na contenção do progresso da doença, devido à introdução antecipada do tratamento, que favorece o crescimento das chances de sobrevivência do paciente diagnosticado. Diante disso, existem alguns procedimentos basilares empregados para o diagnóstico dessa doença, tais quais: o exame de toque; exames clínicos; exames de imagens como a mamografia, ultrassonografia ou ressonância magnética; e a confirmação via biópsia.
 
 % Problema Escolhido: já está incluso nesse parágrafo.
-De acordo com \citeonline{borchartt}, a mamografia é o exame mais comum para a detecção do câncer de mama, mas apresenta algumas limitações, especialmente para mulheres mais jovens e com o tecido mamário denso. Perante o avanço computacional, a termografia se destaca como uma técnica de diagnóstico não invasiva que permite interceptar diferenças de temperatura em diferentes regiões do corpo através da intensidade da radiação infravermelha. Quando aplicada ao câncer de mama, a termografia se torna uma ferramenta essencial para a detecção precoce da doença. Isso porque as células cancerígenas tendem a apresentar temperaturas mais elevadas do que as células normais, independentemente de fatores como idade e outros \cite{leles}.
+De acordo com \citeonline{borchartt}, a mamografia é o exame mais comum para a detecção do câncer de mama, mas apresenta algumas limitações, especialmente para mulheres mais jovens e com o tecido mamário denso. Perante o avanço computacional, a termografia se destaca como uma técnica de diagnóstico não invasiva que permite interceptar diferenças de temperatura em diferentes regiões do corpo através da intensidade da radiação infravermelha. Quando aplicada ao câncer de mama, a termografia se torna uma ferramenta essencial para a detecção prévia da doença. Isso porque as células cancerígenas tendem a apresentar temperaturas mais elevadas do que as células normais, independentemente de fatores como idade e outros \cite{leles}.
 
 % Motivações
 Com a evolução da computação em diversos âmbitos tecnológicos, tais como redes neurais, processamento de imagens e inteligências artificiais, oportunidades foram criadas para investigar e implementar soluções avançadas na área da saúde, visando agregar a comunidade médica, além da sociedade no geral. Na oncologia, existem diversos métodos e práticas utilizadas para diagnosticar um quadro de câncer de um paciente, porém, em sua grande maioria, requer uma análise humana que é passiva de erros ou até mesmo incapaz de realizar predições, ou quantificar com precisão o diagnóstico do quadro clínico.
 
-Pautando-se na ideia de trazer ferramentas, compostas por algoritmos avançados que auxiliam médicos no diagnóstico precoce do câncer de mama, assim melhorando na tomada de decisões dos profissionais de saúde acerca do quadro geral dos pacientes, iniciando tratamento previamente, garantindo uma qualidade de vida e uma longevidade maior para todos assolados pelo quadro de câncer.
+Pautando-se na ideia de trazer ferramentas, compostas por algoritmos avançados que auxiliam médicos no diagnóstico antecipado do câncer de mama, assim melhorando na tomada de decisões dos profissionais de saúde acerca do quadro geral dos pacientes, iniciando tratamento previamente, garantindo uma qualidade de vida e uma longevidade maior para todos assolados pelo quadro de câncer.
 
 % Objetivos
 Por meio dos tópicos apresentados, o presente artigo aspira discorrer sobre uma metodologia para o estudo de imagens termográficas, identificando as células como cancerosas utilizando aprendizado por transferência. Outrossim, para investigar de maneira experimental o tema proposto neste artigo, serão empregadas bases de dados, criteriosamente selecionadas e normalizadas em termos de tamanho e histograma, contendo amostras de mamografias para o treinamento de um programa de inteligência artificial a ser desenvolvido. As amostras serão divididas em mamografias sem sinais de câncer, e mamografias com câncer, classificadas de acordo com seus respectivos graus.
@@ -33,17 +33,16 @@ Para criar um modelo de classificação de graus, será utilizado o método de \
 
 %Informações para contextualizar o leitor.
 \section{\esp Fundamentação teórica} 
-%10 artigos
+%9 artigos
 % 1.{souza} Souza (2018) - Giovanna
 % 2.{noninvasive} Arora (2008) - Giovanna
 % 3.{techniques} - CHITRADEVI (2014) - Baesse
-% 4.{lungcancer} SHARMA JINDAL (2011) - Baesse
-% 5.{machinelearning} UDDIN (2022) - Yago
-% 6.{deeplearning} LAUZON (2012) - Yago
-% 7.{cnn} ALBAWI (2017) - Yago
-% 8.{medical} UMER (2021) - Yago
-% 9.{}
-% 10.{}
+% 4.{histopathological} Belsare e Mushif (2012) - Baesse 
+% 5.{lungcancer} SHARMA JINDAL (2011) - Baesse
+% 6.{machinelearning} UDDIN (2022) - Yago
+% 7.{deeplearning} LAUZON (2012) - Yago
+% 8.{cnn} ALBAWI (2017) - Yago
+% 9.{medical} UMER (2021) - Yago
 
 A fim de fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, serão retratados conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de imagens termográficas. Além disso, será discutida a técnica de \textit{Deep Learning} com o uso de imagens para demonstrar sua relevância no contexto da detecção do câncer de mama.
 
@@ -70,8 +69,9 @@ A descoberta prévia do câncer de mama aumenta significativamente as chances de
 % 3.{techniques} - CHITRADEVI (2014) - Baesse
 Matematicamente, uma imagem pode ser descrita como uma função bidimensional f(x,y), onde \textbf{x} e \textbf{y} representam coordenadas espaciais, e a amplitude de \textbf{f} em qualquer par de coordenadas é chamada de a intensidade ou nível de cinza da imagem naquele ponto \cite{techniques}. Quando \textbf{x}, \textbf{y} e os valores de intensidade de \textbf{f} são quantidades finitas e discretas, chamamos a imagem de imagem digital. É essencial que uma imagem digital seja composta por um número finito de elementos (conhecidos como píxeis, \textit{pels} ou elementos de imagem), cada um com sua própria localização e valores específicos. 
 
-% 4.{lungcancer} SHARMA JINDAL (2011) - Baesse
-A definição básica de processamento de imagem refere-se ao processo de tratamento de imagens digitais, incluindo a remoção de ruídos e outros tipos de irregularidades presentes. Durante as últimas quatro a cinco décadas, várias técnicas foram desenvolvidas no campo de processamento de imagens, sendo a maioria desenvolvida para aprimorar imagens obtidas por espaçonaves não tripuladas, sondas espaciais e aeronaves militares de reconhecimento. Devido a fácil disponibilidade de computadores poderosos, dispositivos de memória de grande porte e software gráfico, os sistemas de processamentos de imagem estão se tornando cada vez mais populares. Uma das principais vantagens dos métodos de processamento é versatilidade, repetibilidade e preservação da precisão dos dados originais, utilizando técnicas como: \textbf{(i)} Pré-processamento, \textbf{(ii)} Melhoria, \textbf{(iii)} Segmentação, \textbf{(iv)} Extração de recursos, e \textbf{(v)} Classificação \cite{lungcancer}.
+% 4.{histopathological} Belsare e Mushif (2012) - Baesse 
+% 5.{lungcancer} SHARMA JINDAL (2011) - Baesse
+A definição básica de processamento de imagem refere-se ao processo de tratamento de imagens digitais, incluindo a remoção de ruídos e outros tipos de irregularidades presentes \cite{histopathological}. Durante as últimas quatro a cinco décadas, várias técnicas foram desenvolvidas no campo de processamento de imagens, sendo a maioria desenvolvida para aprimorar imagens obtidas por espaçonaves não tripuladas, sondas espaciais e aeronaves militares de reconhecimento. Devido a fácil disponibilidade de computadores poderosos, dispositivos de memória de grande porte e software gráfico, os sistemas de processamentos de imagem estão se tornando cada vez mais populares. Uma das principais vantagens dos métodos de processamento é versatilidade, repetibilidade e preservação da precisão dos dados originais, utilizando técnicas como: \textbf{(i)} Pré-processamento, \textbf{(ii)} Melhoria, \textbf{(iii)} Segmentação, \textbf{(iv)} Extração de recursos, e \textbf{(v)} Classificação \cite{lungcancer}.
 
 
 % 3.{techniques} - CHITRADEVI (2014) - Baesse
@@ -105,11 +105,11 @@ As imagens capturadas por satélites e câmeras convencionais ou digitais carece
 
 \subsection{\esp Deep Learning}
 
-% 5.{machinelearning} UDDIN (2022) - Yago
+% 6.{machinelearning} UDDIN (2022) - Yago
 \textit{Machine Learning} é um processo que utiliza uma gama de dados para criar uma inteligência artificial instruído para aprender e operar funções de maneira autônoma \cite{machinelearning}. Dentre as abundantes formas de se aplicar esse processo, uma das mais comuns é o método \textit{Deep Learning}, que utiliza redes neurais convolucionais para criar aplicações mais completas. 
 
 
-% 6.{deeplearning} LAUZON (2012) - Yago
+% 7.{deeplearning} LAUZON (2012) - Yago
 O termo \textit{Deep Learning} refere-se à estrutura utilizada para realização do método, que consiste em várias camadas de neurônios artificiais conectados, permitindo que o sistema aprenda representações cada vez mais complexas dos dados de entrada. Esses dados podem variar desde um simples conjunto de inteiros, para fazer uma predição de cálculo, até um sistema de navegação de um veículo Tesla \cite{deeplearning}.
 
 Os neurônios artificiais são a principal composição da rede neural, sendo estruturas agrupadas em camadas, inspiradas nos neurônios biológicos presentes no cérebro humano. Cada neurônio artificial recebe diversas entradas, representadas por valores numéricos, multiplicadas por um determinado peso e somados. Esse resultado é então processado mediante uma função de ativação, que determina a saída do neurônio, e é transmitida para os outros neurônios da rede.
@@ -121,8 +121,8 @@ Os neurônios artificiais são a principal composição da rede neural, sendo es
 \subsection{\esp Redes Neurais}
 
 
-% 7.{cnn} ALBAWI (2017) - Yago
-% 8.{medical} UMER (2021) - Yago
+% 8.{cnn} ALBAWI (2017) - Yago
+% 9.{medical} UMER (2021) - Yago
 A \textit{Convolutional Neural Network} (CNN), de acordo com \citeonline{cnn}, é uma estrutura complexa composta por inúmeros neurônios e camadas de convolução compostas por um conjunto de filtros que, por sua vez, detectam características visuais específicas em uma imagem por meio de uma matriz. Sua arquitetura pode ser dividida em três camadas individuais: \textbf{(i)} \textit{Input Layer} (camada de entrada), \textbf{(ii)} \textit{Hidden Layers} (camadas escondidas), e \textbf{(iii)} \textit{Output Layer} (camada de saída), com funções de entrada, processamento, e saída de dados respectivamente \cite{medical}.
 
 Na camada de entrada (\textit{Input Layer}), os dados brutos, como fotos e vídeos, são recebidos e transformados em dados matemáticos enviados para as camadas seguintes da CNN \cite{cnn}. Nas camadas escondidas (\textit{Hidden Layers}), são usadas funções matemáticas não-lineares modeladas para retornar valores específicos, consoantes os dados de entrada. Esses valores são então enviados para a última parte da rede. Por fim, na camada de saída (Output Layer), é produzido o resultado com base nas predições das camadas anteriores.
@@ -150,15 +150,17 @@ Na camada de entrada (\textit{Input Layer}), os dados brutos, como fotos e víde
 % 1.{marinePredators} Rajinikanth (2021) - Giovanna
 % 2.{comparing} Rodrigues (2014) - Giovanna
 % 3.{segmentacao} Baffa (2016) - Giovanna
+% 4.{MachineVision} Alberto Martin and Sabri Tosunoglu (2000) - Baesse
+% 5.{botelho} Botelho (2007) - Giovanna
+% 6.{NakagamiImages} Muhtadi (2022) - Luiza
+% 7.{systematic} Systematic Review - Husaini (2020) - Luiza
+% 8.{ChaoticSalp} Ibrahim (2020) - Luiza
+% 9.{borchartt} Ibrahim (2020) - Luiza
+% 10.{leles} leles (2015) - ?
+% 11.{ashokkumar} Ashokkumar (2022) - ?
 
-% 4.{botelho} Botelho (2007) - Giovanna
-% 5.{histopathological} Belsare e Mushif (2012) - Baesse 
+%%%%%%% A FAZER - TRABALHOS CORRELATOS
 
-% 6.{} 
-% 7.{} 
-% 8.{} 
-% 9.{} 
-% 10.{} 
 
 %%%%%%% COMO REFERENCIAR TRABALHOS CORRELATOS? (exemplos) %%%%%%%
 
@@ -169,8 +171,7 @@ Na camada de entrada (\textit{Input Layer}), os dados brutos, como fotos e víde
 Neste tópico, serão abordados trabalhos correlatos ao diagnóstico de câncer utilizando inteligência artificial, porém se diferenciado em termos médicos, como o diagnóstico de outras doenças, em termos de tipo de entrada a ser computada, como radiografias, ou até mesmo imagens digitais. As análises dos trabalhos relacionados também se diferenciarão em termos de abordagem, utilizando-se de outros algoritmos de \textit{Machine Learning}. Além disso, serão feitas analises das propostas dos trabalhos, além dos resultados e assertividades.
 
 % 1.{marinePredators} Rajinikanth (2021)
-Em \citeonline{marinePredators}, a avaliação de desempenho é executada e baseada na classificação de acurácia. Ao propor um modelo de detecção de câncer de mama, o trabalho alcançou uma acurácia de 92\%, normalizando as imagens termográficas e utilizando o \textit{Marine-Predators-Algorithm} que auxilia na otimização da seleção das características (definidas por algumas técnicas de reconhecimento de padrões) mais relevantes das imagens e parâmetros do modelo de detecção. Para classificar e validar a implementação feita, foram utilizadas variantes (tipos de funções matemáticas que medem a similaridade entre dois pontos no espaço) do algoritmo \textit{Support Vector Machine} (SMV).
-
+Em \citeonline{marinePredators}, a avaliação de desempenho é executada e baseada na classificação de acurácia. Ao propor um modelo de detecção de câncer de mama, o trabalho alcançou uma acurácia de 92\%, normalizando as imagens termográficas e utilizando o \textit{Marine-Predators-Algorithm} que auxilia na otimização da seleção das características (definidas por algumas técnicas de reconhecimento de padrões) mais relevantes das imagens e parâmetros do modelo de observação. Para classificar e validar a implementação feita, foram utilizadas variantes (tipos de funções matemáticas que medem a similaridade entre dois pontos no espaço) do algoritmo \textit{Support Vector Machine} (SVM).
 
 % 2.{comparing} Rodrigues (2014) 
 Em contrapartida ao artigo citado acima, em \citeonline{comparing} ao utilizar outra abordagem de treinamento do algoritmo, foi possível chegar em apenas 61,8\% de precisão dos resultados. Foi utilizado o método de limiarização por refinamento adaptativo, técnica que segmenta uma imagem em duas ou mais (com base nos valores dos pixels), de modo que regiões anormais são identificadas com mais precisão. Além disso, o artigo também compara o resultado de entre suas métricas com outros trabalhos referenciados no mesmo, e com base nisso, concluiu-se que a inconsistência das comparações foi devido ao uso de imagens infravermelhas distintas, uma vez que foram utilizadas 102 imagens de uma base de dados pública.
@@ -179,17 +180,32 @@ Em contrapartida ao artigo citado acima, em \citeonline{comparing} ao utilizar o
 % 3.{segmentacao} Baffa (2016) - Giovanna
 Assim como o trabalho acima, \citeonline{segmentacao} utiliza da limiarização por refinamento adaptativo, todavia, com uma acurácia de 96\%. Foram introduzidos três parâmetros para avaliação, baseando-se na informação de que as pregas mamárias (área indicadora de limites inferiores da mama pois possuem maior temperatura) podem variar de tamanho, dificultando a identificação das mamas. Os parâmetros determinam miliares mínimos de uma área medida em píxels que a prega deve ter além de definir a área mínima a ser medida em píxel para duas componentes distintas. Com isso, foi possível determinar qual conjunto de parâmetros maximiza as métricas estatísticas apresentadas, determinando assim os resultados normalizados.
 
+% 4.{MachineVision} Alberto Martin and Sabri Tosunoglu (2000) - Baesse
+Como aplicado em \citeonline{MachineVision}, a fim de desenvolver técnicas de Visão de Máquina, foram utilizados para fundamentação do trabalho a Álgebra de Imagens que forma uma base teórica sólida para dar fundação à implementação de visão computacional, e algoritmos de processamento de imagens. Com o uso de linguagens de programação de alto nível confiáveis e eficientes, como C/C++,
+Fortran 90 e Java, inúmeros algoritmos de visão de máquina e processamentos de imagem foram escritos e otimizados. O que resulta na criação de algorítimos que vieram a se tornar poderosas ferramentas acessíveis para pesquisadores, cientistas, engenheiros de dados e entusiastas, o que acelerou ainda mais o processo de investigação e aumentou a precisão dos resultados.
+A discussão da visão de máquina básica e Algoritmos de processamento de imagem foi divididos em cinco grupos principais que se dividiram: \textbf{(i)} Métodos de Segmentação ou Limiar em Nível de Cinza, \textbf{(ii)} Técnicas de detecção de borda, \textbf{(iii)} Morfologia Digital, \textbf{(iv)} Textura e \textbf{(v)} Algoritmos de Esqueletização e Encurtamento.
 
+% 5.{botelho} Botelho (2007) - Giovanna
+Utilizando redes neurais para reconhecer imagens de câncer de pele e unindo técnicas de processamento de imagens digitais, \citeonline{botelho} possibilita a elaboração de um sistema que diferencia imagens de Melanomas. Para isso, quatro características são usadas para identificar uma lesão: assimetria, bordas irregulares, cor variada e diâmetro. Baseadas nessas características, o modelo proposto implementa a rede neural \textit{Perceptron} de Camada Única, utilizando dois neurônios: um excitado por imagens de lesões Melanoma, e outro excitado por imagens de lesões não Melanoma. O Perceptron identifica quando uma entrada é classificada erroneamente e ajusta os pesos através de uma regra de correção de erro, conhecida como Regra Delta. Com isso, a rede é treinada somente quando todas as saídas estão de acordo com a saída esperada, atingindo uma taxa de 69\% de acertos.
 
-%Giovanna em 2023-04-26: \citeonline{botelho} não é sobre cancer de mama, é cancer de pele. usa redes neurais (vamos usar tbm)
+% 6. {NakagamiImages} Muhtadi (2022) - Luiza
+\citeonline{NakagamiImages} apresenta uma abordagem baseada em \textit{Deep Learning} para detecção e classificação de massas na mama combinando imagens de ultrassom \textit{B-mode} e Nakagami, para fornecer informações complementares sobre o padrão de dispersão de tecidos. O utrassom B-mode consiste em uma técnica que utiliza ondas sonoras de alta frequência enviadas ao corpo, e refletidas pelos tecidos internos, criando uma imagem em escala cinza aonde as áreas mais brilhantes representam tecidos mais densos. Já as imagens Nakagami são geradas a partir da análise das amplitudes de sinal retornadas pelo tecido examinado, fornecendo informações sobre a presença de diferentes tipos de estruturas. Utilizando uma arquitetura de rede neural convolucional para extrair características das imagens combinadas, as massas são classificadas como malignas ou benignas. Por fim, abordagem proposta foi provada altamente eficaz na localização de massas, com uma precisão de 91,8\%, um desempenho significativamente melhor do que as abordagens existentes que usam apenas imagens B-mode ou Nakagami.
 
+% Esses artigos estão com foco em iamgens termográficas e na acurácia que um banco de dados público pode fornecer:
+% 7.{systematic} Systematic Review - Husaini (2020) - Luiza
+Em \citeonline{systematic}, são analisados os diferentes tipos de Redes Neurais Artificiais (ANN) e modelos de \textit{Deep Learning} já utilizados na literatura para processar imagens termográficas de câncer de mama. Mesmo que a termografia, conforme o texto, seja atualmente o melhor método para a descoberta precoce, a qualidade das imagens é um desafio tangível. O processo de melhoramento da imagem tenta mostrar detalhes escondidos e  destacar características para que a profundidade e tamanho do tumor sejam distinguidos de um tecido saudável. Para melhorar a qualidade da imagem, o trabalho utiliza um dispositivo de resfriamento de mama. Além disso, são destacadas as contribuições e desvantagens de trabalhos relacionados que empregam termografia e inteligência artificial, obtidos através de comparações feitas no decorrer do artigo e são desenvolvidos questionamentos a cerca dos desafios enfrentados, como a falta de padronização na aquisição de imagens térmicas e a necessidade de mais dados de treinamento para as redes neurais. 
 
+% 8.{ChaoticSalp} Ibrahim (2020) - Luiza
+Para desenvolver uma técnica precisa e eficiente para a identificação antecipada do câncer de mama, \citeonline{ChaoticSalp} usa a segmentação de imagens térmicas em conjunto com o algoritmo \textit{Chaotic Salp Swarm}. O algoritmo proposto consiste em uma técnica de otimização bioinspirada, usada para ajustar os parâmetros de segmentação das termografias e encontrar as regiões suspeitas de câncer de mama. Assim como o anterior, foi utilizada uma base de dados pública de imagens térmicas para avaliar a eficácia do método proposto. Os resultados obtidos foram avaliados baseados em métricas como: sensibilidade, especificidade e coeficiente de Dice. Não é especificado o índice de precisão do trabalho, entretanto é considerado que o método proposto teve um desempenho satisfatório em termos de precisão na segmentação de regiões suspeitas de câncer de mama nas imagens térmicas.
 
+% 9.{borchartt} Ibrahim (2020) - Luiza
+\citeonline{borchartt} teve como foco a análise das potenciais contribuições que o uso de imagens infravermelhas tem para diagnósticos de doenças na mama. Para o estudo, foram utilizadas 102 imagens infravermelhas (IR) de mama única do banco de dados público da Pro Engenharia (PROENG) (sendo 47\% com alguma anormalidade) e resultados foram obtidos através do uso de algoritmos para detecção de condições malignas, como \textit{Support Vector Machine}, para extrair as características como primeiro momento, terceiro momento, não uniformidade da massa cinzenta e porcentagem de execução. Ao longo do texto, é exposta a dificuldade em realizar o processo de segmentação da região da mama, extração da região de interesse, devido a natureza amorfa e a falta de limites claros. Além disso é apontado que, ao usar um banco de dados público para comparar as imagens e extrair características, os melhores resultados foram obtidos com o classificador \textit{Sequential Minimum Optimization (SMO)}, em adição à expor a inconsistência da comparação entre trabalhos que utilizam imagens IR. 
 
+% 10.{leles} Leles (2015) 
+Buscando explorar métodos não invasivos para a localização precoce do câncer de mama, \citeonline{leles} propõe o uso de imagens térmicas, que permitem detectar mudanças na temperatura causadas pelo aumento do fluxo sanguíneo na área afetada pelo tumor. Após o pré-processamento, foi feito o refinamento manual da região de interesse para que alguns atributos extraídas não colaborassem com dados de fora da mama. Avaliando 70 pacientes, o trabalho identifica a temperatura máxima, mínima e média das mamas para utilizar no cálculo da sensibilidade (capacidade do teste em identificar corretamente o diagnóstico) e especificidade (capacidade do teste em excluir corretamente os que não tem a doença), com os valores de 92,3\% e 86,2\%, respectivamente.
 
-% \subsection{Outros métodos de aprendizado de máquina}
-% \subsection{Outros tipos de imagens a serem processadas?}
-% \subsection{Outros tipos de canceres e diferenças entre análise de imagens?}
+% 11.{ashokkumar} Ashokkumar (2022) 
+A fim de abordar a detecção de metástase em linfonodos axilares em pacientes com câncer de mama, \citeonline{ashokkumar} utiliza o método de \textit{Data Augmentation} que faz modificações geométricas das imagens (como rotação, inversão, deslocamento e dimensionamento), fornecendo uma garantia de que o modelo se concentra em áreas de câncer de mama, em vez de fontes de ruído aleatórias. De acordo com o texto, foi demonstrado que o método ajuda na memorização de qualidades específicas das imagens treinadas, e evita que as redes se tornem superajustadas, ou seja, um modelo de aprendizado profundo que se adaptou demasiadamente nos dados de treinamento a ponto de não conseguir capturar padrões mais amplos de novos. Além disso, usando ANN, o trabalho alcançou 98\% de acurácia superando modelos de radiografia.
 
 
 
