@@ -15,14 +15,14 @@ O diagnóstico prévio dessa doença tem alta significância na contenção do p
 De acordo com \citeonline{borchartt}, a mamografia é o exame mais comum para a detecção do câncer de mama, mas apresenta algumas limitações, especialmente para mulheres mais jovens e com o tecido mamário denso. Perante o avanço computacional, a termografia se destaca como uma técnica de diagnóstico não invasiva que permite interceptar diferenças de temperatura em diferentes regiões do corpo através da intensidade da radiação infravermelha. Quando aplicada ao câncer de mama, a termografia se torna uma ferramenta essencial para a detecção prévia da doença. Isso porque as células cancerígenas tendem a apresentar temperaturas mais elevadas do que as células normais, independentemente de fatores como idade e outros \cite{leles}.
 
 % Motivações
-Com a evolução da computação em diversos âmbitos tecnológicos, tais como redes neurais, processamento de imagens e inteligências artificiais, oportunidades foram criadas para investigar e implementar soluções avançadas na área da saúde, visando agregar a comunidade médica, além da sociedade no geral. Na oncologia, existem diversos métodos e práticas utilizadas para diagnosticar um quadro de câncer de um paciente, porém, em sua grande maioria, requer uma análise humana que é passiva de erros ou até mesmo incapaz de realizar predições, ou quantificar com precisão o diagnóstico do quadro clínico.
+Com a evolução da computação em diversos âmbitos tecnológicos, tais como redes neurais, processamento de imagens e inteligências artificiais, oportunidades foram criadas para investigar e implementar soluções avançadas na área da saúde, visando agregar a comunidade médica, além da sociedade no geral. Na oncologia, existem diversos métodos e práticas utilizadas para diagnosticar um quadro de câncer de um paciente, porém, em sua grande maioria, requer uma análise humana que é passiva de erros ou até mesmo incapaz de realizar predições \citeonline{parametrization}, ou quantificar com precisão o diagnóstico do quadro clínico.
 
-Pautando-se na ideia de trazer ferramentas, compostas por algoritmos avançados que auxiliam médicos no diagnóstico antecipado do câncer de mama, assim melhorando na tomada de decisões dos profissionais de saúde acerca do quadro geral dos pacientes, iniciando tratamento previamente, garantindo uma qualidade de vida e uma longevidade maior para todos assolados pelo quadro de câncer.
+Pautando-se na ideia de trazer ferramentas que auxiliam médicos no diagnóstico antecipado do câncer de mama, o algoritmo desenvolvido melhora a tomada de decisões dos profissionais de saúde acerca do quadro geral dos pacientes. Dessa maneira, o tratamento pode ser iniciado previamente, podendo evitar a progressão do câncer para estágios mais avançados, que são mais difíceis de tratar, e aumentando as chances de cura, reduzindo a necessidade de tratamentos invasivos. À vista disso, os equipamentos desenvolvidos com esse propósito garantem uma qualidade de vida e longevidade maior para todos assolados pelo quadro de câncer.
 
 % Objetivos
 Diante do contexto levantado, o presente artigo apresenta uma metodologia para a identificação de células cancerosas, que utiliza o processamento e análise de imagens termográficas por meio de aprendizado por transferência. Outrossim, para investigar de maneira experimental o tema proposto neste artigo, foram utilizadas bases de dados, criteriosamente selecionadas e normalizadas em termos de tamanho e histograma, contendo amostras de mamografias para o treinamento de um algoritmo de inteligência artificial desenvolvido. As amostras foram divididas em mamografias sem sinais de câncer e mamografias com câncer, classificadas de acordo com seus respectivos graus.
 
-Para criar um modelo de classificação de graus, foi utilizado o método de \textit{Deep Learning}, que consiste em uma técnica avançada de aprendizado de máquina. Após o treinamento do modelo, sua acurácia foi avaliada por meio de testes, e assim que devidamente treinado, o algoritmo foi capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama, identificando o grau da doença, caso presente no paciente.
+Para criar um modelo de classificação de graus, foi utilizado o método de \textit{Deep Learning}, que consiste em uma técnica avançada de Aprendizado de Máquina. Após o treinamento do modelo, sua acurácia foi avaliada por meio de testes, e assim que devidamente treinado, o algoritmo foi capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama, identificando o grau da doença, caso presente no paciente.
 
 
 
@@ -124,7 +124,7 @@ Os neurônios artificiais são a principal composição da rede neural, sendo es
 
 % 8.{cnn} ALBAWI (2017) - Yago
 % 9.{medical} UMER (2021) - Yago
-A Rede Neural Convolucional  (CNN, do inglês \textit{Convolutional Neural Network}), de acordo com \citeonline{cnn}, é uma estrutura complexa composta por inúmeros neurônios e camadas de convolução compostas por um conjunto de filtros que, por sua vez, detectam características visuais específicas em uma imagem por meio de uma matriz. Sua arquitetura pode ser dividida em três camadas individuais: i) Camada de Entrada (do inglês \textit{Input Layer}), ii) Camadas Escondidas (do inglês \textit{Hidden Layers} ), e iii) Camada de Saída (do inglês \textit{Output Layer}), com funções de entrada, processamento, e saída de dados respectivamente \cite{medical}.
+A Rede Neural Convolucional  (CNN, do inglês \textit{Convolutional Neural Network}), de acordo com \citeonline{cnn}, é uma estrutura complexa composta por inúmeros neurônios e camadas de convolução compostas por um conjunto de filtros que, por sua vez, detectam características visuais específicas em uma imagem por meio de uma matriz. Sua arquitetura pode ser dividida em três camadas individuais: i) Camada de Entrada (do inglês \textit{Input Layer}), ii) Camadas Escondidas (do inglês \textit{Hidden Layers}), e iii) Camada de Saída (do inglês \textit{Output Layer}), com funções de entrada, processamento, e saída de dados respectivamente \cite{medical}.
 %Aprendizado de máquina (do inglês Machine Learning)
 
 Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e transformados em dados matemáticos enviados para as camadas seguintes da CNN \cite{cnn}. Nas camadas escondidas, são usadas funções matemáticas não-lineares modeladas para retornar valores específicos, consoantes os dados de entrada. Esses valores são então enviados para a última parte da rede. Por fim, na camada de saída, é produzido o resultado com base nas predições das camadas anteriores.
@@ -183,7 +183,7 @@ Por outro lado, em contraposição ao artigo citado anteriormente, \citeonline{c
 Assim como o trabalho anterior, \citeonline{segmentacao} utiliza da limiarização por refinamento adaptativo, todavia, com uma acurácia de 96\%. Foram introduzidos três parâmetros para avaliação, baseando-se na informação de que as pregas mamárias (área indicadora de limites inferiores da mama, pois possuem maior temperatura) podem variar de tamanho, dificultando a identificação das mamas. Os parâmetros determinam miliares mínimos de uma área medida em \textit{pixels} que a prega deve ter, além de definir a área mínima a ser medida em \textit{pixel} para duas componentes distintas. Com isso, foi possível determinar qual conjunto de parâmetros maximiza as métricas estatísticas apresentadas, determinando assim os resultados normalizados.
 
 % 4.{MachineVision} Alberto Martin and Sabri Tosunoglu (2000) - Baesse
-Como aplicado em \citeonline{MachineVision} de modo a desenvolver técnicas de Visão de Máquina, foram utilizados para fundamentação do trabalho a Álgebra de Imagens que forma uma base teórica para dar fundação à implementação de visão computacional, e algoritmos de processamento de imagens. Com o uso de linguagens de alto nível confiáveis e eficientes, inúmeros algoritmos foram otimizados resultando na criação de poderosas ferramentas acessíveis para pesquisadores e cientistas, aumentando a precisão dos resultados. A discussão da Visão de Máquina básica e algoritmos de processamento de imagem do artigo foram implementados em cinco grupos principais: 
+Como aplicado em \citeonline{MachineVision}, foram desenvolvidas técnicas de Visão de Máquina (do inglês \textit{Machine Vision}), algoritmo que processa imagens e reconhece características básicas, em contrapartida à técnicas de processamento de imagens, em que a saída é outra imagem, entretanto, devidamente tratada. Com o uso de linguagens de alto nível confiáveis e eficientes, inúmeros algoritmos foram otimizados resultando na criação de poderosas ferramentas acessíveis para pesquisadores e cientistas, aumentando a precisão dos resultados. A discussão da Visão de Máquina básica e algoritmos de processamento de imagem do artigo foram implementados em cinco grupos principais: 
 \begin{enumerate}
   \renewcommand{\labelenumi}{\alph{enumi})}
     \item Técnicas de Segmentação ou Limiar em \textit{Grey-Level}: utilizando métodos como \textit{P-tile} (histogramas), \textit{Edge Pixel} e \textit{Interative};
@@ -218,28 +218,58 @@ Para desenvolver uma técnica precisa e eficiente para a identificação antecip
 Buscando explorar métodos não invasivos para a localização precoce do câncer de mama, \citeonline{leles} propõe o uso de imagens térmicas que permitem detectar mudanças na temperatura, causadas pelo aumento do fluxo sanguíneo na área afetada pelo tumor. Após o pré-processamento, foi feito o refinamento manual da região de interesse para que alguns atributos extraídos não colaborassem com dados de fora da mama. Avaliando 70 pacientes, o trabalho identifica a temperatura máxima, mínima e média das mamas para utilizar no cálculo da sensibilidade (capacidade do teste em identificar corretamente o diagnóstico) e especificidade (capacidade do teste em excluir corretamente os que não tem a doença), com os valores de 92,3\% e 86,2\%, respectivamente.
 
 % 11.{ashokkumar} Ashokkumar (2022) 
-A fim de abordar a detecção de metástase em linfonodos axilares em pacientes com câncer de mama, \citeonline{ashokkumar} utiliza o método de \textit{Data Augmentation} que faz modificações geométricas das imagens (como rotação, inversão, deslocamento e dimensionamento). Isso fornece uma garantia de que o modelo se concentra em áreas de câncer de mama, em vez de fontes de ruído aleatórias. Conforme o texto, foi demonstrado que o método ajuda na memorização de qualidades específicas das imagens treinadas, e evita que as redes se tornem superajustadas, ou seja, um modelo de aprendizado profundo que se adaptou demasiadamente nos dados de treinamento a ponto de não conseguir capturar padrões mais amplos de novos. Além disso, usando ANN, o trabalho alcançou 98\% de acurácia superando modelos de radiografia.
+A fim de abordar a detecção de metástase em linfonodos axilares em pacientes com câncer de mama, \citeonline{ashokkumar} utiliza o método de \textit{Data Augmentation} que faz modificações geométricas das imagens (como rotação, inversão, deslocamento e dimensionamento). Isso fornece uma garantia de que o modelo se concentra em áreas de câncer de mama, em vez de fontes de ruído aleatórias. Conforme o texto, foi demonstrado que o método ajuda na memorização de qualidades específicas das imagens treinadas, e evita que as redes se tornem superajustadas, ou seja, um modelo de aprendizado profundo que se adaptou demasiadamente nos dados de treinamento a ponto de não conseguir capturar padrões mais amplos. Além disso, usando ANN, o trabalho alcançou 98\% de acurácia superando modelos de radiografia.
 
 
 \section{\esp Metodologia}
-colcocar mais imagens
+A fim de aprofundar os fundamentos do tema, esta seção relata os materiais usados para a implementação do algoritmo, além de informações técnicas sobre linguagens de programação, bibliotecas e banco de dados.
+
+
+colocar mais imagens
 
 fazer um diagrama que explica os passos a serem feitos
 
-base de daos (selecionar imagens)
+base de dados (selecionar imagens)
 ->
-pré-processamento (filtros e normalizacao etc)
+pré-processamento (filtros e normalização etc)
 ->
-extrair caracteristicas
+extrair características
 -> 
-reconhecer padroes
+reconhecer padrões
 -> 
-validacao de resultados
+validação de resultados
+
+
+    pegar base de dados, normalizar, processar, jogar num classificador (rede neural covulacional) e retorna a classificação
 
 
 
-paragrafo q contextualiza
 
+repositório do github com documentação pra poder usar
+colocar ele no trabalho.
+
+
+
+
+
+\subsection{\esp Materiais}
+As amostras de imagens termográficas foram obtidas através do trabalho realizado para o projeto PROENG \citeonline{database}, realizado com o objetivo de auxiliar no diagnóstico por imagens médicas, desde a aquisição das imagens e sua organização no banco de dados, até suas análises e técnicas de Aprendizado de Máquina. O Banco de Dados para Pesquisas em Mastologia (DMR, do inglês \textit{Database for Mastology Research}) \href{http://visual.ic.uff.br/dmi}{Visual Lab DMR} é uma plataforma online que mantém imagens termográficas e mamografias, na qual pessoas voluntarias podem inserir suas imagens para ajudar. %melhorar o final
+
+quantas imagens foram usadas
+
+Python 3.7 a 3.10
+tensorflow
+keras
+pip install Pillow
+pip install opencv-contrib-python
+pip install matplotlib
+pip install imutils
+python -m pip install PySimpleGUI imageCut - > def para corte da imagem (a imagem recortada é salva como cropped.jpg na pasta photos do projeto)
+OBS: o imageCut é um método pronto
+OBS: crie uma pasta Tmp ou temp no seu C: para que seja possível carregas as imagens as imagens dentro de uma pasta do projeto não estão funcionando por bug do Sistema Operacional
+
+
+Falar sobre as bibliotecas, linguagem, algoritmo, configuração da rede neural, versão
     dividia em materiais
         oq usou pra fazer o trabalho. n é mto geral não, é material computacional, 
             qual a base de dados?
@@ -251,21 +281,45 @@ paragrafo q contextualiza
             
         se eu quiser reproduzir oq temq usar?
 
+
+        
+\subsection{\esp Métodos}
     métodos
         se quiser reproduzir, oq preciso fazer?
         quais as etapas?
 
 
 
-    pegar base de dados, normalizar, processar, jogar num classificador (rede neural covulacional) e retorna a classificacao
+
+Yago: Estamos utilizando 4 bibliotecas, 
+1. tensorflow -> biblioteca que tem métodos para criar rede neural
+2. keras -> escrever de um jeito melhor em vez de ter que implementar o tensorflow
+3. numpy que é pra transformar os dados que a gnt tem em vetores (fotos em vetores de 0 ou 1 em escala de cinza)
+4. matplotlib que é pra plotar gráficos de métricas etc
+5. escarlene para usar matrizes
 
 
+cria uma rede e treinando c uma rede neural -> 
+usando resnet
+
+pondo a imagem lá, fazendo modelo no nosso usando a resnet rede resnet 50 p poder gerar classificador
+
+ai usando 30 épocas e 45 partes por épocas, peso 34 p poder fazer os valores da rede neural
+
+as funções usando de otimizaçao
+1. adol -> faz cálculos não linear e pega medida de gradiente estocastico baseado na estimativa adaptativa de momentos de 1a e 2a ordem
+
+pega uma reta diagonal, pega pontinhos próximos, faz cálculos -> peso
+
+treinando, fazendo rede neural com 5 neuronios finais
+10 camadas dif, layers
+trocando as camadas, trocando filtros p ver se tem resultado bacana
 
 
-repositório do github com documentação pra poder usar
-colocar ele no trabalho.
+temq explicar qq a fun~cáo de ativacao faz, como q ta treinando em cada camada, e se temq falar sobre o tensorflow e sqlearn?
 
-
+\subsection{\esp Cronograma}
+8 tarefas e datas
 
 
 \section{\esp Experimentos e Resultados}
