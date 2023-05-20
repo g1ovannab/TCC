@@ -1,0 +1,30 @@
+
+A ResNet-50 é uma rede neural profunda pré-treinada que foi treinada em um grande conjunto de dados para realizar tarefas de classificação de imagens. O pré-processamento adequado das imagens antes de fornecê-las à rede é importante para garantir resultados precisos e consistentes.
+
+A arquitetura ResNet-50 é um modelo de aprendizado profundo que se destacou na competição ImageNet Large Scale Visual Recognition Challenge (ILSVRC) de 2015. Ele possui uma profundidade de 50 camadas e utiliza blocos residuais (residual blocks) para melhorar o treinamento profundo e combater o problema de desvanecimento de gradientes (vanishing gradients).
+
+O ResNet50 pré-treinado é fornecido como parte do módulo tensorflow.keras.applications e inclui os pesos pré-treinados no conjunto de dados ImageNet. Isso significa que o modelo já foi treinado em um grande conjunto de imagens para reconhecer uma ampla variedade de objetos e características visuais.
+
+
+\_\_\_
+O ImageDataGenerator fornece várias funcionalidades úteis para pré-processar e aumentar os dados de imagem, o que pode melhorar o desempenho e a generalização do modelo. 
+
+\_\_\_
+Um modelo Sequential é construído adicionando camadas sequencialmente, uma após a outra. Cada camada em um modelo Sequential tem uma função específica, como camadas densamente conectadas (fully connected), camadas convolucionais, camadas de pooling, camadas de regularização e muito mais.
+
+\_\_\_
+Essas classes são camadas comumente usadas para construir modelos de aprendizado profundo usando a biblioteca Keras.
+
+Dense: A camada Dense é uma camada totalmente conectada em que cada neurônio da camada anterior é conectado a todos os neurônios da camada atual. Ela é usada para introduzir não-linearidades em um modelo e pode ser usada para tarefas de classificação ou regressão.
+
+Flatten: A camada Flatten é usada para converter uma entrada multidimensional em uma única dimensão. Ela é frequentemente usada para "achatamento" dos dados após camadas convolucionais em modelos de visão computacional.
+
+GlobalAveragePooling2D: A camada GlobalAveragePooling2D é usada para reduzir a dimensionalidade de mapas de características espaciais produzidos por camadas convolucionais. Em vez de usar um grande número de parâmetros como uma camada totalmente conectada, o GlobalAveragePooling2D calcula a média dos valores em cada canal do mapa de características e retorna um vetor de saída com uma dimensão fixa.
+
+\_\_\_
+O TensorBoard oferece recursos interativos para visualizar métricas de treinamento, como perda e acurácia, bem como outras informações úteis, como histogramas de camadas, distribuição de valores de ativação, gráficos de resumo do modelo e muito mais. Ele ajuda a acompanhar o progresso do treinamento, identificar problemas e ajustar os hiperparâmetros do modelo.
+
+\_\_\_
+
+
+\_\_\_

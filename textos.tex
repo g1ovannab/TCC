@@ -2,7 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%      INTRODUÇÃO      %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\esp Introdução}
+\section{\esp Introdução} \label{intro}
 
 Instituída em 10 de dezembro de 2009, a Lei n.º 12.116/2009 \citeonline{lei}, conforme o Congresso Nacional Brasileiro, decreta o dia 27 de novembro como o Dia Nacional de Luta contra o Câncer de Mama. Além de uma data específica para a luta contra esse câncer, foi criada em 1990, uma campanha cujo objetivo é conscientizar a população sobre a importância da prevenção e do diagnóstico precoce, o chamado Outubro Rosa.
 
@@ -20,9 +20,9 @@ Com a evolução da computação em diversos âmbitos tecnológicos, tais como r
 Pautando-se na ideia de trazer ferramentas que auxiliam médicos no diagnóstico antecipado do câncer de mama, o algoritmo desenvolvido melhora a tomada de decisões dos profissionais de saúde acerca do quadro geral dos pacientes. Dessa maneira, o tratamento pode ser iniciado previamente, podendo evitar a progressão do câncer para estágios mais avançados, que são mais difíceis de tratar, e aumentando as chances de cura, reduzindo a necessidade de tratamentos invasivos. À vista disso, os equipamentos desenvolvidos com esse propósito garantem uma qualidade de vida e longevidade maior para todos assolados pelo quadro de câncer.
 
 % Objetivos
-Diante do contexto levantado, o presente artigo apresenta uma metodologia para a identificação de células cancerosas, que utiliza o processamento e análise de imagens termográficas por meio de aprendizado por transferência. Outrossim, para investigar de maneira experimental o tema proposto neste artigo, foram utilizadas bases de dados, criteriosamente selecionadas e normalizadas em termos de tamanho e histograma, contendo amostras de mamografias para o treinamento de um algoritmo de inteligência artificial desenvolvido. As amostras foram divididas em mamografias sem sinais de câncer e mamografias com câncer, classificadas de acordo com seus respectivos graus.
+Diante do contexto levantado, o presente artigo apresenta uma metodologia para a identificação de células cancerosas, que utiliza o processamento e análise de imagens termográficas por meio de Aprendizado por Transferência (do inglês \textit{Transfer Learning}). Outrossim, para investigar de maneira experimental o tema proposto neste artigo, foram utilizadas bases de dados, criteriosamente selecionadas e normalizadas em termos de tamanho e histograma, contendo amostras de mamografias para o treinamento de um algoritmo de inteligência artificial desenvolvido. As amostras foram divididas em mamografias sem sinais de câncer e mamografias com câncer, classificadas de acordo com seus respectivos graus.
 
-Para criar um modelo de classificação de graus, foi utilizado o método de \textit{Deep Learning}, que consiste em uma técnica avançada de Aprendizado de Máquina. Após o treinamento do modelo, sua acurácia foi avaliada por meio de testes, e assim que devidamente treinado, o algoritmo foi capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama, identificando o grau da doença, caso presente no paciente.
+Para criar um modelo de classificação de graus, foi utilizado o método de \textit{Deep Learning}, que consiste em uma técnica avançada de Aprendizado de Máquina (do inglês \textit{Machine Learning}). Após o treinamento do modelo, sua acurácia foi avaliada por meio de testes, e assim que devidamente treinado, o algoritmo foi capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama, identificando o grau da doença, caso presente no paciente.
 
 
 
@@ -33,7 +33,7 @@ Para criar um modelo de classificação de graus, foi utilizado o método de \te
 
 
 %Informações para contextualizar o leitor.
-\section{\esp Fundamentação teórica} 
+\section{\esp Fundamentação teórica}  \label{fundteorica}
 %9 artigos
 % 1.{souza} Souza (2018) - Giovanna
 % 2.{noninvasive} Arora (2008) - Giovanna
@@ -51,7 +51,7 @@ De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a
 
 %%%%%%%%%%%%%%%%%%%%%%      CÂNCER DE MAMA       %%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\esp Câncer de mama}
+\subsection{\esp Câncer de mama} \label{cancerdemama}
 As células vivas que compõem o corpo humano se dividem para permitir o crescimento e a substituição de células danificadas ou mortas. A proliferação celular é regulada pelos genes do Ácido Desoxirribonucleico (DNA, do inglês Deoxyribonucleic Acid), transmitidos pelos pais e gerenciados para manter o equilíbrio no processo de divisão celular. O câncer, em geral, se forma quando esse controle genético é danificado ou perdido em uma, ou mais células que então continuam a se dividir normalmente, produzindo mais células anormais, causando danos a outros tecidos e funções corporais \cite{basicOncology}.
 
 % 1.{souza} Souza (2018) - Giovanna
@@ -65,7 +65,7 @@ A descoberta prévia do câncer de mama aumenta significativamente a probabilida
 
 %%%%%%%%%%%%%%%%%%%%%%     PROCESSAMENTO DE IMAGEM       %%%%%%%%%%%%%%%%%%%
 
-\subsection{\esp Processamento de Imagem}
+\subsection{\esp Processamento de Imagem} \label{procesamentoimg}
 
 % 3.{techniques} - CHITRADEVI (2014) - Baesse
 Matematicamente, uma imagem pode ser descrita como uma função bidimensional, f(x, y), onde x e y representam coordenadas espaciais, e a amplitude de f em qualquer par de coordenadas é chamada de a intensidade ou nível de cinza da imagem naquele ponto \cite{techniques}. Quando x, y e os valores de intensidade de f são quantidades finitas e discretas, chamamos a imagem de imagem digital. É essencial que uma imagem digital seja composta por um número finito de elementos (conhecidos como \textit{pixels}, \textit{pels} ou elementos de imagem), cada um com sua própria localização e valores específicos. 
@@ -76,38 +76,38 @@ A definição básica de processamento de imagem refere-se ao processo de tratam
 
 
 % 3.{techniques} - CHITRADEVI (2014) - Baesse
-As imagens capturadas por satélites e câmeras convencionais ou digitais carecem de contraste e brilho devido a limitações nos subsistemas de imagem, ou condições de iluminação durante a captura. Além disso, segundo \citeonline{techniques}, essas imagens podem conter diferentes tipos de ruído. Nesse contexto, o aprimoramento de imagem procura acentuar certas características da imagem para análise posterior ou exibição. Os exemplos incluem contraste e retoque de borda, pseudo-coloração, filtragem de ruído, nitidez e ampliação. As técnicas de aperfeiçoamento, que englobam alargamento de contraste, conforme mostrado na Figura \ref{fig:figura1}, modificação do histograma e filtragem de ruído, consoante à Figura \ref{fig:figura2}, são úteis na extração de recursos, análise e exibição. Entretanto, o próprio processo de aprimoramento não aumenta o conteúdo de informações inerentes aos dados, enfatizando somente certas características de imagem especificadas. Algoritmos de aprimoramento são geralmente interativos e dependentes de aplicativos.
+As imagens capturadas por satélites e câmeras convencionais ou digitais carecem de contraste e brilho devido a limitações nos subsistemas de imagem, ou condições de iluminação durante a captura. Além disso, segundo \citeonline{techniques}, essas imagens podem conter diferentes tipos de ruído. Nesse contexto, o aprimoramento de imagem procura acentuar certas características da imagem para análise posterior ou exibição. Os exemplos incluem contraste e retoque de borda, pseudo-coloração, filtragem de ruído, nitidez e ampliação. As técnicas de aperfeiçoamento, que englobam alargamento de contraste, conforme mostrado na Figura \ref{fig:contraste}, modificação do histograma e filtragem de ruído, consoante à Figura \ref{fig:ruido}, são úteis na extração de recursos, análise e exibição. Entretanto, o próprio processo de aprimoramento não aumenta o conteúdo de informações inerentes aos dados, enfatizando somente certas características de imagem especificadas. Algoritmos de aprimoramento são geralmente interativos e dependentes de aplicativos.
 
  \begin{figure}[ht]
  	\centering	
  	\caption[\hspace{0.1cm}Grade Computacional.]{Alargamento de Contraste}
  	\vspace{-0.4cm}
- 	\includegraphics[width=0.6\textwidth]{figuras/Alargamento de Contraste.png}
+ 	\includegraphics[width=0.5\textwidth]{figuras/Alargamento de Contraste.png}
  	\captionsetup{justification=centering}
 	\vspace{-0.2cm}
 	\\\textbf{\footnotesize Fonte: \cite{techniques} }
-	\label{fig:figura1}
+	\label{fig:contraste}
 \end{figure}
 
  \begin{figure}[ht]
  	\centering	
  	\caption[\hspace{0.1cm}Grade Computacional.]{Retirada de Ruido}
  	\vspace{-0.4cm}
- 	\includegraphics[width=0.6\textwidth]{figuras/Retirada de Ruido.png}
+ 	\includegraphics[width=0.5\textwidth]{figuras/Retirada de Ruido.png}
  	\captionsetup{justification=centering}
 	\vspace{-0.2cm}
 	\\\textbf{\footnotesize Fonte: \cite{techniques} }
-	\label{fig:figura2}
+	\label{fig:ruido}
 \end{figure}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%     DEEP LEARNING       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\esp Deep Learning}
+\subsection{\esp Deep Learning} \label{deeplearning}
 
 % 6.{machinelearning} UDDIN (2022) - Yago
-O Aprendizado de Máquina (do inglês \textit{Machine Learning}) é um processo que utiliza uma gama de dados para criar uma inteligência artificial instruído para aprender e operar funções de maneira autônoma \cite{machinelearning}. Dentre as abundantes formas de se aplicar esse processo, uma das mais comuns é o método \textit{Deep Learning}, que utiliza redes neurais convolucionais para criar aplicações mais completas. 
+O Machine Learning é um processo que utiliza uma gama de dados para criar uma inteligência artificial instruído para aprender e operar funções de maneira autônoma \cite{machinelearning}. Dentre as abundantes formas de se aplicar esse processo, uma das mais comuns é o método \textit{Deep Learning}, que utiliza redes neurais convolucionais para criar aplicações mais completas. 
 
 
 % 7.{deeplearning} LAUZON (2012) - Yago
@@ -119,13 +119,12 @@ Os neurônios artificiais são a principal composição da rede neural, sendo es
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%     REDES NEURAIS       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\esp Redes Neurais}
+\subsection{\esp Redes Neurais} \label{redesneurais}
 
 
 % 8.{cnn} ALBAWI (2017) - Yago
 % 9.{medical} UMER (2021) - Yago
 A Rede Neural Convolucional  (CNN, do inglês \textit{Convolutional Neural Network}), de acordo com \citeonline{cnn}, é uma estrutura complexa composta por inúmeros neurônios e camadas de convolução compostas por um conjunto de filtros que, por sua vez, detectam características visuais específicas em uma imagem por meio de uma matriz. Sua arquitetura pode ser dividida em três camadas individuais: i) Camada de Entrada (do inglês \textit{Input Layer}), ii) Camadas Escondidas (do inglês \textit{Hidden Layers}), e iii) Camada de Saída (do inglês \textit{Output Layer}), com funções de entrada, processamento, e saída de dados respectivamente \cite{medical}.
-%Aprendizado de máquina (do inglês Machine Learning)
 
 Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e transformados em dados matemáticos enviados para as camadas seguintes da CNN \cite{cnn}. Nas camadas escondidas, são usadas funções matemáticas não-lineares modeladas para retornar valores específicos, consoantes os dados de entrada. Esses valores são então enviados para a última parte da rede. Por fim, na camada de saída, é produzido o resultado com base nas predições das camadas anteriores.
 
@@ -147,7 +146,7 @@ Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e tr
 %       Estão usando quais técnicas/metodos? 
 %       O quão bom foram os resultados que eles tiveram (assertividade ou outras métricas)? 
 %
-\section{\esp Trabalhos correlatos}
+\section{\esp Trabalhos correlatos} \label{trabcorr}
 %Usado 1 artigo: 
 % 1.{marinePredators} Rajinikanth (2021) - Giovanna
 % 2.{comparing} Rodrigues (2014) - Giovanna
@@ -221,139 +220,476 @@ Buscando explorar métodos não invasivos para a localização precoce do cânce
 A fim de abordar a detecção de metástase em linfonodos axilares em pacientes com câncer de mama, \citeonline{ashokkumar} utiliza o método de \textit{Data Augmentation} que faz modificações geométricas das imagens (como rotação, inversão, deslocamento e dimensionamento). Isso fornece uma garantia de que o modelo se concentra em áreas de câncer de mama, em vez de fontes de ruído aleatórias. Conforme o texto, foi demonstrado que o método ajuda na memorização de qualidades específicas das imagens treinadas, e evita que as redes se tornem superajustadas, ou seja, um modelo de aprendizado profundo que se adaptou demasiadamente nos dados de treinamento a ponto de não conseguir capturar padrões mais amplos. Além disso, usando ANN, o trabalho alcançou 98\% de acurácia superando modelos de radiografia.
 
 
-\section{\esp Metodologia}
+\section{\esp Metodologia} \label{metodologia}
 A fim de aprofundar os fundamentos do tema, esta seção relata os materiais usados para a implementação do algoritmo, além de informações técnicas sobre linguagens de programação, bibliotecas e banco de dados.
 
+\subsection{\esp Materiais} \label{materiais}
 
-colocar mais imagens
+\subsubsection{\esp Banco de Dados} \label{database}
+As amostras de imagens termográficas foram obtidas através do trabalho elaborado para o projeto PROENG \citeonline{database}, realizado com o objetivo de auxiliar no diagnóstico por imagens médicas, desde a aquisição das imagens e sua organização no banco de dados, até suas análises e técnicas de \textit{Machine Learning}. O \textit{Visual Lab DMR} (Banco de Dados para Pesquisas em Mastologia, do inglês \textit{Database for Mastology Research}) é uma plataforma online que armazena imagens termográficas e mamografias, permitindo também que indivíduos voluntários contribuam inserindo suas próprias imagens, com o intuito de auxiliar em pesquisas na área da mastologia. Para acessar o banco, foi necessário criar uma conta na plataforma \href{http://visual.ic.uff.br/dmi}{\textit{Visual Lab DMR}}. 
 
-fazer um diagrama que explica os passos a serem feitos
-
-base de dados (selecionar imagens)
-->
-pré-processamento (filtros e normalização etc)
-->
-extrair características
--> 
-reconhecer padrões
--> 
-validação de resultados
+O conjunto de dados contém imagens de 83 pacientes com câncer, e imagens de 142 pacientes sem câncer, totalizando 225 pacientes. Cada paciente tem em média 25 imagens de diferentes posições, como frontal, lateral direita, lateral esquerda, e outros ângulos.
 
 
-    pegar base de dados, normalizar, processar, jogar num classificador (rede neural covulacional) e retorna a classificação
+\subsubsection{\esp Tecnologias} \label{techs}
+Para realizar o algoritmo que classifica as imagens como pacientes com câncer ou não, foram usadas diversas tecnologias, linguagens e bibliotecas a fim de facilitar a implementação. Para reproduzir a implementação, é necessário configurar o sistema operacional do computador com o \textit{Python}, uma linguagem de programação de alto nível, interpretada, com tipagem dinâmica, além de incluir orientação à objetos, diversas bibliotecas e suporte à módulos e pacotes. A implementação requer o \textit{Python} com uma versão entre 3.7 e 3.10.
 
 
+Além disso, ao utilizar um gerenciador de pacotes para o \textit{Python} (sintaxe "\textit{pip install <package>}"), foram utilizadas as principais bibliotecas:
 
-
-repositório do github com documentação pra poder usar
-colocar ele no trabalho.
-
-
-
-
-
-\subsection{\esp Materiais}
-As amostras de imagens termográficas foram obtidas através do trabalho realizado para o projeto PROENG \citeonline{database}, realizado com o objetivo de auxiliar no diagnóstico por imagens médicas, desde a aquisição das imagens e sua organização no banco de dados, até suas análises e técnicas de Aprendizado de Máquina. O Banco de Dados para Pesquisas em Mastologia (DMR, do inglês \textit{Database for Mastology Research}) \href{http://visual.ic.uff.br/dmi}{Visual Lab DMR} é uma plataforma online que mantém imagens termográficas e mamografias, na qual pessoas voluntarias podem inserir suas imagens para ajudar. %melhorar o final
-
-quantas imagens foram usadas
-
-Python 3.7 a 3.10
-tensorflow
-keras
-pip install Pillow
-pip install opencv-contrib-python
-pip install matplotlib
-pip install imutils
-python -m pip install PySimpleGUI imageCut - > def para corte da imagem (a imagem recortada é salva como cropped.jpg na pasta photos do projeto)
-OBS: o imageCut é um método pronto
-OBS: crie uma pasta Tmp ou temp no seu C: para que seja possível carregas as imagens as imagens dentro de uma pasta do projeto não estão funcionando por bug do Sistema Operacional
-
-
-Falar sobre as bibliotecas, linguagem, algoritmo, configuração da rede neural, versão
-    dividia em materiais
-        oq usou pra fazer o trabalho. n é mto geral não, é material computacional, 
-            qual a base de dados?
-            algorítmo vai ser?
-            futuro: oq tamo usando de config pro algoritmo
-            linguagem de programação, versão?
-            biblioteca específica?
-            
-            
-        se eu quiser reproduzir oq temq usar?
-
-
+\begin{enumerate}[label=\alph*)]
+    \item \textit{TensorFlow}: utilizada para desenvolvimento de modelos de \textit{Machine Learning}.
+    
+    \item \textit{Keras}: utilizada em conjunto com o \textit{TensorFlow}, permitindo construção e treinamento de redes neurais.
+    
+    \item \textit{PIL}: oferece recursos para o processamento de imagens, como abrir, manipular e salvar em diferentes formatos.
         
-\subsection{\esp Métodos}
-    métodos
-        se quiser reproduzir, oq preciso fazer?
-        quais as etapas?
+    \item \textit{matplotlib}: para visualização de dados, permitindo criar gráficos, \textit{plots}, histogramas, entre outros.
+    
+    \item \textit{numpy}: utilizada para computação e análise numérica, fornecendo uma estrutura de dados como vetores multidimensional para armazenar grandes conjuntos de dados numéricos.
+\end{enumerate}
 
 
+\subsection{\esp Métodos} \label{metodos}
+Nesta seção, são apresentadas as metodologias para o treinamento de um modelo de rede neural convolucional utilizando bibliotecas do \textit{Python}. O método proposto consiste em cinco etapas: banco de imagens, pré-processamento, aplicação do método de \textit{Transfer Learning}, declaração do modelo e predições. O código fonte do projeto pode ser encontrado em um repositório hospedado no \textit{Github}\footnote{\href{https://github.com/Vaftir/TCC_master/}{\textit{https:\/\/github.com\/Vaftir\/TCC\_master\/}}}.
 
 
-Yago: Estamos utilizando 4 bibliotecas, 
-1. tensorflow -> biblioteca que tem métodos para criar rede neural
-2. keras -> escrever de um jeito melhor em vez de ter que implementar o tensorflow
-3. numpy que é pra transformar os dados que a gnt tem em vetores (fotos em vetores de 0 ou 1 em escala de cinza)
-4. matplotlib que é pra plotar gráficos de métricas etc
-5. escarlene para usar matrizes
+\subsubsection{\esp Pré-Processamento} \label{preprocess}
+Inicialmente é necessário importar as bibliotecas necessárias, já descritas na seção \ref{techs}, para o desenvolvimento do código como demonstra a Figura \ref{fig:bibs}. É também necessário carregar os dados do modelo de treinamento e validação, como demonstrado na Figura \ref{fig:load}.
+
+ \begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Importação das bibliotecas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/bibs.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+    \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:bibs}
+\end{figure}
+
+ \begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Carregamento das imagens}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.8\textwidth]{figuras/load_images.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:load}
+\end{figure}
+
+Em seguida, o pré-processamento das imagens é feito, gerando assim o vetor para o treinamento. Essa etapa foi foi realizada a partir da utilização da biblioteca \textit{ImageDataGenerator}. Originada do \textit{TensorFlow}, essa biblioteca permite transformar as imagens em dados vetoriais, facilitando os cálculos necessários durante o treinamento do modelo. É possível observar na Figura \ref{fig:generator} que definimos uma instância do \textit{ImageDataGenerator} chamada \textit{Datagen}, que servirá para aplicar os métodos de transformação, em vetor. Dentro desse método, existe um parâmetro chamado \textit{rescale} utilizado para fazer a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Essa escala, geralmente, é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada pixel tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, de acordo com a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
+
+ \begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Instância da biblioteca \textit{ImageDataGenerator} e Pré-Processamento}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=1\textwidth]{figuras/imggenerator.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:generator}
+\end{figure}
 
 
-cria uma rede e treinando c uma rede neural -> 
-usando resnet
-
-pondo a imagem lá, fazendo modelo no nosso usando a resnet rede resnet 50 p poder gerar classificador
-
-ai usando 30 épocas e 45 partes por épocas, peso 34 p poder fazer os valores da rede neural
-
-as funções usando de otimizaçao
-1. adol -> faz cálculos não linear e pega medida de gradiente estocastico baseado na estimativa adaptativa de momentos de 1a e 2a ordem
-
-pega uma reta diagonal, pega pontinhos próximos, faz cálculos -> peso
-
-treinando, fazendo rede neural com 5 neuronios finais
-10 camadas dif, layers
-trocando as camadas, trocando filtros p ver se tem resultado bacana
+Além disso, ainda na Figura \ref{fig:generator}, utilizamos o método \textit{flow\_from\_directory} para pré-processar os dados que serão carregados para o treinamento. Nesse método, especificamos o diretório onde os dados estão localizados, o tamanho do redimensionamento das imagens para 224x224 (uma vez que a rede neural utilizada requer esses valores) \citeonline{resnet50}, o modo de classificação como binário (onde 0 classifica pacientes sem câncer, e 1 classifica pacientes com câncer), e o tamanho do \textit{batch}, ou seja, o número de imagens que serão carregadas por vez durante o treinamento.
+%https://keras.io/api/applications/resnet/#resnet50-function
 
 
-temq explicar qq a fun~cáo de ativacao faz, como q ta treinando em cada camada, e se temq falar sobre o tensorflow e sqlearn?
+\subsubsection{\esp \textit{Transfer Learning}} \label{transfer}
+Para reutilizar um modelo pré-trinado em uma determinada tarefa, como ponto de partida para resolver um problema relacionado, o \textit{Transfer Learning} entra com o objetivo de aproveitar o conhecimento aprendido por um modelo já pré-treinado, a fim de reconhecer padrões e características úteis nos dados. Seu modelo de aplicação consiste em obter camadas de um modelo já treinado, congelar as camadas já treinadas (para evitar destruir quaisquer informações que elas possuem durante o treinamento), adicionar novas camadas treinadas encima das camadas congeladas (retornando características anteriores em predições para um novo \textit{dataset} e, por fim, treinar as novas camadas \cite{kerastl}.
 
-\subsection{\esp Cronograma}
-8 tarefas e datas
+Na implementação do modelo, utilizamos da arquitetura \textit{ResNet50} para realizar o \textit{Transfer Leaning}, sendo ele um modelo de rede neural eficiente, que utiliza blocos residuais, permitindo que a informação seja passada diretamente para camadas posteriores. Com essa informação, foi carregado o pré-processamento da \textit{ResNet} para que as imagens possam ser entendíveis para a rede utilizada. Definido na Figura \ref{fig:normaliztion}, o comando \textit{preprocess\_input} importa a normalização que irá processar as imagens. Em seguida, é necessário gerar uma nova instância do \textit{ImageDataGenerator} chamada \textit{datagen\_resnet} que utiliza dos parâmetros importados pelo \textit{preprocess\_input}. Novamente, utilizamos o método \textit{flow\_from\_directory} para pré-processar os dados que serão carregados para o treinamento (\textit{train\_gen}) e para a validação (\textit{validation\_gen}).
+
+ \begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Importação da normalização dos dados}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.8\textwidth]{figuras/normalization.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:normaliztion}
+\end{figure}
 
 
-\section{\esp Experimentos e Resultados}
-mesmo q n seja bom. seria bom colocar
-explica oq usamos p fazer experimentos e resultados
+\subsubsection{\esp Camadas e Funções de Ativação do Modelo} \label{camadas}
+Com as imagens de treinamento e validação pré-processadas, é necessário definir o modelo à ser utilizado. Demonstrado na Figura \ref{fig:resnet}, temos a importação da rede neural \textit{ResNet} que aplicará o método de \textit{Transfer Learning}. O modelo foi carregado na variável \textit{base\_model}, configurando parâmetros que indicam que a camada superior do modelo não será incluída (ou seja, somente serão usadas camadas convolucionais), e especificando o formato esperado das imagens de entrada para o modelo (já definidas anteriormente pelo método \textit{flow\_from\_directory}.
 
-teste mto simples
+ \begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Importação da Rede Neural}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.8\textwidth]{figuras/resnet50.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:resnet}
+\end{figure}
 
-\cite{souza} fala sobre resultados e métricas na pagina 45
 
+Um modelo ideal, na teoria, deve receber uma lista de camadas onde cada camada tem uma função específica. No diagrama da Figura \ref{fig:cnn} temos as camadas \textit{Conv\_1}, \textit{Conv\_2} e \textit{Max-Pooling}, que são responsáveis por extrair e detectar padrões das imagens, e a camada \textit{Fully-Connected}, que permite que o modelo aprenda padrões mais sofisticados. No modelo proposto, a \textit{ResNet} disponibiliza os dados extraídos, mas não implementa a camada \textit{Fully-Connected}.
 
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Arquitetura completa de uma CNN que classifica dígitos manuscritos}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.8\textwidth]{figuras/cnn.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{towardsdatascienceimage}}
+	\label{fig:cnn}
+\end{figure}
 
+A camada \textit{Max Pooling} reduz a dimensionalidade dos dados de entrada, agrupando \textit{pixels} de uma região para diminuir a variância à pequenas alterações, além de extraí características mais relevantes. Assim, é possível dizer que essa camada reduz a resolução da imagem para dar uma maior especificidade em uma determinada característica. No exemplo da Figura \ref{fig:maxpooling}, a camada de \textit{Max Pooling} reduz o conjunto de dados para o maior dado em um determinado conjunto selecionado.
 
-
-% \subsection{\esp Inserções de ilustrações}
-
-% As ilustrações devem ser inseridas seguindo o exemplo da Figura \ref{fig:figura1}. 
-% % Figura
 % \begin{figure}[ht]
-% 	\centering	
-% 	\caption[\hspace{0.1cm}Grade Computacional.]{Uma Grade Computacional como fonte transparente}
-% 	\vspace{-0.4cm}
-% 	\includegraphics[width=0.6\textwidth]{figuras/grade-comp.png}
-% 	% Caption centralizada
-% % 	\captionsetup{justification=centering}
-% 	% Caption e fonte 
-% 	 \vspace{-0.2cm}
-% 	\\\textbf{\footnotesize Fonte: \cite{cap-livro} }
-% 	\label{fig:figura1}
+%   \centering	
+%   \caption[Grade Computacional.]{Camada Max Pooling}
+%   \vspace{-0.4cm}
+%   \includegraphics[width=0.8\textwidth]{figuras/maxpooling.png}
+%   \captionsetup{justification=centering}
+%   \vspace{-0.2cm}
+%   \textbf{\footnotesize Fonte: \cite{cnns}}
+%   \label{fig:maxpooling}
 % \end{figure}
-% \vspace{-0.5cm}
 
-% \subsection{\esp Conclusão}
-% Discussão dos resultados obtidos na pesquisa. É onde se colocam as observações do autor. 
-% Poderá também apresentar sugestões de novas linhas de estudo.
-% A conclusão deve estar de acordo com os objetivos do trabalho.
-% A conclusão não deve apresentar citações ou interpretações de outros autores.
+
+\begin{figure}[ht]
+    \centering
+    \caption[Grade Computacional.]{Camada Max Pooling}
+    \vspace{-0.4cm}
+    \animategraphics[width=0.5\textwidth, autoplay, loop]{4}{gif/}{1}{4}
+    \captionsetup{justification=centering}
+    \vspace{-0.2cm}
+    \\\textbf{\footnotesize Fonte: \cite{cnns}}
+    \label{fig:maxpooling}
+\end{figure}
+
+
+
+Já a camada Convolucional opera aplicando um conjunto de filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução é igual a quantidade de filtros aplicados. Quanto mais profundas são as camadas das convoluções, mais detalhados são os traços identificados com o Mapa de Ativação (do inglês, \textit{Atactivation Map}). O filtro, também conhecido como \textit{Kernel}, é formado por pesos inicializados aleatoriamente, atualizando-os a cada nova entrada durante o processo de Retropropagação do Erro (do inglês, \textit{Backpropagation}). A pequena região da entrada onde o filtro é aplicado é chamada de Campo Receptivo (do inglês, \textit{Receptive Field}). Assim, é possível visualizar nas Figuras \ref{fig:conv2} e \ref{fig:conv3}, um filtro que representa a curva ao seu lado. Com essa combinação temos como resultado um número alto, indicando uma compatibilidade entre as curvas. Quando a imagem não possui nenhuma compatibilidade esse resultado chega mais próximo a zero.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Camada Convolucional}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/conv2.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{cnns}}
+	\label{fig:conv2}
+\end{figure}
+
+
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Camada Convolucional}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.8\textwidth]{figuras/conv3.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{cnns}}
+	\label{fig:conv3}
+\end{figure}
+
+Por fim, \textit{Flattern} é uma das camadas \textit{Fully Connected}, na qual sua entrada é a saída da camada anterior, e sua saída são N neurônios, sendo N a quantidade de classes do modelo para finalizar a classificação.
+
+
+Para declarar o modelo da implementação, como já citado anteriormente, é necessário ter uma lista de camadas. Na Figura \ref{fig:layers} temos a importação de uma Interface de Programação de Aplicações (API, do inglês \textit{Application Programming Interface}) chamada \textit{Sequential}, que permite adicionar camadas sequencialmente ao modelo. Além disso, é importada também a camada \textit{Dense} que representa uma camada totalmente conectada, utilizada para mapear as entradas para as saídas. Juntamente com as camadas já citadas, temos a camada \textit{Flatten} que é utilizada para achatar os dados de entrada em um vetor unidimensional. Por fim, a camada \textit{GlobalAveragePooling2D} realiza a operação de \textit{pooling} (explicada anteriormente em max pooling) médio, utilizada para reduzir a dimensionalidade dos recursos extraidos das camadas concolucionais anteriores. Para gerar arquivos de log que são úteis para avaliar o desempenho do modelo, foi utilizado o TensorBoard.
+
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Importação de Camadas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/layers.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:layers}
+\end{figure}
+
+
+A variável \textit{base\_model}, já referenciada anteriormente, carrega as camadas convolucionais da rede neural \textit{ResNet}. Com isso, é necessário somente gerar as camadas \textit{Fully Connected}, que o \textit{ResNet} não consegue gerar. Para isso, a Figura \ref{fig:model} demonstra o código que percorre todas as camadas do modelo e define a propriedade \textit{trainable} como Falso para cada camada. Isso significa que as camadas do modelo base não serão treinadas durante o processo de treinamento subsequente. Ao definir a propriedade \textit{trainable}, as camadas do modelo base permanecerão com os pesos pré-treinados e não serão atualizadas durante o treinamento adicional. Após isso, foi definido o modelo de rede neural, passando uma lista de camadas. A camada \textit{base\_model} é a camada pré-treinada passada como entrada para o modelo. As outras camadas realizam operações para reduzir a dimensionalidade dos recursos extraídos de camadas anteriores.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Modelo implementado com 10 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.8\textwidth]{figuras/model.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:model}
+\end{figure}
+
+A camada \textit{Dense} realiza transformações lineares nos dados de entrada, e cada chamada contém parâmetros que se distinguem, assim como a quantidade de unidades (2, 36, 128 ou 1024) e a função do modo de ativação ('\textit{relu}', ou '\textit{softmax}'). A função de ativação \textit{Softmax}, representada na Figura \ref{fig:softmax},é usada em redes neurais de classificação, forçando saída de uma rede neural a representar a probabilidade dos dados serem de uma das classes definidas. Sem ela, as saídas dos neurônios são simplesmente valores numéricos onde o maior indica a classe vencedora.
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Função de Ativação \textit{softmax}}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/softmax.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{softmax}}
+	\label{fig:softmax}
+\end{figure}
+
+Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, pega os valores menores ou iguais à zero, e atribui como zero. É a função de ativação mais rápida para a geração de pesos, e há somente suas classes.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Função de Ativação \textit{ReLU}}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/relu.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{relu}}
+	\label{fig:relu}
+\end{figure}
+
+
+
+\subsubsection{\esp Treinamento do Modelo} \label{treinamento}
+
+A fim de treinar o modelo para identificar padrões e classificar as imagens, é necessário compilar o modelo com uma função de custo e otimizador, disponível na Figura \ref{fig:training}. A otimização de Adam é um método de decida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. No modelo utilizado para a classificação do câncer, é definido o otimizador, juntamente com a taxa de aprendizado, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. Nesse caso, a taxa é definida como \ensuremath{1 \times 10^{-4}}. Além disso, é especificada a função de perda utilizada para treinar o modelo (\textit{sparse\_categorical\_crossentropy}), onde há dois ou mais rótulos de saída e calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento. Por fim, é especificada a métrica que é utilizada para avaliar o desempenho do modelo durante o treinamento. A métrica escolhida foi a acurácia, que mede a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Funções de custo e otimização}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/training.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:training}
+\end{figure}
+
+Após compilar o modelo, ele é de fato treinado utilizando os dados de treinamento e validação, atribuindo o histórico de treinamento, que contém métricas de perda e avaliação, na variável \textit{history}. O método \textit{fit} treina o modelo utilizando os dados fornecidos, passando alguns parâmetros como configuração. A variável \textit{train\_gen}, mencionada na seção \ref{transfer}, representa o gerador de dados de treinamento, em conjunto à \textit{validation\_gen} que representa o gerador de dados de validação. Em seguida são definidos parâmetros como a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento que são usados em cada atualização do modelo), e uma lista opcional de objetos de Retornos de Chamada (do inglês, \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. No modelo proposto, somente um único \textit{Callback} chamado \textit{tensorBoard} está sendo passado. Além disso, o tamanho do lote é fixo em 32, e a quantidade de épocas foi definida em dois valores, para dois modelos diferentes à serem validados. O primeiro modelo utiliza de 10 épocas, e o segundo modelo utiliza de 7 épocas.
+
+
+\section{\esp Experimentos e Resultados} \label{results}
+
+\subsection{\esp Resultados Preliminares} \label{prelim}
+
+Para avaliar os resultados dos modelos propostos, é utilizado a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Na Figura \ref{fig:panda} temos que é feita a análise da acurácia e perda do modelo. O histórico do treino pode ser observado na Tabela \ref{tab:history10}.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Funções de custo e otimização}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/panda.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:panda}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \caption{Histórico de treino com 10 épocas}
+   \label{tab:history10}
+\begin{tabular}{|c|c|c|c|c|} 
+  \hline
+   epochs & loss & accuracy & val\_loss & val\_accuracy \\
+  \hline
+    0 & 0.268681 & 0.891832 & 0.143105 & 0.943488 \\
+    1 & 0.127448 & 0.953642 & 0.082275 & 0.974614 \\
+    2 & 0.083150 & 0.972185 & 0.065914 & 0.980795 \\
+    3 & 0.062938 & 0.979249 & 0.044413 & 0.986976 \\
+    4 & 0.050511 & 0.982119 & 0.030504 & 0.991832 \\
+    5 & 0.035133 & 0.990287 & 0.038080 & 0.989404 \\
+    6 & 0.024261 & 0.994040 & 0.016370 & 0.998455 \\
+    7 & 0.017749 & 0.995806 & 0.010396 & 0.999559 \\
+    8 & 0.021589 & 0.992715 & 0.050530 & 0.976821 \\
+    9 & 0.013694 & 0.997351 & 0.005069 & 1.000000 \\
+  \hline
+\end{tabular}
+
+\end{table}
+
+Além disso, as Figuras \ref{fig:acc10}, \ref{fig:loss10}, representam, respectivamente, gráficos de acurácia e perda com 10 épocas. Ao analisar, é possível observar que na Figura \ref{fig:acc10}, a partir da época 7, a acurácia diminui. Isso é um sinal de Sobreajuste (do inglês \textit{Overfitting}), comportamento indesejável de \textit{Machine Learning} que ocorre quando o modelo fornece previsões precisas para dados de treinamento, mas não para novos dados.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de acurácia com 10 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/accuracy_10.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:acc10}
+\end{figure}
+
+Na Figura \ref{fig:loss10}, o erro diminui conforme temos diferentes épocas, porém acontece, novamente, \textit{Overfitting} na época 8. 
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de perda com 10 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/loss_10.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:loss10}
+\end{figure}
+
+Por esses motivos, um modelo com somente 8 épocas foi treinado, conforme a Figura \ref{fig:model7}. O histórico do treino pode ser observado na Tabela \ref{tab:history7}. As Figuras \ref{fig:acc7} e \ref{fig:loss7} representam, respectivamente, os gráficos de acurácia e perda com 7 épocas. Após feita a alteração é possível ver que o modelo se comporta claramente de uma maneira melhor e da maneira esperada (sem \textit{Overfitting}).
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Modelo implementado com 7 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/model_7.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:model7}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \caption{Histórico de treino com 7 épocas}
+   \label{tab:history7}
+\begin{tabular}{|c|c|c|c|c|} 
+  \hline
+   epochs & loss & accuracy & val\_loss & val\_accuracy \\
+  \hline
+0 & 0.289751 & 0.887196 & 0.172350 & 0.952539 \\
+1 & 0.148235 & 0.945475 & 0.108529 & 0.973289 \\
+2 & 0.098310 & 0.964680 & 0.080067 & 0.969536 \\
+3 & 0.064811 & 0.979249 & 0.043451 & 0.986093 \\
+4 & 0.045955 & 0.986313 & 0.031383 & 0.993378 \\
+5 & 0.035269 & 0.987417 & 0.021023 & 0.996909 \\
+6 & 0.025187 & 0.992274 & 0.014035 & 0.997572 \\
+  \hline
+\end{tabular}
+
+\end{table}
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de acurácia com 7 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/accuracy_7.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:acc7}
+\end{figure}
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de perda com 7 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/loss_7.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:loss7}
+\end{figure}
+
+\subsection{\esp Predições} \label{pred}
+
+Por fim, é importada a biblioteca \textit{nunpy}, e definida a função de predição, que irá classificar uma imagem como sendo um paciente com câncer, ou sem câncer. Apontada na Figura \ref{fig:predicao}, a função recebe um modelo de \textit{Machine Learning} e o caminho de um arquivo de imagem, e retorna o resultado da classificação. Para isso, a função \textit{predicao} armazena a imagem em uma variável, redimensionando-a para o tamanho que a rede neural requisita (224x224 \textit{pixels}). Após isso, a função de predição converte a imagem em um vetor, realizando o pré-processamento com a função  \textit{preprocess\_input}, especificada na seção \ref{transfer}. Além disso, reordena o vetor da imagem para ter uma amostra com as dimensões já especificadas, definindo o número de canais de cor para 3. Faz a previsão do modelo guardando o resultado numa variável que contém as probabilidades associadas a cada classe, e encontra o índice da classe com a maior probabilidade. Finalmente, cria um dicionário que mapeia os índices das classes para seus rótulos correspondentes com base nos índices definidos pelo gerador de imagens de treinamento, exibindo a imagem com a predição.
+
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Definição da função de predição}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/predicao.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:predicao}
+\end{figure}
+
+As Figuras \ref{predicao1} e \ref{predicao2} determinam o resultado da predição, utilizando o primeiro modelo (que tem 10 épocas). 
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Predição usando modelo com 10 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/model10_pred1.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:predicao1}
+\end{figure}
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Predição usando modelo com 10 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/model10_pred2.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:predicao2}
+\end{figure}
+
+
+
+As Figuras \ref{predicao3} e \ref{predicao4} determinam o resultado da predição, utilizando o segundo modelo (que tem 7 épocas). 
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Predição usando modelo com 7 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/model7_pred1.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:predicao3}
+\end{figure}
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Predição usando modelo com 7 épocas}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=0.5\textwidth]{figuras/model7_pred2.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+	\label{fig:predicao4}
+\end{figure}
+
+% \cite{souza} fala sobre resultados e métricas na pagina 45
+
+% \subsection{\esp Cronograma} \label{cronograma}
+% Descomentar tabela ou colocar imagem
+
+% 1. revisao dos resultados e feedback
+% 2. trocar base de dados para uma com mais imagens e as imagens sendo termograficas
+% 3. melhorar o modelo e resultados
+% 4. implementar interface gráfica
+% \begin{table}[htbp]
+%     \centering
+%     \caption{Cronograma}
+%     \label{tab:exemplo}
+%     \begin{tabular}{|c|c|c|c|c|c|c|}
+%         \hline
+%         \textbf{} & \textbf{Tarefa} & \textbf{Julho} & \textbf{Agosto} & \textbf{Setembro} & \textbf{Outubro} & \textbf{Novembro}\\
+%         \hline
+%         1 & Revisão de resultados & x & x & x & x & x  \\
+%         \hline
+%         2 & Trocar a base de dados  & x & x & x & x & x  \\
+%         \hline
+%         3 & Melhorar acurácia dos resultados  & x & x & x & x &  x\\
+%         \hline
+%         4 & Implementar interface gráfica  & x & x & x & x & x \\
+%         \hline
+%         5 & Tarefa 5  & x & x & x & x & x  \\
+%         \hline
+%         6 & Tarefa 6  & x & x & x & x & x  \\
+%         \hline
+%         7 & Tarefa 7  & x & x & x & x & x  \\
+%         \hline
+%         8 & Tarefa 8  & x & x & x & x & x  \\
+%         \hline
+%     \end{tabular}
+% \end{table}
