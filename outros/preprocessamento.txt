@@ -1,0 +1,32 @@
+\subsubsection{\esp Pré-Processamento} \label{preprocess}
+Inicialmente, é necessário importar as bibliotecas necessárias conforme descrito na seção \ref{techs}, para o desenvolvimento do código. Estas fornecem funcionalidades e recursos necessários para a implementação do algoritmo. Ademais, foram carregados os dados de treinamento e validação do modelo.
+
+%explicar qnds imagens pra cada processo
+
+Em seguida, o pré-processamento das imagens é feito, gerando assim o vetor para o treinamento. Essa etapa foi realizada a partir da utilização da biblioteca \textit{ImageDataGenerator}. Originada do \textit{TensorFlow}, essa biblioteca permite transformar as imagens em dados vetoriais, facilitando os cálculos necessários durante o treinamento do modelo. Foi feita uma instância do \textit{ImageDataGenerator}, que servirá para aplicar os métodos de transformação em vetor. Dentro desse método, existe um parâmetro chamado \textit{rescale} utilizado para fazer a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Essa escala, geralmente, é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada pixel tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, de acordo com a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
+
+
+%  \begin{figure}[ht]
+%  	\centering	
+%  	\caption[\hspace{0.1cm}Grade Computacional.]{Instância da biblioteca \textit{ImageDataGenerator} e Pré-Processamento}
+%  	\vspace{-0.4cm}
+%  	\includegraphics[width=1\textwidth]{figuras/imggenerator.png}
+%  	\captionsetup{justification=centering}
+% 	\vspace{-0.2cm}
+%      \\\textbf{\footnotesize Fonte: \textit{GitHub}}
+% 	\label{fig:generator}
+% \end{figure}
+
+
+Além disso, ainda no Código \ref{generator}, utilizamos o método \textit{flow\_from\_directory} para pré-processar os dados que serão carregados para o treinamento. Nesse método, especificamos o diretório onde os dados estão localizados, o tamanho do redimensionamento das imagens para 224x224 (uma vez que a rede neural utilizada requer esses valores) \citeonline{resnet50}, o modo de classificação como binário (onde 0 classifica pacientes sem câncer, e 1 classifica pacientes com câncer), e o tamanho do \textit{batch}, ou seja, o número de imagens que serão carregadas por vez durante o treinamento. \\
+
+\begin{algorithm}[H]
+    \SetAlgoLined
+    datagen.flow\_from\_directory('DATASETS/train/', \\
+    \hspace{1cm}target\_size =(224,224),\\
+    \hspace{1cm}class\_mode="binary",\\
+    \hspace{1cm}batch\_size=32 \\
+    );
+  \caption{Configurações do pré-processamento}
+  \label{generator}
+\end{algorithm}
