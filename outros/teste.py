@@ -163,10 +163,10 @@ def predicao(modelo, path):
 
 
 
-#TESTE DE PACIENTE COM CANCER - MODELO COM 10 ÉPOCAS
+#TESTE DE PACIENTE COM CANCER
 predicao(modelo,'DATASETS/val/pacientes_COM_cancer/T0138.2.1.D.2013-09-06.00 (1).jpg')
 
-#TESTE DE PACIENTE SEM CANCER - MODELO COM 10 ÉPOCAS
+#TESTE DE PACIENTE SEM CANCER
 predicao(modelo,'DATASETS/val/pacientes_SEM_cancer/T0002.1.1.D.2012-10-08.04 (1).jpg')
 
 
