@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{animate}
 \usepackage{graphicx}
+\usepackage{csvsimple}
 \usepackage[ruled,vlined]{algorithm2e}
 
 
@@ -29,15 +30,15 @@
 % 
 \newcommand{\AutorB}{Lucas Baesse dos Santos}
 \newcommand{\EmailB}{lucas.baesse@sga.pucminas.br}
+%
+\newcommand{\AutorC}{Yago Assis Mendes Faria}
+\newcommand{\EmailC}{yago.faria@sga.pucminas.br}
 % 
-\newcommand{\AutorC}{Luiza Romani Sofal}
-\newcommand{\EmailC}{lrsofal@sga.pucminas.br}
+\newcommand{\AutorD}{Luiza Romani Sofal}
+\newcommand{\EmailD}{lrsofal@sga.pucminas.br}
 %
-\newcommand{\AutorD}{Matheus Felipe Santos Bussolotti}
-\newcommand{\EmailD}{matheus.bussolotti@sga.pucminas.br}
-%
-\newcommand{\AutorE}{Yago Assis Mendes Faria}
-\newcommand{\EmailE}{yago.faria@sga.pucminas.br}
+\newcommand{\AutorE}{Matheus Felipe Santos Bussolotti}
+\newcommand{\EmailE}{matheus.bussolotti@sga.pucminas.br}
 %
 \newcommand{\AutorF}{Felipe Augusto Lara Soares}
 \newcommand{\EmailF}{felipe.soares@pucminas.br}
@@ -64,7 +65,7 @@
 \singlespacing 
 
 %Alunos
-\normalsize{\AutorA \\ \AutorB \\ \AutorC \\ \AutorD \\ \AutorE \footnote{E-mails:\EmailA, \EmailB, \EmailC, \EmailD, \EmailE, \EmailF \\ \Curso, \origem.}} \\
+\normalsize{\AutorA \\ \AutorB \\ \AutorC \\ \AutorD \\ \AutorE \\ \AutorF\footnote{E-mails:\EmailA, \EmailB, \EmailC, \EmailD, \EmailE, \EmailF \\ \Curso, \origem.}} \\
 
 %deixar com o valor `0` e usar o '*' no inicio da frase
 % \symbolfootnote[0]{Artigo recebido em 10 de julho de 1983 e aprovado em 29 de maio 2012}
@@ -74,7 +75,7 @@
 \begin{abstract}
 \noindent
 
-O câncer de mama é a doença mais comum entre as mulheres do mundo e também o segundo tipo de tumor maligno mais incidente no Brasil. De acordo com dados do Instituto Nacional de Câncer (INCA, 2023), existe uma previsão de 74 mil novos casos por ano, até 2025. Sem uma causa específica, a doença tem aumento no risco de se desenvolver a partir de fatores genéticos/hereditários, idade, entre outros. Diante do avanço computacional e a invenção de dispositivos termoelétricos que estabelecem a temperatura em circuitos elétricos através de radiação térmica, é possível identificar células com câncer utilizando imagens termográficas. Tendo isso em vista, o presente artigo aplica a técnica de processamento e análise de imagens para detectar se o conjunto de células são cancerosas. Para isso, foram utilizados métodos de treinamento de Inteligência Artificial usando Aprendizado por Transferência. O método proposto foi utilizado em experimentos na base \textit{Visual Lab DMR} em 4530 imagens, conseguindo uma acurácia em 70,95\%.
+O câncer de mama é a doença mais comum entre as mulheres do mundo e também o segundo tipo de tumor maligno mais incidente no Brasil. De acordo com dados do Instituto Nacional de Câncer, existe uma previsão de 74 mil novos casos por ano, até 2025. Sem uma causa específica, a doença tem aumento no risco de se desenvolver a partir de fatores genéticos, hereditários, idade, entre outros. Diante do avanço computacional e a invenção de dispositivos termoelétricos que estabelecem a temperatura em circuitos elétricos através de radiação térmica, é possível identificar células com câncer utilizando imagens termográficas. Tendo isso em vista, o presente artigo aplica a técnica de processamento e análise de imagens para detectar se o conjunto de células são cancerosas. Para isso, foram utilizados métodos de treinamento de Inteligência Artificial usando Aprendizado por Transferência. O método proposto foi utilizado em experimentos na base \textit{Visual Lab DMR} em 4530 imagens, conseguindo uma acurácia de 70,95\%.
 \\\textbf{\keyword{Palavras-chave: }} Câncer de Mama. Imagens Termográficas. Inteligência Artificial.
 \end{abstract}
 
@@ -83,7 +84,7 @@ O câncer de mama é a doença mais comum entre as mulheres do mundo e também o
 \selectlanguage{english}
 \begin{abstract}
 \noindent
-Breast cancer is the most common disease among women in the world, and also the second most common type of malignant tumor in Brazil. According to data from the National Cancer Institute (INCA, 2023), there is a forecast of 74 thousand new cases per year, until 2025. Without a specific cause, the disease has an increased risk of developing from genetic/hereditary factors, age, among others. Given the computational advances and the invention of thermoelectric devices that establish the temperature in electrical circuits through thermal radiation, it is possible to identify cancer using thermographic images. With this in mind, this article aims to address the image processing and analysis technique to detect whether the set of cells is cancerous. For this, Artificial intelligence training methods using Transfer Learning were used. The proposed method was used in experiments based on \textit{Visual Lab DMR} in 4530 images, achieving an accuracy of 70,95\%.
+Breast cancer is the most common disease among women in the world, and also the second most common type of malignant tumor in Brazil. According to data from the National Cancer Institute, there is a forecast of 74 thousand new cases per year, until 2025. Without a specific cause, the disease has an increased risk of developing from genetic, hereditary factors, age, among others. Given the computational advances and the invention of thermoelectric devices that establish the temperature in electrical circuits through thermal radiation, it is possible to identify cancer using thermographic images. With this in mind, this article aims to address the image processing and analysis technique to detect whether the set of cells is cancerous. For this, Artificial intelligence training methods using Transfer Learning were used. The proposed method was used in experiments based on \textit{Visual Lab DMR} in 4530 images, achieving an accuracy of 70,95\%.
 \\\textbf{\keyword{Palavras-chave: }} Breast Cancer. Thermographic Images. Artificial intelligence.
 \end{abstract}
 
