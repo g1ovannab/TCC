@@ -51,7 +51,7 @@ A descoberta prévia do câncer de mama aumenta significativamente a probabilida
 
 Matematicamente, uma imagem pode ser descrita como uma função bidimensional, f(x, y), onde x e y representam coordenadas espaciais, e a amplitude de f em qualquer par de coordenadas é chamada de a intensidade ou nível de cinza da imagem naquele ponto \cite{techniques}. Quando x, y e os valores de intensidade de f são quantidades finitas e discretas, chamamos a imagem de digital. É essencial que uma imagem digital seja composta por um número finito de elementos (conhecidos como \textit{pixels}, \textit{pels} ou elementos de imagem), cada um com sua própria localização e valores específicos. 
 
-A definição básica de processamento de imagem refere-se ao processo de tratamento de imagens digitais, incluindo a remoção de ruídos e outros tipos de irregularidades presentes \cite{histopathological}. Durante as últimas quatro a cinco décadas, várias técnicas foram desenvolvidas no campo de processamento de imagens, sendo a maioria desenvolvida para aprimorar imagens obtidas por espaçonaves não tripuladas, sondas espaciais e aeronaves militares de reconhecimento. Devido a fácil disponibilidade de computadores poderosos, dispositivos de memória de grande porte e software gráfico, os sistemas de processamentos de imagem estão se tornando cada vez mais populares. As principais vantagens dos métodos de processamento são versatilidade, repetibilidade e preservação da precisão dos dados originais, utilizando técnicas como: i) Pré-processamento, ii) Melhoria, iii) Segmentação, iv) Extração de recursos, e v) Classificação \cite{lungcancer}.
+A definição básica de processamento de imagem refere-se ao processo de tratamento de imagens digitais, incluindo a remoção de ruídos e outros tipos de irregularidades presentes \cite{histopathological}. Durante as últimas quatro a cinco décadas, várias técnicas foram desenvolvidas no campo de processamento de imagens, sendo a maioria elaborada para aprimorar imagens obtidas por espaçonaves não tripuladas, sondas espaciais e aeronaves militares de reconhecimento. Devido a fácil disponibilidade de computadores poderosos, dispositivos de memória de grande porte e software gráfico, os sistemas de processamentos de imagem estão se tornando cada vez mais populares. As principais vantagens dos métodos de processamento são versatilidade, repetibilidade e preservação da precisão dos dados originais, utilizando técnicas como: i) Pré-processamento, ii) Melhoria, iii) Segmentação, iv) Extração de recursos, e v) Classificação \cite{lungcancer}.
 
 As imagens capturadas por satélites e câmeras convencionais ou digitais carecem de contraste e brilho devido a limitações nos subsistemas de imagem, ou condições de iluminação durante a captura. Além disso, segundo \citeonline{techniques}, essas imagens podem conter diferentes tipos de ruído. Nesse contexto, o aprimoramento de imagem procura acentuar certas características da imagem para análise posterior ou exibição. Os exemplos incluem contraste e retoque de borda, pseudo-coloração, filtragem de ruído, nitidez e ampliação. As técnicas de aperfeiçoamento, que englobam alargamento de contraste, conforme mostrado na Figura \ref{fig:contraste}, modificação do histograma e filtragem de ruído, consoante à Figura \ref{fig:ruido}, são úteis na extração de recursos, análise e exibição. Entretanto, o próprio processo de aprimoramento não aumenta o conteúdo de informações inerentes aos dados, enfatizando somente certas características de imagem especificadas. Algoritmos de aprimoramento são geralmente interativos e dependentes de aplicativos.
 
@@ -113,10 +113,81 @@ Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e tr
 
 \subsection{\esp Redes Residuais} \label{redesresiduais}
 
-A CNN apresenta alta popularidade para lidar com problemas de reconhecimento de imagem, trazendo um nível de precisão e escalabilidade. Por conta disso, existem diversas arquiteturas de CNN, lindando o problema com diferentes abordagens. Dentro da vasta gama de opções das arquiteturas de CNN, é possível encontrar arquiteturas como: \textit{LeNet}, \textit{AlexNet}, \textit{ZFNet}, \textit{VGGNet}, \textit{ResNet}, \textit{GoogleLeNet}, entre outras. 
+As CNNs são amplamente reconhecidas por sua eficácia no tratamento de problemas de reconhecimento de imagem, oferecendo um elevado nível de precisão e escalabilidade. Essa popularidade resultou no desenvolvimento de diversas arquiteturas de CNN, cada uma abordando o problema de maneiras distintas. Dentro da ampla variedade de opções de arquiteturas de CNN, destacam-se exemplos como \textit{LeNet}, \textit{AlexNet}, \textit{ZFNet}, \textit{VGGNet}, \textit{ResNet}, \textit{GoogleLeNet}, entre outras. 
 
-Uma Rede Neural Residual (ResNet, do inglês \textit{Residual Network}) é uma arquitetura de CNN que permite melhorar a eficiência do treinamento e resolver problemas de degradação de desempenho. A ResNet é capaz de se deslocar por várias camadas da rede, graças à utilização de atalhos. Além disso, a ResNet utiliza blocos residuais, permitindo que a informação seja passada diretamente para camadas posteriores. 
+Uma Rede Neural Residual (ResNet, do inglês \textit{Residual Network}) representa uma arquitetura de CNN que permite melhorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. A ResNet é capaz de navegar através de múltiplas camadas da rede, viabilizada pelo uso de atalhos. Adicionalmente, a arquitetura emprega blocos blocos residuais, permitindo que a informação seja passada diretamente para camadas posteriores. 
 
+Uma arquitetura ResNet é composta por vários blocos residuais, que são retratados como uma construção especial que visa facilitar o treinamento de redes neurais, permitindo que a rede aprenda mudanças incrementais nas características. Dentro de cada bloco residual, várias camadas são empilhadas e o fluxo de dados é enriquecido pelos atalhos que permitem a passagem direta das informações às camadas subsequentes. Esses blocos variam em tipos e camadas, adaptando-se à profundidade e complexidade específicas da arquitetura. A figura \ref{fig:cnn} ilustra as camadas de uma ResNet, aplicado em um problema de classificação de dígitos manuscritos.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Arquitetura completa de uma CNN que classifica dígitos manuscritos}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=1\textwidth]{figuras/cnn.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{towardsdatascienceimage}}
+	\label{fig:cnn}
+\end{figure}
+
+\subsection{\esp Camadas da CNN e Funções de Ativação} \label{camadasfund}
+
+Uma arquitetura ResNet é composta por vários blocos residuais, na qual cada bloco consiste em várias camadas. Existem diferentes tipos de blocos e camadas, dependendo da profundidade e complexidade da arquitetura.
+
+\subsubsection{\esp Camadas Convolucionais} \label{convs}
+
+Cada bloco residual começa com camadas convolucionais. Essas camadas operam aplicando um conjunto de filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução é igual à quantidade de filtros aplicados. Quanto mais profundas são as camadas das convoluções, mais detalhados são os traços identificados com o Mapa de Ativação (do inglês \textit{Atactivation Map}). 
+
+Também conhecido como \textit{Kernel}, o filtro é formado por pesos inicializados aleatoriamente, atualizando-os a cada nova entrada durante o processo de Retropropagação do Erro (do inglês \textit{Backpropagation}). A pequena região da entrada onde o filtro é aplicado é chamada de Campo Receptivo (do inglês \textit{Receptive Field}). Assim, é possível visualizar na Figura \ref{fig:conv2}, um filtro que representa a curva ao seu lado. Com essa combinação é possível ver como resultado um número alto, indicando uma compatibilidade entre as curvas. Quando a imagem não possui nenhuma compatibilidade esse resultado chega mais próximo a zero.
+
+\begin{figure}[ht]
+ 	\centering	
+ 	\caption[\hspace{0.1cm}Grade Computacional.]{Camada Convolucional}
+ 	\vspace{-0.4cm}
+ 	\includegraphics[width=1\textwidth]{figuras/conv.png}
+ 	\captionsetup{justification=centering}
+	\vspace{-0.2cm}
+     \\\textbf{\footnotesize Fonte: \cite{cnns}}
+	\label{fig:conv2}
+\end{figure}
+
+
+\subsubsection{\esp Funções de Ativação} \label{funcAtiv}
+
+Após as operações de convolução, algumas funções de ativação são aplicadas. A função \textit{Softmax}, representada na Figura \ref{fig:softmax}, é usada em redes neurais de classificação, forçando saída de uma rede neural a representar a probabilidade dos dados serem de uma das classes definidas. Sem ela, as saídas dos neurônios são simplesmente valores numéricos onde o maior indica a classe vencedora. Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, atribui como zero todos os valores menores ou iguais à zero, sendo a função de ativação mais rápida para a geração de pesos e há somente duas classes.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.45\textwidth}
+  \centering
+  \caption[\hspace{0.1cm}Grade Computacional.]{Função de Ativação \textit{softmax}}
+  \vspace{-0.4cm}
+  \includegraphics[width=\linewidth]{figuras/softmax.png}
+  \captionsetup{justification=centering}
+  \vspace{-0.2cm}
+  \\\textbf{\footnotesize Fonte: \cite{softmax}}
+  \label{fig:softmax}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+  \centering
+  \caption[\hspace{0.1cm}Grade Computacional.]{Função de Ativação \textit{ReLU}}
+  \vspace{-0.4cm}
+  \includegraphics[width=\linewidth]{figuras/relu.png}
+  \captionsetup{justification=centering}
+  \vspace{-0.2cm}
+  \\\textbf{\footnotesize Fonte: \cite{relu}}
+  \label{fig:relu}
+\end{minipage}
+\end{figure}
+
+
+\subsubsection{\esp Camadas de \textit{Pooling}} \label{convs}
+
+A camada \textit{Max Pooling} reduz a dimensionalidade dos dados de entrada, agrupando \textit{pixels} de uma região para diminuir a variância a pequenas alterações, além de extrair características mais relevantes. Assim, essa camada reduz a resolução da imagem para dar uma maior especificidade em uma determinada característica, encurtando o conjunto de dados para o maior dado em um determinado conjunto selecionado.
+
+\subsubsection{\esp Camadas \textit{Fully-Connected}} \label{fully}
+
+Após os blocos residuais, a ResNet possibilita a adição de camadas Totalmente Conectadas (do inglês, \textit{Fully-Connected}), ou camadas \textit{Dense}. Essas camadas são responsáveis por tomar as características extraídas por camadas anteriores e transformá-las em uma saída final. Entretanto, essas camadas não são incluídas nos blocos residuais da ResNet, uma vez que a arquitetura é focada em melhorar a eficácia das camadas convolucionais.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%      TRABALHOS CORRELATOS       %%%%%%%%%%%%%%%%%%%%
@@ -238,11 +309,13 @@ Para desenvolver o algoritmo de classificação das imagens entre pacientes com 
      \item \textit{ImageDataGenerator}: Originada do TensorFlow, permite transformar as imagens em dados vetoriais, facilitando os cálculos necessários durante o treinamento do modelo.
 \end{enumerate}
 
-Listada na Subseção \ref{redesresiduais}, a arquitetura ResNet se destaca por ser focada em reconhecimento de imagem, além de ter ganho o Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015, atingindo uma taxa de erro top 5 de 3,6\% com uma CNN composta por 152 camadas (ResNet152).
+\subsubsection{\esp Arquitetura de CNN} \label{arqCNN}
 
-Entretanto, por mais que a ResNet152 seja o modelo mais profundo, e que captura os recursos mais abstratos e complexos, é também o modelo mais pesado e é computacionalmente caro para treinar e implantar em dispositivos com recursos limitados. Existem diferentes variantes que rodam no mesmo conceito, mas com diferentes números de camadas, assim como ResNet18, ResNet34, ResNet50 e ResNet101. 
+Apresentada na Subseção \ref{redesresiduais}, a arquitetura ResNet destaca-se por sua ênfase no reconhecimento de imagens, além de ter conquistado o primeiro lugar no Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015 \cite{resnet50analisys}. Neste desafio, obteve uma taxa de erro top 5 de 3,6\% ao empregar uma CNN composta por 152 camadas, denominada ResNet152.
 
-Dentre essas, a ResNet50 se ressalta por ter um equilíbrio na profundidade de camadas além de que, de acordo com \citeonline{resnet50analisys}, as ResNet's com 50, 101 e 152 camadas são mais precisas do que as ResNet's de 18 e 34 camadas. Ao reduzir as opções para 50, 101 e 152 camadas, foi possível definir a ResNet50 como a escolhida, uma vez que as arquiteturas com 101 e 152 camadas requerem mais recursos computacional do que a de 50.
+No entanto, apesar do prestígio da ResNet152 como o modelo mais profundo, capaz de capturar recursos abstratos e complexos, essa profundidade também traz consigo um peso significativo em termos computacionais. Isso a torna mais custosa tanto no treinamento quanto na implementação em dispositivos com recursos limitados. A família de variantes ResNet inclui modelos que aderem ao mesmo conceito, mas diferentes quantidades de camadas, como ResNet18, ResNet34, ResNet50 e ResNet101. 
+
+Dentre essas, a ResNet50 se destaca por ter um equilíbrio na profundidade das camadas. Conforme indicado por \citeonline{resnet50analisys}, as ResNet com 50, 101 e 152 camadas demonstram maior precisão em comparação às versões com 18 e 34 camadas. Ao reduzir as opções para 50, 101 e 152 camadas, foi possível definir a ResNet50 como a escolhida, uma vez que as arquiteturas com 101 e 152 camadas demandam recursos computacional mais substanciais do que aquela com 50 camadas.
 
 
 
@@ -269,98 +342,46 @@ Nesta subseção, são apresentadas as metodologias para o treinamento de um mod
 %%%%%%%%%%%%%%%%%%%%%%%     PRÉ-PROCESSAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp Pré-Processamento} \label{preprocess}
-% Inicialmente, para o desenvolvimento do código, foi feita a importação das bibliotecas necessárias, conforme descrito na Subseção \ref{techs}, para o desenvolvimento do código. Essas fornecem funcionalidades e recursos necessários para a implementação do algoritmo. 
 Inicialmente, foram carregadas 3473 imagens como dados de treinamento (sendo 2746 para pacientes sem câncer e 727 para paciente com câncer) e 1057 imagens como dados de validação (sendo 679 para pacientes sem câncer e 378 para pacientes com câncer). Totalizando 4530 imagens, foi feita a divisão entre imagens para treinamento em 76,6\% e validação em 23,3\%.
 
-Em seguida, o pré-processamento das imagens foi realizado, gerando assim o vetor para o treinamento. Dentro do método que transforma os dados em vetor, existe um parâmetro chamado \textit{rescale} utilizado para fazer a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
+Em seguida, o pré-processamento das imagens foi realizado. Foram utilizados métodos que fazem a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
 
-Além disso, foi utilizado um método para pré-processar os dados carregados para o treinamento. Nesse método, foi especificado o diretório onde os dados estão localizados, o tamanho do redimensionamento das imagens para 224x224 (uma vez que a rede neural utilizada requer esses valores \cite{kerasresnet50}), o modo de classificação como binário (onde 0 classifica pacientes sem câncer e 1 classifica pacientes com câncer), e o tamanho do \textit{batch}, ou seja, o número de imagens carregadas por vez durante o treinamento.
+Além disso, foi utilizado um método originado da biblioteca \textit{Keras} para pré-processar os dados carregados para o treinamento. Nesse método, foi realizado o redimensionamento das imagens para 224x224, uma vez que a ResNet requer esses valores \cite{kerasresnet50}, além da criação de um gerador que fornece lotes de imagens conforme o necessário durante o treinamento do modelo.
 
 %%%%%%%%%%%%%%%%%%%%%%%     TRANSFER LEARNING       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp \textit{Transfer Learning}} \label{transfer}
-Para reutilizar um modelo pré-treinado em uma determinada tarefa, como ponto de partida para resolver um problema relacionado, o \textit{Transfer Learning} foi utilizado para aproveitar o conhecimento aprendido por um modelo já pré-treinado, a fim de reconhecer padrões e características úteis nos dados. Seu modelo de aplicação consiste em obter camadas de um modelo já treinado, congelar as camadas já treinadas (para evitar destruir quaisquer informações que elas possuem durante o treinamento), adicionar novas camadas treinadas em cima das camadas congeladas (retornando características anteriores em predições para um novo \textit{dataset}) e, por fim, treinar as novas camadas \cite{kerastransfer}.
 
-Na implementação do modelo, foi utilizada a arquitetura \textit{ResNet50} para realizar o \textit{Transfer Leaning}, modelo de rede neural que utiliza blocos residuais, permitindo que a informação seja passada diretamente para camadas posteriores. Com essa informação, foi carregado o pré-processamento da \textit{ResNet} para que as imagens possam ser entendíveis para a rede utilizada. Em seguida, foi utilizado um método para pré-processar os dados que foram carregados para o treinamento e para a validação.
+A fim de empregar um modelo pré-treinado em uma determinada tarefa como ponto de partida para resolver um problema relacionado, o \textit{Transfer Learning} foi aplicado. Isso permite aproveitar o conhecimento adquirido por um modelo já pré-treinado, a fim de reconhecer padrões e características úteis nos dados. 
+
+O método de aplicação consiste em obter camadas de um modelo já treinado, congelar essas camadas já treinadas (para evitar destruir quaisquer informações que elas possuem durante o treinamento), adicionar novas camadas treinadas em cima das camadas congeladas (retornando características anteriores em predições para um novo \textit{dataset}) e, por fim, treinar as novas camadas \cite{kerastransfer}.
+
+Na implementação do modelo de classificação de câncer, foi utilizada a arquitetura \textit{ResNet50} para realizar o processo de \textit{Transfer Leaning}, modelo de rede neural que utiliza blocos residuais, permitindo que a informação seja passada diretamente para camadas posteriores. Com essa informação, foi carregado o pré-processamento da \textit{ResNet} para que as imagens possam ser entendíveis para a rede utilizada. Em seguida, foi utilizado um método para pré-processar novamente os dados que foram carregados para o treinamento e para a validação.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%     FUNÇÕES DE ATIVAÇÃO       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\esp Camadas e Funções de Ativação do Modelo} \label{camadas}
-Com as imagens de treinamento e validação pré-processadas, foi feita a importação da rede neural \textit{ResNet} que aplica o método de \textit{Transfer Learning}. O modelo foi carregado, configurando parâmetros que indicam a não inclusão da camada superior do modelo (ou seja, foram usadas somente camadas convolucionais), e especificando o formato esperado das imagens de entrada para o modelo (já definidas anteriormente pelo método que pré-processa os dados, citado na Subseção \ref{transfer}).
+\subsubsection{\esp Importação do Modelo de Rede Neural} \label{camadas}
 
-Um modelo ideal recebe uma lista de camadas onde cada camada tem uma função específica. A Figura \ref{fig:cnn} apresenta o diagrama das camadas \textit{Conv\_1}, \textit{Conv\_2} e \textit{Max-Pooling}, responsáveis por extrair e detectar padrões das imagens, e a camada \textit{Fully-Connected}, que permite que o modelo aprenda padrões mais sofisticados. No modelo proposto, a \textit{ResNet} disponibiliza os dados extraídos, mas não implementa a camada \textit{Fully-Connected}.
+Com as imagens de treinamento e validação pré-processadas, procedeu-se com a incorporação da rede neural \textit{ResNet50} que aplica a técnica de \textit{Transfer Learning}. O modelo pré-treinado foi carregado, ajustando os parâmetros para excluir a camada superior do modelo, usando somente camadas convolucionais (camadas que fazem a extração dos atributos).
 
-\begin{figure}[ht]
- 	\centering	
- 	\caption[\hspace{0.1cm}Grade Computacional.]{Arquitetura completa de uma CNN que classifica dígitos manuscritos}
- 	\vspace{-0.4cm}
- 	\includegraphics[width=1\textwidth]{figuras/cnn.png}
- 	\captionsetup{justification=centering}
-	\vspace{-0.2cm}
-     \\\textbf{\footnotesize Fonte: \cite{towardsdatascienceimage}}
-	\label{fig:cnn}
-\end{figure}
+Como já citado na Subseção \ref{fully}, a \textit{ResNet} por mais que completa, disponibiliza os dados extraídos mas não implementa as camadas \textit{Fully Connected}. Como o modelo base contém somente camadas Convolucionais, foi feito um procedimento onde todas as camadas do modelo ResNet50 não fossem treinadas durante o processo de treinamento subsequente. Ao definir isso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
 
-A camada \textit{Max Pooling} reduz a dimensionalidade dos dados de entrada, agrupando \textit{pixels} de uma região para diminuir a variância a pequenas alterações, além de extrair características mais relevantes. Assim, essa camada reduz a resolução da imagem para dar uma maior especificidade em uma determinada característica, encurtando o conjunto de dados para o maior dado em um determinado conjunto selecionado.
+Com base no modelo pré-treinado da ResNet50, foi criado um modelo sequencial, com uma lista de camadas. Dentre elas, foi adicionada uma camada de \textit{Max-Pooling} global médio 2D que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas camadas \textit{Fully-Connected} realizando transformações lineares nos dados de entrada. Ao total foram adicionadas 3 \textit{Hidden Layers} e 1 \textit{Output Layer}.
 
-Já a camada Convolucional opera aplicando um conjunto de filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução é igual à quantidade de filtros aplicados. Quanto mais profundas são as camadas das convoluções, mais detalhados são os traços identificados com o Mapa de Ativação (do inglês \textit{Atactivation Map}). Também conhecido como \textit{Kernel}, o filtro é formado por pesos inicializados aleatoriamente, atualizando-os a cada nova entrada durante o processo de Retropropagação do Erro (do inglês \textit{Backpropagation}). A pequena região da entrada onde o filtro é aplicado é chamada de Campo Receptivo (do inglês \textit{Receptive Field}). Assim, é possível visualizar na Figura \ref{fig:conv2}, um filtro que representa a curva ao seu lado. Com essa combinação é possível ver como resultado um número alto, indicando uma compatibilidade entre as curvas. Quando a imagem não possui nenhuma compatibilidade esse resultado chega mais próximo a zero.
-
-\begin{figure}[ht]
- 	\centering	
- 	\caption[\hspace{0.1cm}Grade Computacional.]{Camada Convolucional}
- 	\vspace{-0.4cm}
- 	\includegraphics[width=1\textwidth]{figuras/conv.png}
- 	\captionsetup{justification=centering}
-	\vspace{-0.2cm}
-     \\\textbf{\footnotesize Fonte: \cite{cnns}}
-	\label{fig:conv2}
-\end{figure}
-
-Por fim, \textit{Flattern} é uma das camadas \textit{Fully Connected}, na qual sua entrada é a saída da camada anterior, e sua saída são N neurônios, sendo N a quantidade de classes do modelo para finalizar a classificação.
-
-
-Para declarar o modelo da implementação, foi necessário ter uma lista de camadas. Para isso, foi feita a importação de uma Interface de Programação de Aplicações (API, do inglês \textit{Application Programming Interface}) chamada \textit{Sequential}, que permite adicionar camadas sequencialmente ao modelo. Além disso, foi importada também a camada \textit{Dense} que representa uma camada totalmente conectada, utilizada para mapear as entradas para as saídas. Juntamente com as camadas já citadas, a camada \textit{Flatten} foi usada para achatar os dados de entrada em um vetor unidimensional. Por fim, a camada \textit{GlobalAveragePooling2D} realiza a operação de \textit{pooling} médio, utilizada para reduzir a dimensionalidade dos recursos extraídos das camadas convolucionais anteriores. Para gerar arquivos de \textit{log} úteis para avaliar o desempenho do modelo, foi utilizado o \textit{TensorBoard}.
-
-A \textit{ResNet}, por mais que completa, não consegue gerar as camadas \textit{Fully Connected}. Para contornar isso, foi feito um procedimento onde todas as camadas do modelo são percorridas, e a propriedade \textit{trainable} foi definida como Falso para cada uma delas. Isso significa que as camadas do modelo base não foram treinadas durante o processo de treinamento subsequente. Ao definir essa propriedade como Falso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
-
-Em seguida, foi definido um modelo de rede neural passando uma lista de camadas, com a camada base definida como a camada pré-treinada. As outras camadas passadas (1 camada \textit{GlobalAveragePooling2D} e 4 camadas \textit{Dense}) realizam operações para reduzir a dimensionalidade dos recursos extraídos de camadas anteriores. A camada \textit{Dense} realiza transformações lineares nos dados de entrada, e cada chamada contém parâmetros que se distinguem, assim como a quantidade de unidades (2, 36, 128 ou 1024) e a função do modo de ativação ('\textit{relu}', ou '\textit{softmax}'). 
-
-A função de ativação \textit{Softmax}, representada na Figura \ref{fig:softmax}, é usada em redes neurais de classificação, forçando saída de uma rede neural a representar a probabilidade dos dados serem de uma das classes definidas. Sem ela, as saídas dos neurônios são simplesmente valores numéricos onde o maior indica a classe vencedora. Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, atribui como zero todos os valores menores ou iguais à zero, sendo a função de ativação mais rápida para a geração de pesos e há somente duas classes.
-
-\begin{figure}[ht]
-\centering
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \caption[\hspace{0.1cm}Grade Computacional.]{Função de Ativação \textit{softmax}}
-  \vspace{-0.4cm}
-  \includegraphics[width=\linewidth]{figuras/softmax.png}
-  \captionsetup{justification=centering}
-  \vspace{-0.2cm}
-  \\\textbf{\footnotesize Fonte: \cite{softmax}}
-  \label{fig:softmax}
-\end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \caption[\hspace{0.1cm}Grade Computacional.]{Função de Ativação \textit{ReLU}}
-  \vspace{-0.4cm}
-  \includegraphics[width=\linewidth]{figuras/relu.png}
-  \captionsetup{justification=centering}
-  \vspace{-0.2cm}
-  \\\textbf{\footnotesize Fonte: \cite{relu}}
-  \label{fig:relu}
-\end{minipage}
-\end{figure}
+As \textit{Hidden Layers} foram definidas com 1024, 128 e 36 neurônios, em conjunto com a função de ativação ReLU. Mais neurônios em uma camada intermediária proporcionam à rede mais capacidade de aprender representações complexas e abstratas dos dados. Já a \textit{Output Layer} foi definida com somente 2 neurônios, que corresponde o número de classes em um problema de classificação (ou seja, uma classificação binária), e a função de ativação \textit{Softmax}.
 
 %%%%%%%%%%%%%%%%%%%%%%%     TREINAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp Treinamento do Modelo} \label{treinamento}
 
-A fim de treinar o modelo para identificar padrões e classificar as imagens, o modelo foi compilado para treinamento com uma função de otimização, uma função de perda e a métrica utilizada. A função de otimização de Adam é um método de decida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. 
+A fim de treinar o modelo para identificar padrões e classificar as imagens, o modelo foi compilado para treinamento utilizando uma função de otimização, uma função de perda e a métrica utilizada. A função de otimização de Adam é um método de decida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. 
 
 Já a função de perda calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento, tendo dois ou mais rótulos de saída. Por fim, foi especificada a métrica utilizada para avaliar o desempenho do modelo durante o treinamento. A métrica escolhida foi a acurácia, que mede a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
 
-Após compilar o modelo, ele foi treinado utilizando os dados de treinamento. Foi atribuído ao histórico de treinamento, que contém métricas de perdas e avaliação, o treinamento do modelo utilizando os dados fornecidos, além de parâmetros como configuração. O método que realiza o treinamento tem como entrada a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento usados em cada atualização do modelo), e uma lista opcional de objetos de Retornos de Chamada (do inglês \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. No modelo proposto somente um único \textit{Callback} foi passado, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Além disso, a quantidade de épocas foi definida em 10, juntamente com o tamanho do lote igual à 32, quantidades definidas a partir de testes empíricos.
+Após compilar o modelo, ele foi treinado utilizando os dados de treinamento. Foi atribuído ao histórico de treinamento, que contém métricas de perdas e avaliação, o treinamento do modelo utilizando os dados fornecidos. O método que realiza o treinamento requer a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento usados em cada atualização do modelo), e uma lista de Retornos de Chamada (do inglês \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. 
+
+No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Além disso, a quantidade de épocas foi definida em 10, juntamente com o tamanho do lote igual à 32, quantidades definidas a partir de testes empíricos.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -455,19 +476,3 @@ Além disso, na Figura \ref{fig:loss10}, observa-se que o erro de treinamento di
 %         \textbf{\footnotesize Fonte: \href{http://visual.ic.uff.br/dmi}{\textit{Visual Lab DMR}}}
 %     \end{minipage}
 % \end{figure}
-
-
-\section{\esp Cronograma} \label{cronograma}
-
-Nesta seção, visa-se apresentar as ações à serem tomadas a partir do segundo semestre de 2023, explícito na Figura \ref{fig:cronograma}.
-
-\begin{figure}[ht]
- 	\centering	
- 	\caption[\hspace{0.1cm}Grade Computacional.]{Cronograma}
- 	\vspace{-0.3cm}
- 	\includegraphics[width=1\textwidth]{figuras/cronograma.PNG}
- 	\captionsetup{justification=centering}
-	\vspace{-0.5cm}
-  \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-	\label{fig:cronograma}
-\end{figure}
