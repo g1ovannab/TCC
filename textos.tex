@@ -115,30 +115,30 @@ Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e tr
 
 As CNNs são amplamente reconhecidas por sua eficácia no tratamento de problemas de reconhecimento de imagem, oferecendo um elevado nível de precisão e escalabilidade. Essa popularidade resultou no desenvolvimento de diversas arquiteturas de CNN, cada uma abordando o problema de maneiras distintas. Dentro da ampla variedade de opções de arquiteturas de CNN, destacam-se exemplos como \textit{LeNet}, \textit{AlexNet}, \textit{ZFNet}, \textit{VGGNet}, \textit{ResNet}, \textit{GoogleLeNet}, entre outras. 
 
-Uma Rede Neural Residual (ResNet, do inglês \textit{Residual Network}) representa uma arquitetura de CNN que permite melhorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. A ResNet é capaz de navegar através de múltiplas camadas da rede, viabilizada pelo uso de atalhos. Adicionalmente, a arquitetura emprega blocos blocos residuais, permitindo que a informação seja passada diretamente para camadas posteriores. 
+Uma Rede Neural Residual (ResNet, do inglês \textit{Residual Network}) representa uma arquitetura de CNN que permite melhorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. A \textit{ResNet} é capaz de navegar através de múltiplas camadas da rede, viabilizada pelo uso de atalhos. Adicionalmente, a arquitetura é composta por vários blocos residuais, que são retratados como uma construção especial que visa facilitar o treinamento de redes neurais, permitindo que a rede aprenda mudanças incrementais nas características. 
 
-Uma arquitetura ResNet é composta por vários blocos residuais, que são retratados como uma construção especial que visa facilitar o treinamento de redes neurais, permitindo que a rede aprenda mudanças incrementais nas características. Dentro de cada bloco residual, várias camadas são empilhadas e o fluxo de dados é enriquecido pelos atalhos que permitem a passagem direta das informações às camadas subsequentes. Esses blocos variam em tipos e camadas, adaptando-se à profundidade e complexidade específicas da arquitetura. A figura \ref{fig:cnn} ilustra as camadas de uma ResNet, aplicado em um problema de classificação de dígitos manuscritos.
+Dentro de cada bloco residual, várias camadas são empilhadas e o fluxo de dados é enriquecido pelos atalhos que permitem a passagem direta das informações às camadas subsequentes. Esses blocos variam em tipos e camadas, adaptando-se à profundidade e complexidade específicas da arquitetura. A Figura \ref{fig:cnn} ilustra as camadas de uma \textit{ResNet}, aplicado no problema de identificação de câncer de mama.
 
 \begin{figure}[ht]
  	\centering	
  	\caption[\hspace{0.1cm}Grade Computacional.]{Arquitetura completa de uma CNN que classifica dígitos manuscritos}
- 	\vspace{-0.4cm}
+ 	\vspace{-0.2cm}
  	\includegraphics[width=1\textwidth]{figuras/cnn.png}
  	\captionsetup{justification=centering}
 	\vspace{-0.2cm}
-     \\\textbf{\footnotesize Fonte: \cite{towardsdatascienceimage}}
+     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
 	\label{fig:cnn}
 \end{figure}
 
 \subsection{\esp Camadas da CNN e Funções de Ativação} \label{camadasfund}
 
-Uma arquitetura ResNet é composta por vários blocos residuais, na qual cada bloco consiste em várias camadas. Existem diferentes tipos de blocos e camadas, dependendo da profundidade e complexidade da arquitetura.
+Uma arquitetura \textit{ResNet} é formada por diversos blocos residuais, em que cada bloco é composto por múltiplas camadas. A configuração dos blocos e camadas pode variar de acordo com a profundidade e complexidade da arquitetura em questão.
 
 \subsubsection{\esp Camadas Convolucionais} \label{convs}
 
-Cada bloco residual começa com camadas convolucionais. Essas camadas operam aplicando um conjunto de filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução é igual à quantidade de filtros aplicados. Quanto mais profundas são as camadas das convoluções, mais detalhados são os traços identificados com o Mapa de Ativação (do inglês \textit{Atactivation Map}). 
+Cada bloco residual inicia com camadas convolucionais cuja função é aplicar um conjunto de filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução corresponde ao número de filtros aplicados. Quanto mais profunda for a camada de convolução, mais detalhadas serão as características identificadas no Mapa de Ativação (do inglês \textit{Atactivation Map}), ou Mapa de Características. 
 
-Também conhecido como \textit{Kernel}, o filtro é formado por pesos inicializados aleatoriamente, atualizando-os a cada nova entrada durante o processo de Retropropagação do Erro (do inglês \textit{Backpropagation}). A pequena região da entrada onde o filtro é aplicado é chamada de Campo Receptivo (do inglês \textit{Receptive Field}). Assim, é possível visualizar na Figura \ref{fig:conv2}, um filtro que representa a curva ao seu lado. Com essa combinação é possível ver como resultado um número alto, indicando uma compatibilidade entre as curvas. Quando a imagem não possui nenhuma compatibilidade esse resultado chega mais próximo a zero.
+Os filtros, também conhecidos como \textit{Kernels}, consistem em pesos inicializados aleatoriamente, que são ajustados a cada nova entrada durante o processo de Retropropagação do Erro (do inglês \textit{Backpropagation}). A pequena região da entrada onde o filtro é aplicado é denominada Campo Receptivo (do inglês \textit{Receptive Field}). Na Figura \ref{fig:conv2} é possível observar um filtro que representa a curva ao seu lado. Essa combinação resulta em um valor alto, indicando compatibilidade entre as curvas. Quando não há compatibilidade na imagem, esse resultado se aproxima de zero.
 
 \begin{figure}[ht]
  	\centering	
@@ -154,7 +154,9 @@ Também conhecido como \textit{Kernel}, o filtro é formado por pesos inicializa
 
 \subsubsection{\esp Funções de Ativação} \label{funcAtiv}
 
-Após as operações de convolução, algumas funções de ativação são aplicadas. A função \textit{Softmax}, representada na Figura \ref{fig:softmax}, é usada em redes neurais de classificação, forçando saída de uma rede neural a representar a probabilidade dos dados serem de uma das classes definidas. Sem ela, as saídas dos neurônios são simplesmente valores numéricos onde o maior indica a classe vencedora. Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, atribui como zero todos os valores menores ou iguais à zero, sendo a função de ativação mais rápida para a geração de pesos e há somente duas classes.
+Após as operações de convolução, são aplicadas funções de ativação. A função \textit{Softmax}, representada na Figura \ref{fig:softmax}, é comumente usada em redes neurais de classificação para tarefas de classificação. Ela tem a finalidade de forçar a saída da rede neural a representar a probabilidade de pertencimento dos dados a uma das classes predefinidas. Sem a função \textit{Softmax}, as saídas dos neurônios são simplesmente valores numéricos, onde o maior indica a classe vencedora. 
+
+Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, atribui o valor zero a todas as entradas menores ou iguais à zero. É amplamente utilizada devido à sua rapidez na geração de pesos e é especialmente adequada para problemas com apenas duas classes.
 
 \begin{figure}[ht]
 \centering
@@ -183,11 +185,11 @@ Após as operações de convolução, algumas funções de ativação são aplic
 
 \subsubsection{\esp Camadas de \textit{Pooling}} \label{convs}
 
-A camada \textit{Max Pooling} reduz a dimensionalidade dos dados de entrada, agrupando \textit{pixels} de uma região para diminuir a variância a pequenas alterações, além de extrair características mais relevantes. Assim, essa camada reduz a resolução da imagem para dar uma maior especificidade em uma determinada característica, encurtando o conjunto de dados para o maior dado em um determinado conjunto selecionado.
+A camada de \textit{Max Pooling} desempenha um papel importante na redução da dimensionalidade dos dados de entrada. Ela opera agrupando \textit{pixels} em regiões o que ajuda a reduzir a sensibilidade a pequenas variações nos dados, ao mesmo tempo em que extrai características mais relevantes. Essencialmente, essa camada diminui a resolução da imagem, permitindo uma ênfase maior em características específicas, enquanto compacta o conjunto de dados mantendo as informações mais relevantes em uma seleção das regiões de maior destaque.
 
 \subsubsection{\esp Camadas \textit{Fully-Connected}} \label{fully}
 
-Após os blocos residuais, a ResNet possibilita a adição de camadas Totalmente Conectadas (do inglês, \textit{Fully-Connected}), ou camadas \textit{Dense}. Essas camadas são responsáveis por tomar as características extraídas por camadas anteriores e transformá-las em uma saída final. Entretanto, essas camadas não são incluídas nos blocos residuais da ResNet, uma vez que a arquitetura é focada em melhorar a eficácia das camadas convolucionais.
+Após os blocos residuais, a \textit{ResNet} possibilita a integração de camadas Totalmente Conectadas (do inglês, \textit{Fully-Connected}), também conhecidas como camadas \textit{Dense}. Essas camadas são responsáveis por tomar as características extraídas por camadas anteriores e transformá-las em uma saída final. No entanto, essas camadas não fazem parte dos próprios blocos residuais da \textit{ResNet}, uma vez que a arquitetura é focada em melhorar a eficácia das camadas convolucionais.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%      TRABALHOS CORRELATOS       %%%%%%%%%%%%%%%%%%%%
@@ -311,11 +313,11 @@ Para desenvolver o algoritmo de classificação das imagens entre pacientes com 
 
 \subsubsection{\esp Arquitetura de CNN} \label{arqCNN}
 
-Apresentada na Subseção \ref{redesresiduais}, a arquitetura ResNet destaca-se por sua ênfase no reconhecimento de imagens, além de ter conquistado o primeiro lugar no Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015 \cite{resnet50analisys}. Neste desafio, obteve uma taxa de erro top 5 de 3,6\% ao empregar uma CNN composta por 152 camadas, denominada ResNet152.
+Apresentada na Subseção \ref{redesresiduais}, a arquitetura \textit{ResNet} destaca-se por sua ênfase no reconhecimento de imagens, além de ter conquistado o primeiro lugar no Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015 \cite{resnet50analisys}. Neste desafio, obteve uma taxa de erro top 5 de 3,6\% ao empregar uma CNN composta por 152 camadas, denominada \textit{ResNet152}.
 
-No entanto, apesar do prestígio da ResNet152 como o modelo mais profundo, capaz de capturar recursos abstratos e complexos, essa profundidade também traz consigo um peso significativo em termos computacionais. Isso a torna mais custosa tanto no treinamento quanto na implementação em dispositivos com recursos limitados. A família de variantes ResNet inclui modelos que aderem ao mesmo conceito, mas diferentes quantidades de camadas, como ResNet18, ResNet34, ResNet50 e ResNet101. 
+No entanto, apesar do prestígio da \textit{ResNet152} como o modelo mais profundo, capaz de capturar recursos abstratos e complexos, essa profundidade também traz consigo um peso significativo em termos computacionais. Isso a torna mais custosa tanto no treinamento quanto na implementação em dispositivos com recursos limitados. A família de variantes \textit{ResNet} inclui modelos que aderem ao mesmo conceito, mas diferentes quantidades de camadas, como \textit{ResNet18}, \textit{ResNet34}, \textit{ResNet50} e \textit{ResNet101}. 
 
-Dentre essas, a ResNet50 se destaca por ter um equilíbrio na profundidade das camadas. Conforme indicado por \citeonline{resnet50analisys}, as ResNet com 50, 101 e 152 camadas demonstram maior precisão em comparação às versões com 18 e 34 camadas. Ao reduzir as opções para 50, 101 e 152 camadas, foi possível definir a ResNet50 como a escolhida, uma vez que as arquiteturas com 101 e 152 camadas demandam recursos computacional mais substanciais do que aquela com 50 camadas.
+Dentre essas, a \textit{ResNet50} se destaca por ter um equilíbrio na profundidade das camadas. Conforme indicado por \citeonline{resnet50analisys}, as \textit{ResNet} com 50, 101 e 152 camadas demonstram maior precisão em comparação às versões com 18 e 34 camadas. Ao reduzir as opções para 50, 101 e 152 camadas, foi possível definir a \textit{ResNet50} como a escolhida, uma vez que as arquiteturas com 101 e 152 camadas demandam recursos computacional mais substanciais do que aquela com 50 camadas.
 
 
 
@@ -344,9 +346,9 @@ Nesta subseção, são apresentadas as metodologias para o treinamento de um mod
 \subsubsection{\esp Pré-Processamento} \label{preprocess}
 Inicialmente, foram carregadas 3473 imagens como dados de treinamento (sendo 2746 para pacientes sem câncer e 727 para paciente com câncer) e 1057 imagens como dados de validação (sendo 679 para pacientes sem câncer e 378 para pacientes com câncer). Totalizando 4530 imagens, foi feita a divisão entre imagens para treinamento em 76,6\% e validação em 23,3\%.
 
-Em seguida, o pré-processamento das imagens foi realizado. Foram utilizados métodos que fazem a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
+Em seguida, o pré-processamento das imagens foi realizado. Foram utilizados métodos que realizam a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
 
-Além disso, foi utilizado um método originado da biblioteca \textit{Keras} para pré-processar os dados carregados para o treinamento. Nesse método, foi realizado o redimensionamento das imagens para 224x224, uma vez que a ResNet requer esses valores \cite{kerasresnet50}, além da criação de um gerador que fornece lotes de imagens conforme o necessário durante o treinamento do modelo.
+Além disso, foi utilizado um método originado da biblioteca \textit{Keras} para pré-processar os dados carregados para o treinamento. Nesse método, foi realizado o redimensionamento das imagens para 224x224, uma vez que a \textit{ResNet} requer esses valores \cite{kerasresnet50}, além da criação de um gerador que fornece lotes de imagens conforme o necessário durante o treinamento do modelo.
 
 %%%%%%%%%%%%%%%%%%%%%%%     TRANSFER LEARNING       %%%%%%%%%%%%%%%%%%%%%%
 
@@ -365,17 +367,19 @@ Na implementação do modelo de classificação de câncer, foi utilizada a arqu
 
 Com as imagens de treinamento e validação pré-processadas, procedeu-se com a incorporação da rede neural \textit{ResNet50} que aplica a técnica de \textit{Transfer Learning}. O modelo pré-treinado foi carregado, ajustando os parâmetros para excluir a camada superior do modelo, usando somente camadas convolucionais (camadas que fazem a extração dos atributos).
 
-Como já citado na Subseção \ref{fully}, a \textit{ResNet} por mais que completa, disponibiliza os dados extraídos mas não implementa as camadas \textit{Fully Connected}. Como o modelo base contém somente camadas Convolucionais, foi feito um procedimento onde todas as camadas do modelo ResNet50 não fossem treinadas durante o processo de treinamento subsequente. Ao definir isso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
+Como citado na Subseção \ref{fully}, a \textit{ResNet} por mais que completa, disponibiliza os dados extraídos mas não implementa as camadas \textit{Fully Connected}. Como o modelo base contém somente camadas Convolucionais, foi feito um procedimento onde todas as camadas do modelo \textit{ResNet50} não fossem treinadas durante o processo de treinamento subsequente. Ao definir isso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
 
-Com base no modelo pré-treinado da ResNet50, foi criado um modelo sequencial, com uma lista de camadas. Dentre elas, foi adicionada uma camada de \textit{Max-Pooling} global médio 2D que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas camadas \textit{Fully-Connected} realizando transformações lineares nos dados de entrada. Ao total foram adicionadas 3 \textit{Hidden Layers} e 1 \textit{Output Layer}.
+Com base no modelo pré-treinado da \textit{ResNet50}, foi criado um modelo sequencial, com uma lista de camadas. Dentre elas, foi adicionada uma camada de \textit{Max-Pooling} global médio 2D que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas quatro camadas \textit{Fully-Connected} realizando transformações lineares nos dados de entrada. Dentre elas, três são \textit{Hidden Layers} e somente uma é \textit{Output Layer}.
 
-As \textit{Hidden Layers} foram definidas com 1024, 128 e 36 neurônios, em conjunto com a função de ativação ReLU. Mais neurônios em uma camada intermediária proporcionam à rede mais capacidade de aprender representações complexas e abstratas dos dados. Já a \textit{Output Layer} foi definida com somente 2 neurônios, que corresponde o número de classes em um problema de classificação (ou seja, uma classificação binária), e a função de ativação \textit{Softmax}.
+As \textit{Hidden Layers} foram definidas com 1024, 128 e 36 neurônios, em conjunto com a função de ativação ReLU. Uma quantidade maior de neurônios em uma camada intermediária proporcionam à rede mais capacidade de aprender representações complexas e abstratas dos dados. Já a \textit{Output Layer} foi definida com somente 2 neurônios, que corresponde o número de classes em um problema de classificação (ou seja, uma classificação binária), em conjunto com a função de ativação \textit{Softmax}.
 
 %%%%%%%%%%%%%%%%%%%%%%%     TREINAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp Treinamento do Modelo} \label{treinamento}
 
-A fim de treinar o modelo para identificar padrões e classificar as imagens, o modelo foi compilado para treinamento utilizando uma função de otimização, uma função de perda e a métrica utilizada. A função de otimização de Adam é um método de decida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. 
+A fim de treinar o modelo para identificar padrões e classificar as imagens, o modelo foi compilado para treinamento utilizando uma função de otimização, uma função de perda e a métrica utilizada. 
+
+A função de otimização de Adam é um método de decida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. 
 
 Já a função de perda calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento, tendo dois ou mais rótulos de saída. Por fim, foi especificada a métrica utilizada para avaliar o desempenho do modelo durante o treinamento. A métrica escolhida foi a acurácia, que mede a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
 
