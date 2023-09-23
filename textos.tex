@@ -11,7 +11,7 @@ Causado pela multiplicação rápida e desordenada de células anormais, o cânc
 O diagnóstico prévio dessa doença tem alta significância na contenção do progresso da doença, devido à introdução antecipada do tratamento, que favorece o crescimento das chances de sobrevivência do paciente diagnosticado. Diante disso, existem alguns procedimentos basilares empregados para o diagnóstico dessa doença, tais quais: o exame de toque; exames clínicos; exames de imagens como a mamografia, ultrassonografia ou ressonância magnética; e a confirmação via biópsia.
 
 % Problema Escolhido: já está incluso nesse parágrafo.
-De acordo com \citeonline{borchartt}, a mamografia é o exame mais comum para a detecção do câncer de mama, mas apresenta algumas limitações, especialmente para mulheres mais jovens e com o tecido mamário denso. Perante o avanço computacional, a termografia se destaca como uma técnica de diagnóstico não invasiva que permite interceptar diferenças de temperatura em diferentes regiões do corpo através da intensidade da radiação infravermelha. Quando aplicada ao câncer de mama, a termografia se torna uma ferramenta essencial para a detecção prévia da doença. Isso porque as células cancerígenas tendem a apresentar temperaturas mais elevadas do que as células normais, independentemente de fatores como idade e outros \cite{leles}.
+De acordo com \citeonline{mamografia}, a mamografia é o exame mais eficiente para a detecção do câncer de mama, sendo possível identificar o câncer em um estágio mais leve e curável. Perante o avanço computacional, a mamografia se destaca como uma técnica de diagnóstico que permite visualizar ossos e tecidos mais densos do corpo humano através de pequenas doses de radiação. Quando aplicada ao câncer de mama, a mamografia se torna uma ferramenta essencial para a detecção prévia da doença. Isso porque o câncer tende a apresentar características como massas com margens irregulares, nódulos, micro-calcificações e assimetrias \cite{detection}.
 
 % Motivações
 Com a evolução da computação em diversos âmbitos tecnológicos, tais como redes neurais, processamento de imagens e Inteligências Artificiais (IA), oportunidades foram criadas para investigar e implementar soluções avançadas na área da saúde, visando agregar a comunidade médica, além da sociedade no geral. Na oncologia, existem diversos métodos e práticas utilizadas para diagnosticar um quadro de câncer de um paciente, porém, em sua grande maioria, requer uma análise humana que é passiva de erros ou até mesmo incapaz de realizar predições, ou quantificar com precisão o diagnóstico do quadro clínico \cite{parametrization}.
@@ -19,9 +19,9 @@ Com a evolução da computação em diversos âmbitos tecnológicos, tais como r
 Pautando-se na ideia de trazer ferramentas que auxiliam médicos no diagnóstico antecipado do câncer de mama, algoritmos de processamento de imagem e predição podem melhorar a tomada de decisões dos profissionais de saúde acerca do quadro geral dos pacientes. Dessa maneira, o tratamento pode ser iniciado previamente, podendo evitar a progressão do câncer para estágios mais avançados, que são mais difíceis de tratar, e aumentando as chances de cura, reduzindo a necessidade de tratamentos invasivos. À vista disso, os equipamentos desenvolvidos com esse propósito garantem uma qualidade de vida e longevidade maior para todos assolados pelo quadro de câncer.
 
 % Objetivos
-Diante do contexto levantado, o presente artigo apresenta uma metodologia para a identificação de células cancerosas, que utiliza o processamento e análise de imagens termográficas por meio de Aprendizado por Transferência (do inglês \textit{Transfer Learning}). Outrossim, para investigar de maneira experimental o tema proposto neste artigo, foram utilizadas bases de dados, criteriosamente selecionadas e normalizadas em termos de tamanho e histograma, contendo amostras de mamografias para o treinamento de um algoritmo de IA desenvolvido. As amostras foram divididas em mamografias sem sinais de câncer e mamografias com câncer. Todos os códigos desenvolvidos e as bases de dados utilizadas estão disponíveis publicamente no \textit{GitHub}\footnote{\href{https://github.com/Vaftir/Breast-Cancer-Detection-AI-System}{\textit{https://github.com/Vaftir/Breast-Cancer-Detection-AI-System}}}.
+Diante do contexto levantado, o presente artigo apresenta uma metodologia para a identificação de células cancerosas, que utiliza o processamento e análise de mamografias por meio de Aprendizado por Transferência (do inglês \textit{Transfer Learning}). Outrossim, para investigar de maneira experimental o tema proposto neste artigo, foram utilizadas bases de dados, criteriosamente selecionadas e normalizadas em termos de tamanho e histograma, contendo amostras de mamografias para o treinamento de um algoritmo de IA desenvolvido. As amostras foram divididas em mamografias sem sinais de câncer e mamografias com câncer. Todos os códigos desenvolvidos e as bases de dados utilizadas estão disponíveis publicamente no \textit{GitHub}\footnote{\href{https://github.com/Vaftir/Breast-Cancer-Detection-AI-System}{\textit{https://github.com/Vaftir/Breast-Cancer-Detection-AI-System}}}.
 
-Para criar um modelo de classificação de graus, foi utilizado o método de Aprendizado Profundo (do inglês \textit{Deep Learning}), que consiste em uma técnica avançada de Aprendizado de Máquina (do inglês \textit{Machine Learning}). Após o treinamento do modelo, sua acurácia foi avaliada por meio de testes, e assim que devidamente treinado, o algoritmo foi capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama, identificando o grau da doença, caso presente no paciente.
+Para criar um modelo de classificação binária (com câncer e sem câncer), foi utilizado o método de Aprendizado Profundo (do inglês \textit{Deep Learning}), que consiste em uma técnica avançada de Aprendizado de Máquina (do inglês \textit{Machine Learning}). Após o treinamento do modelo, sua acurácia foi avaliada por meio de testes, e assim que devidamente treinado, o algoritmo foi capaz de analisar as imagens dos exames mamográficos e realizar uma classificação precisa e automatizada do câncer de mama.
 
 O restante deste artigo está estruturado da seguinte maneira: a Seção \ref{fundteorica} apresenta o referencial teórico, na Seção \ref{trabcorr} é fornecida uma visão geral dos trabalhos correlatos encontrados na literatura, a Seção \ref{metodologia} descreve a metodologia, dividida em materiais e métodos, e, por fim, a Seção \ref{results} apresenta os resultados preliminares. 
 
@@ -33,7 +33,7 @@ O restante deste artigo está estruturado da seguinte maneira: a Seção \ref{fu
 
 \section{\esp Fundamentação teórica}  \label{fundteorica}
 
-De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, esta seção retrata conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de imagens termográficas. Além disso, será discutida a técnica de \textit{Deep Learning} com o uso de imagens para demonstrar sua relevância no contexto da detecção do câncer de mama.
+De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, esta seção retrata conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de mamografias. Além disso, será discutida a técnica de \textit{Deep Learning} com o uso de imagens para demonstrar sua relevância no contexto da detecção do câncer de mama.
 
 %%%%%%%%%%%%%%%%%%%%%%      CÂNCER DE MAMA       %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -42,7 +42,7 @@ As células vivas que compõem o corpo humano se dividem para permitir o crescim
 
 O câncer de mama, em específico, se dá pelo crescimento de células anormais na glândula mamária, e os sub-tipos diferentes desse câncer estão localizados sob o tecido adiposo (tecido que armazena gordura e mantém a maior reserva de energia do organismo) e no sistema ductal (ductos responsáveis por conduzir o leite até a papila). Conforme apontado por \citeonline{souza}, o câncer de mama apresenta células com uma taxa de duplicação de tamanho estimada em 4 meses. Embora o crescimento seja inicialmente lento, quando o tumor se torna palpável e não é tratado, o câncer pode se disseminar para os linfonodos, pulmões, ossos, fígado e cérebro, desenvolvendo metástase.
 
-A descoberta prévia do câncer de mama aumenta significativamente a probabilidade de um paciente se curar da doença, dependendo de qual método for utilizado para a detecção. Com isso, é necessário avaliar se o método escolhido é invasivo ou não. No passado, os equipamentos de medição de emissão infravermelha eram capazes de captar uma variação de temperatura apenas de 0,5 a 1 °C, utilizando uma tecnologia primitiva que exigia que um filme de cristal líquido fosse colocado nos seios dos pacientes para detectar a temperatura. Ainda assim, segundo \citeonline{noninvasive}, as câmeras de termografia infravermelhas digitais conseguem identificar mudanças de 0,08 °C, em adição de não demandar contato físico com o paciente.
+% A descoberta prévia do câncer de mama aumenta significativamente a probabilidade de um paciente se curar da doença, dependendo de qual método for utilizado para a detecção. Com isso, é necessário avaliar se o método escolhido é invasivo ou não. No passado, os equipamentos de medição de emissão infravermelha eram capazes de captar uma variação de temperatura apenas de 0,5 a 1 °C, utilizando uma tecnologia primitiva que exigia que um filme de cristal líquido fosse colocado nos seios dos pacientes para detectar a temperatura. Ainda assim, segundo \citeonline{noninvasive}, as câmeras de termografia infravermelhas digitais conseguem identificar mudanças de 0,08 °C, em adição de não demandar contato físico com o paciente.
 
 
 %%%%%%%%%%%%%%%%%%%%%%     PROCESSAMENTO DE IMAGEM       %%%%%%%%%%%%%%%%%%%
@@ -200,7 +200,7 @@ Após os blocos residuais, a \textit{ResNet} possibilita a integração de camad
 
 Nesta seção, são abordados trabalhos correlatos que utilizam IA para o diagnóstico de câncer, se diferenciando em termos de entrada de imagem (como radiografias ou imagens digitais), além de apresentar as bases de dados usadas, abordagens, algoritmos e análises dos resultados. 
 
-Em \citeonline{marinePredators}, foi proposto um modelo de detecção de câncer de mama. O trabalho alcançou uma acurácia de 92\%, normalizando as imagens termográficas e utilizando o \textit{Marine-Predators-Algorithm} que auxilia na otimização da seleção das características (definidas por algumas técnicas de reconhecimento de padrões) mais relevantes das imagens e parâmetros do modelo de observação. Para classificar e validar a implementação feita, foram utilizadas variantes (tipos de funções matemáticas que medem a similaridade entre dois pontos no espaço) do algoritmo de Máquina de Vetores de Suporte (SVM, do inglês \textit{Support Vector Machine}).
+Em \citeonline{marinePredators}, foi proposto um modelo de detecção de câncer de mama. O trabalho alcançou uma acurácia de 92\%, normalizando imagens termográficas e utilizando o \textit{Marine-Predators-Algorithm} que auxilia na otimização da seleção das características (definidas por algumas técnicas de reconhecimento de padrões) mais relevantes das imagens e parâmetros do modelo de observação. Para classificar e validar a implementação feita, foram utilizadas variantes (tipos de funções matemáticas que medem a similaridade entre dois pontos no espaço) do algoritmo de Máquina de Vetores de Suporte (SVM, do inglês \textit{Support Vector Machine}).
 
 Por outro lado, \citeonline{comparing} ao utilizar outra abordagem de treinamento do algoritmo, chegaram em 61,8\% de precisão dos resultados. Foi utilizado o método de limiarização por refinamento adaptativo, técnica que segmenta uma imagem em duas ou mais (com base nos valores dos \textit{pixels}), de modo que regiões anormais são identificadas com mais precisão. Além disso, o artigo também comparou o resultado entre suas métricas com outros trabalhos, e com base nisso, concluiu-se que a inconsistência das comparações foi devido ao uso de imagens infravermelhas distintas, uma vez que foram utilizadas 102 imagens de uma base de dados pública.
 %Diz q usa limiarização baseado na Section III .ASPECTS OF THE APPLIED APPROACH: "In our approach we have used the same methodology that composed the automatic ROI segmentation developed in [19] that was proven to produce good results regarding a comparison to a (...)"
@@ -254,27 +254,31 @@ A fim de aprofundar os fundamentos do tema abordado, esta seção apresenta os r
 %%%%%%%%%%%%%%%%%%%%%%%     BASE DE DADOS       %%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{\esp Base de Dados} \label{database}
 
-As amostras de imagens termográficas foram obtidas por meio do projeto PROENG \citeonline{database}, cujo objetivo é auxiliar no diagnóstico por meio de imagens médicas. O projeto abrange desde a aquisição das imagens até sua organização na base de dados bem como análises e técnicas de \textit{Machine Learning}. O \textit{Visual Lab DMR}\footnote{\href{http://visual.ic.uff.br/dmi}{\textit{http://visual.ic.uff.br/dmi}. Acesso em 27 de maio de 2023.}} (Banco de Dados para Pesquisas em Mastologia, do inglês \textit{Database for Mastology Research}) é uma plataforma online que armazena imagens termográficas e mamografias, permitindo também que indivíduos voluntários contribuam inserindo suas próprias imagens, com o intuito de auxiliar em pesquisas na área da mastologia.
+%%%%%
+As amostras de imagens mamográficas foram adquiridas a partir do desenvolvimento mencionado em \citeonline{newdatabase}, cujo objetivo é enfrentar o desafio comum associado a bancos de dados de imagens de mamografia, sejam eles de origem privada ou pública, caracterizados por seu tamanho limitado e restrições de acessibilidade, frequentemente dispondo de informações insuficientes.
 
-O conjunto de dados coletados no \textit{Visual Lab DMR}, consiste em imagens de 42 pacientes com câncer e imagens de 138 pacientes sem câncer, totalizando 180 pacientes. Cada paciente possui, em média, 25 imagens capturadas em diferentes posições, incluindo frontal, lateral direita, lateral esquerda e outros ângulos. Para ilustrar, a Figura \ref{fig:pcc} demonstra um exemplo de uma imagem utilizada para a predição de um paciente com câncer, enquanto a Figura \ref{fig:psc} exibe uma imagem de um paciente sem câncer. 
+O Subconjunto de imagens de mama com curadoria DDSM\footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}} (do inglês, \textit{Curated Breast Imaging Subset DDSM}), desenvolvido em 2016, conta com imagens de x pacientes com câncer e x pacientes sem câncer, totalizando x pacientes. Cada paciente possui, em média, y imagens capturadas em diferentes posições, incluindo frontal, lateral direita, lateral esquerda e outros ângulos. Para ilustrar, a Figura \ref{fig:pcc} demonstra um exemplo de uma imagem utilizada para a predição de um paciente com câncer, enquanto a Figura \ref{fig:psc} exibe uma imagem de um paciente sem câncer. 
 
+% \footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}}
 
 \begin{figure}[ht]
 \centering
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \caption{Paciente com câncer}
-        \includegraphics[width=\textwidth]{figuras/paciente_com_cancer.jpg}
+        \includegraphics[width=0.5\textwidth]{figuras/with_cancer.jpg}
         \label{fig:pcc}
-        \textbf{\footnotesize Fonte: \href{http://visual.ic.uff.br/dmi}{\cite{database}}}
+        
+        \textbf{\footnotesize Fonte: \href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\cite{newdatabase}}}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \caption{Paciente sem câncer}
-        \includegraphics[width=\textwidth]{figuras/paciente_sem_cancer.jpg}
+        \includegraphics[width=0.5\textwidth]{figuras/without_cancer.jpg}
         \label{fig:psc}
-        \textbf{\footnotesize Fonte: \href{http://visual.ic.uff.br/dmi}{\cite{database}}}
+        
+        \textbf{\footnotesize Fonte: \href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\cite{newdatabase}}}
     \end{minipage}
 \end{figure}
 
@@ -344,7 +348,7 @@ Nesta subseção, são apresentadas as metodologias para o treinamento de um mod
 %%%%%%%%%%%%%%%%%%%%%%%     PRÉ-PROCESSAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp Pré-Processamento} \label{preprocess}
-Inicialmente, foram carregadas 3473 imagens como dados de treinamento (sendo 2746 para pacientes sem câncer e 727 para paciente com câncer) e 1057 imagens como dados de validação (sendo 679 para pacientes sem câncer e 378 para pacientes com câncer). Totalizando 4530 imagens, foi feita a divisão entre imagens para treinamento em 76,6\% e validação em 23,3\%.
+Inicialmente, foram carregadas 206 imagens como dados de treinamento (sendo 103 para pacientes sem câncer e 103 para paciente com câncer), 60 imagens como dados de validação (sendo 30 para pacientes sem câncer e 30 para pacientes com câncer), e 12 imagens para dados de teste (sendo 6 para pacientes sem câncer e 6 para pacientes com câncer). Totalizando 278 imagens, foi feita a divisão entre imagens para treinamento em 74,1\%, validação em 21,6\% e teste em 4,3\%.
 
 Em seguida, o pré-processamento das imagens foi realizado. Foram utilizados métodos que realizam a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
 
@@ -399,7 +403,7 @@ No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar
 
 % \subsection{\esp Resultados Preliminares} \label{prelim}
 
-Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Outrossim, foi feita a análise da acurácia e perda do modelo, onde o histórico do treino pode ser observado na Tabela \ref{tab:history10}. Além disso, as Figuras \ref{fig:acc10} e \ref{fig:loss10} representam os gráficos de acurácia e perda. É possível observar na Tabela \ref{tab:history10} em conjunto com a Figura \ref{fig:acc10}, que a acurácia durante o treinamento aumenta ao longo das épocas, sempre acima de 92\%. Entretanto, durante a validação, a acurácia oscila em escalas pequenas, estabilizando em 70,95\%. 
+Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Outrossim, foi feita a análise da acurácia e perda do modelo, onde o histórico do treino pode ser observado na Tabela \ref{tab:history10}. Além disso, as Figuras \ref{fig:acc10} e \ref{fig:loss10} representam os gráficos de acurácia e perda. Analisando os dados apresentados na Tabela \ref{tab:history10} em conjunto com a Figura \ref{fig:acc10}, é possível observar que a acurácia do modelo durante o treinamento demonstra um aumento gradual ao longo das épocas, registrando um notável aumento de 87\% desde a primeira até a última época. No entanto, durante a fase de validação, a acurácia oscila em uma escala menor. Começando em 48,8\%, ela estabiliza em 55\%, refletindo um aumento de 13,8\%. 
 
 \begin{table}[h]
   \centering
@@ -410,16 +414,16 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
   \hline
    épocas & \textit{loss} treinamento & \textit{accuracy} treinamento & \textit{loss} validação & \textit{accuracy} validação \\
   \hline
-    0 & 0.192744 & 0.926288 & 1.070270 & 0.714286 \\
-    1 & 0.094070 & 0.965448 & 1.422299 & 0.707663 \\
-    2 & 0.061172 & 0.980420 & 1.564033 & 0.716178 \\
-    3 & 0.041977 & 0.985315 & 1.466876 & 0.707663 \\
-    4 & 0.033294 & 0.989634 & 1.765021 & 0.712394 \\
-    5 & 0.021359 & 0.995393 & 1.956213 & 0.709555 \\
-    6 & 0.014009 & 0.997121 & 1.881916 & 0.718070 \\
-    7 & 0.013457 & 0.996833 & 2.333311 & 0.701041 \\
-    8 & 0.006776 & 0.998560 & 2.315100 & 0.706717 \\
-    9 & 0.004493 & 0.999424 & 2.480982 & 0.709555 \\
+    0 & 0.753520 & 0.524272 & 0.746499 & 0.483333 \\
+    1 & 0.635317 & 0.621359 & 0.718759 & 0.566667 \\
+    2 & 0.554994 & 0.752427 & 0.733762 & 0.516667 \\
+    3 & 0.467051 & 0.878641 & 0.739726 & 0.566667 \\
+    4 & 0.414687 & 0.888350 & 0.819429 & 0.550000 \\
+    5 & 0.372265 & 0.907767 & 0.762506 & 0.483333 \\
+    6 & 0.330910 & 0.936893 & 0.819286 & 0.566667 \\
+    7 & 0.276162 & 0.975728 & 0.797351 & 0.533333 \\
+    8 & 0.252824 & 0.961165 & 0.799594 & 0.550000 \\
+    9 & 0.224758 & 0.980583 & 0.916891 & 0.550000 \\
   \hline
 \end{tabular}
 	\vspace{0.2cm}
@@ -433,7 +437,7 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
   \centering
   \caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de acurácia}
   \vspace{-0.4cm}
-  \includegraphics[width=\linewidth]{figuras/accuracy_10.png}
+  \includegraphics[width=\linewidth]{figuras/accuracy.png}
   \captionsetup{justification=centering}
   \vspace{-0.2cm}
   \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
@@ -443,7 +447,7 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
   \centering
   \caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de perda}
   \vspace{-0.4cm}
-  \includegraphics[width=\linewidth]{figuras/loss_10.png}
+  \includegraphics[width=\linewidth]{figuras/loss.png}
   \captionsetup{justification=centering}
   \vspace{-0.2cm}
   \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
@@ -456,27 +460,27 @@ Além disso, na Figura \ref{fig:loss10}, observa-se que o erro de treinamento di
 
 %%%%%%%%%%%%%%%%%%%%%%%     PREDIÇÕES       %%%%%%%%%%%%%%%%%%%%%%
 
-% \subsection{\esp Predições} \label{pred}
+\subsection{\esp Predição} \label{pred}
 
-% Por fim, importamos a biblioteca \textit{nunpy} e definimos a função de predição que irá classificar uma imagem como sendo um paciente com câncer ou sem câncer. Essa função recebe como entrada um modelo de \textit{Machine Learning} e o caminho de um arquivo de imagem, retornando o resultado da classificação. Para isso, o método proposto na Subseção \ref{metodos} é aplicado e a função de predição então realiza a previsão do modelo guardando o resultado numa variável que contém as probabilidades associadas a cada classe, e encontra o índice da classe com a maior probabilidade. Finalmente, cria um dicionário que mapeia os índices das classes para seus rótulos correspondentes com base nos índices definidos pelo gerador de imagens de treinamento, exibindo a imagem com a predição.
+Por fim, foi feita a predição do modelo de classificação com dados de teste. 
 
-% O resultado do modelo, disponível na Figura \ref{fig:predicao1}, retornou uma classificação correta, apontando que a imagem é de um paciente com câncer. Já na Figura \ref{fig:predicao2}, temos o resultado da predição correta, passando como entrada a imagem de um paciente sem câncer.
+O resultado da predição para um paciente sem câncer, disponível na Figura \ref{fig:predicao_sem}, retornou uma classificação correta, apontando que a imagem é de um paciente sem câncer. Entretanto, na Figura \ref{fig:predicao_com}, o modelo previu uma classificação incorreta, apontando que um paciente sem câncer tem a doença. Isso é devido à baixa acurácia que o modelo tem.
 
-% \begin{figure}[ht]
-% \centering
-%     \begin{minipage}[b]{0.45\textwidth}
-%         \centering
-%         \caption{Predição de paciente com câncer}
-%         \includegraphics[width=\textwidth]{figuras/model10pred1.png}
-%         \label{fig:predicao1}
-%         \textbf{\footnotesize Fonte: \href{http://visual.ic.uff.br/dmi}{\textit{Visual Lab DMR}}}
-%     \end{minipage}
-%     \hfill
-%     \begin{minipage}[b]{0.45\textwidth}
-%         \centering
-%         \caption{Predição de paciente sem câncer}
-%         \includegraphics[width=\textwidth]{figuras/model10pred2.png}
-%         \label{fig:predicao2}
-%         \textbf{\footnotesize Fonte: \href{http://visual.ic.uff.br/dmi}{\textit{Visual Lab DMR}}}
-%     \end{minipage}
-% \end{figure}
+\begin{figure}[ht]
+\centering
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \caption{Predição de paciente sem câncer}
+        \includegraphics[width=\textwidth]{figuras/predicao_sem.png}
+        \label{fig:predicao_sem}
+         \textbf{\footnotesize Fonte: \href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\cite{newdatabase}}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \caption{Predição de paciente com câncer}
+        \includegraphics[width=\textwidth]{figuras/predicao_com.png}
+        \label{fig:predicao_com}
+        \textbf{\footnotesize Fonte: \href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\cite{newdatabase}}}
+    \end{minipage}
+\end{figure}
