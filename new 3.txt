@@ -1,0 +1,7 @@
+- colocar o git como público
+- deixar só o notebook jupiter que é do modelo que usamos no artigo (somente com códigos?)
+- melhorar readme
+- fazer conclusão
+- trabalhos futuros (falar sobre modelo mais robusto de classificaçâo indicando o grau do cancer)
+- fazer cross validation
+melhorar o cõdigo pra fazer cross validation

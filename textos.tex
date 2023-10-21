@@ -4,6 +4,7 @@
 
 \section{\esp Introdução} \label{intro}
 
+% tirar?
 Instituída em 10 de dezembro de 2009, a Lei n.º 12.116/2009 \citeonline{lei}, conforme o Congresso Nacional Brasileiro, decreta o dia 27 de novembro como o Dia Nacional de Luta contra o Câncer de Mama. Além de uma data específica para a luta contra esse câncer, foi criada em 1990, uma campanha cujo objetivo é conscientizar a população sobre a importância da prevenção e do diagnóstico precoce, o chamado Outubro Rosa.
 
 Causado pela multiplicação rápida e desordenada de células anormais, o câncer pode ocorrer em diversas estruturas do corpo, e quando envolve as células das glândulas mamárias, determina o câncer de mama \cite{incaoquee}. Esse tumor divide a primeira posição com o de pulmão no ranking dos cânceres mais incidentes do mundo, além de ser a doença mais comum entre as mulheres, na qual dados da Organização Mundial de Saúde (OMS) e do Instituto Nacional de Câncer (INCA) apontam que ocorrem por volta de 627 mil mortes por câncer de mama no mundo em 2018, sendo 17,7 mil no Brasil \cite{boletimepidemiologico}.
@@ -33,7 +34,7 @@ O restante deste artigo está estruturado da seguinte maneira: a Seção \ref{fu
 
 \section{\esp Fundamentação teórica}  \label{fundteorica}
 
-De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, esta seção retrata conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de mamografias. Além disso, será discutida a técnica de \textit{Deep Learning} com o uso de imagens para demonstrar sua relevância no contexto da detecção do câncer de mama.
+De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, esta seção retrata conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de mamografias. Além disso, será discutida a técnica de \textit{Deep Learning}, com ênfase em Redes Neurais e Redes Residuais. Além disso, são abordadas as camadas típicas de uma Rede Neural e as funções de ativação comuns.
 
 %%%%%%%%%%%%%%%%%%%%%%      CÂNCER DE MAMA       %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -41,6 +42,10 @@ De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a
 As células vivas que compõem o corpo humano se dividem para permitir o crescimento e a substituição de células danificadas ou mortas. A proliferação celular é regulada pelos genes do Ácido Desoxirribonucleico (DNA, do inglês Deoxyribonucleic Acid), transmitidos pelos pais e gerenciados para manter o equilíbrio no processo de divisão celular. O câncer, em geral, se forma quando esse controle genético é danificado ou perdido em uma, ou mais células que então continuam a se dividir normalmente, produzindo mais células anormais, causando danos a outros tecidos e funções corporais \cite{basicOncology}.
 
 O câncer de mama, em específico, se dá pelo crescimento de células anormais na glândula mamária, e os sub-tipos diferentes desse câncer estão localizados sob o tecido adiposo (tecido que armazena gordura e mantém a maior reserva de energia do organismo) e no sistema ductal (ductos responsáveis por conduzir o leite até a papila). Conforme apontado por \citeonline{souza}, o câncer de mama apresenta células com uma taxa de duplicação de tamanho estimada em 4 meses. Embora o crescimento seja inicialmente lento, quando o tumor se torna palpável e não é tratado, o câncer pode se disseminar para os linfonodos, pulmões, ossos, fígado e cérebro, desenvolvendo metástase.
+
+O câncer pode se manifestar de maneiras distintas. Dentre elas, a formação de uma massa se refere a uma área de tecido anômalo, caracterizado por sua densidade ou espessura singular em exames de imagem. Por outro lado, a calcificação se refere à presença de depósitos minerais, principalmente cálcio, nas células ou tecidos mamários.
+
+% É importante destacar que um tumor benigno na mama não é considerado câncer, pois suas células não se espalham rapidamente para outras partes do corpo.
 
 % A descoberta prévia do câncer de mama aumenta significativamente a probabilidade de um paciente se curar da doença, dependendo de qual método for utilizado para a detecção. Com isso, é necessário avaliar se o método escolhido é invasivo ou não. No passado, os equipamentos de medição de emissão infravermelha eram capazes de captar uma variação de temperatura apenas de 0,5 a 1 °C, utilizando uma tecnologia primitiva que exigia que um filme de cristal líquido fosse colocado nos seios dos pacientes para detectar a temperatura. Ainda assim, segundo \citeonline{noninvasive}, as câmeras de termografia infravermelhas digitais conseguem identificar mudanças de 0,08 °C, em adição de não demandar contato físico com o paciente.
 
@@ -82,9 +87,8 @@ As imagens capturadas por satélites e câmeras convencionais ou digitais carece
 
 \subsection{\esp \textit{Deep Learning}} \label{deeplearning}
 
-O \textit{Machine Learning} é um processo que utiliza uma gama de dados para criar uma IA instruído para aprender e operar funções de maneira autônoma \cite{machinelearning}. Dentre as abundantes formas de se aplicar esse processo, uma das mais comuns é o método \textit{Deep Learning}, que utiliza redes neurais convolucionais para criar aplicações mais completas. 
 
-O termo \textit{Deep Learning} refere-se à estrutura utilizada para realização do método, que consiste em várias camadas de neurônios artificiais conectados, permitindo que o sistema aprenda representações cada vez mais complexas dos dados de entrada. Esses dados podem variar desde um simples conjunto de inteiros, para fazer uma predição de cálculo, até um sistema de navegação de um veículo autônomo \cite{deeplearning}.
+O termo \textit{Deep Learning} refere-se à uma estrutura utilizada para realização do processo de \textit{Machine Learning}, método que usa dados para criar uma IA que aprende e executa funções de maneira automática. Compondo-se de várias camadas de neurônios artificiais conectados, o \textit{Deep Learning} permite que o sistema aprenda representações cada vez mais complexas dos dados de entrada. Esses dados podem variar desde um simples conjunto de inteiros, para fazer uma predição de cálculo, até um sistema de navegação de um veículo autônomo \cite{deeplearning}.
 
 Os neurônios artificiais são a principal composição da rede neural, sendo estruturas agrupadas em camadas, inspiradas nos neurônios biológicos presentes no cérebro humano. Cada neurônio artificial recebe diversas entradas, representadas por valores numéricos, multiplicadas por um determinado peso e somados. Esse resultado é então processado mediante uma função de ativação, que determina a saída do neurônio, e é transmitida para os outros neurônios da rede.
 
@@ -93,29 +97,15 @@ Os neurônios artificiais são a principal composição da rede neural, sendo es
 %%%%%%%%%%%%%%%%%%%%%%%%%%     REDES NEURAIS       %%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{\esp Redes Convolucionais} \label{redesneurais}
+\subsection{\esp Redes Convolucionais e Redes Residuais} \label{redesconvoleredesresidual}
 
-A Rede Neural Convolucional (CNN, do inglês \textit{Convolutional Neural Network}), de acordo com \citeonline{cnn}, é uma estrutura complexa composta por inúmeros neurônios e camadas de convolução compostas por um conjunto de filtros que, por sua vez, detectam características visuais específicas em uma imagem por meio de uma matriz. Sua arquitetura pode ser dividida em três camadas individuais: i) Camada de Entrada (do inglês \textit{Input Layer}), ii) Camadas Escondidas (do inglês \textit{Hidden Layers}), e iii) Camada de Saída (do inglês \textit{Output Layer}), com funções de entrada, processamento, e saída de dados respectivamente \cite{medical}.
+A Rede Neural Convolucional (CNN, do inglês \textit{Convolutional Neural Network}), de acordo com \citeonline{cnn}, é uma estrutura complexa composta por neurônios e camadas de convolução, constituídas por um conjunto de filtros que detectam características visuais específicas em uma imagem por meio de matrizes. A arquitetura da CNN é dividida em três camadas: i) Camada de Entrada (do inglês \textit{Input Layer}), ii) Camadas Escondidas (do inglês \textit{Hidden Layers}), e iii) Camada de Saída (do inglês \textit{Output Layer}).
 
-Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e transformados em dados matemáticos enviados para as camadas seguintes da CNN \cite{cnn}. Nas camadas escondidas, são usadas funções matemáticas não-lineares modeladas para retornar valores específicos, consoantes os dados de entrada. Esses valores são então enviados para a última parte da rede. Por fim, na camada de saída, é produzido o resultado com base nas predições das camadas anteriores.
+Na camada de entrada, os dados brutos, como fotos e vídeos, são recebidos e transformados em dados matemáticos enviados para as camadas seguintes da CNN \cite{cnn}. Nas camadas escondidas, são usadas funções matemáticas não-lineares modeladas para retornar valores específicos, consoantes os dados de entrada. Esses valores são então enviados para a última parte da rede. Por fim, na camada de saída, é produzido o resultado com base nas predições das camadas anteriores \cite{medical}.
 
-% Figura \ref{fig:cnndrawio}
-% \begin{figure}[ht]
-%  	\centering	
-%  	\caption[\hspace{0.1cm}Grade Computacional.]{Etapas metadológicas}
-%  	\vspace{-0.2cm}
-%  	\includegraphics[width=1\textwidth]{figuras/cnn.drawio.png}
-%     \captionsetup{justification=centering}
-%   \vspace{-0.2cm}
-%      \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-% 	\label{fig:cnndrawio}
-% \end{figure}
+% Amplamente reconhecidas por sua eficácia no reconhecimento de imagens, oferecendo alta precisão e escalabilidade, as CNNs deram origem a diversas arquiteturas, incluindo \textit{LeNet}, \textit{AlexNet}, \textit{ZFNet}, \textit{VGGNet}, \textit{ResNet}, \textit{GoogleLeNet}, entre outras.
 
-\subsection{\esp Redes Residuais} \label{redesresiduais}
-
-As CNNs são amplamente reconhecidas por sua eficácia no tratamento de problemas de reconhecimento de imagem, oferecendo um elevado nível de precisão e escalabilidade. Essa popularidade resultou no desenvolvimento de diversas arquiteturas de CNN, cada uma abordando o problema de maneiras distintas. Dentro da ampla variedade de opções de arquiteturas de CNN, destacam-se exemplos como \textit{LeNet}, \textit{AlexNet}, \textit{ZFNet}, \textit{VGGNet}, \textit{ResNet}, \textit{GoogleLeNet}, entre outras. 
-
-Uma Rede Neural Residual (ResNet, do inglês \textit{Residual Network}) representa uma arquitetura de CNN que permite melhorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. A \textit{ResNet} é capaz de navegar através de múltiplas camadas da rede, viabilizada pelo uso de atalhos. Adicionalmente, a arquitetura é composta por vários blocos residuais, que são retratados como uma construção especial que visa facilitar o treinamento de redes neurais, permitindo que a rede aprenda mudanças incrementais nas características. 
+A Rede Neural Residual (ResNet, do inglês \textit{Residual Network}) representa uma arquitetura de CNN que aprimora a eficiência no treinamento e resolve problemas associados à degradação de desempenho. Ela é capaz de navegar através de múltiplas camadas da rede, viabilizada pelo uso de atalhos. Adicionalmente, a arquitetura é composta por vários blocos residuais, que são retratados como uma construção especial que visa facilitar o treinamento de redes neurais, permitindo que a rede aprenda mudanças incrementais nas características. 
 
 Dentro de cada bloco residual, várias camadas são empilhadas e o fluxo de dados é enriquecido pelos atalhos que permitem a passagem direta das informações às camadas subsequentes. Esses blocos variam em tipos e camadas, adaptando-se à profundidade e complexidade específicas da arquitetura. A Figura \ref{fig:cnn} ilustra as camadas de uma \textit{ResNet}, aplicado no problema de identificação de câncer de mama.
 
@@ -132,13 +122,9 @@ Dentro de cada bloco residual, várias camadas são empilhadas e o fluxo de dado
 
 \subsection{\esp Camadas da CNN e Funções de Ativação} \label{camadasfund}
 
-Uma arquitetura \textit{ResNet} é formada por diversos blocos residuais, em que cada bloco é composto por múltiplas camadas. A configuração dos blocos e camadas pode variar de acordo com a profundidade e complexidade da arquitetura em questão.
+Uma arquitetura \textit{ResNet} é formada por diversos blocos residuais, cada um composto por múltiplas camadas. A configuração dos blocos e camadas pode variar de acordo com a profundidade e complexidade da arquitetura em questão. Cada bloco residual inicia com camadas convolucionais que aplicam filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução corresponde ao número de filtros aplicados, resultando em detalhes mais refinados no Mapa de Ativação (do inglês \textit{Atactivation Map}).
 
-\subsubsection{\esp Camadas Convolucionais} \label{convs}
-
-Cada bloco residual inicia com camadas convolucionais cuja função é aplicar um conjunto de filtros a uma imagem de entrada para extrair características importantes. A profundidade da saída de uma convolução corresponde ao número de filtros aplicados. Quanto mais profunda for a camada de convolução, mais detalhadas serão as características identificadas no Mapa de Ativação (do inglês \textit{Atactivation Map}), ou Mapa de Características. 
-
-Os filtros, também conhecidos como \textit{Kernels}, consistem em pesos inicializados aleatoriamente, que são ajustados a cada nova entrada durante o processo de Retropropagação do Erro (do inglês \textit{Backpropagation}). A pequena região da entrada onde o filtro é aplicado é denominada Campo Receptivo (do inglês \textit{Receptive Field}). Na Figura \ref{fig:conv2} é possível observar um filtro que representa a curva ao seu lado. Essa combinação resulta em um valor alto, indicando compatibilidade entre as curvas. Quando não há compatibilidade na imagem, esse resultado se aproxima de zero.
+Os filtros, também conhecidos como \textit{Kernels}, possuem em pesos ajustados durante a Retropropagação do Erro (do inglês \textit{Backpropagation}), sendo aplicados a pequenas regiões de entrada denominados Campos Receptivos (do inglês \textit{Receptive Field}). Na Figura \ref{fig:conv2} é possível observar um filtro que representa a curva ao seu lado. Essa combinação resulta em um valor alto, indicando compatibilidade entre as curvas. Quando não há compatibilidade na imagem, esse resultado se aproxima de zero.
 
 \begin{figure}[ht]
  	\centering	
@@ -152,11 +138,7 @@ Os filtros, também conhecidos como \textit{Kernels}, consistem em pesos inicial
 \end{figure}
 
 
-\subsubsection{\esp Funções de Ativação} \label{funcAtiv}
-
-Após as operações de convolução, são aplicadas funções de ativação. A função \textit{Softmax}, representada na Figura \ref{fig:softmax}, é comumente usada em redes neurais de classificação para tarefas de classificação. Ela tem a finalidade de forçar a saída da rede neural a representar a probabilidade de pertencimento dos dados a uma das classes predefinidas. Sem a função \textit{Softmax}, as saídas dos neurônios são simplesmente valores numéricos, onde o maior indica a classe vencedora. 
-
-Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, atribui o valor zero a todas as entradas menores ou iguais à zero. É amplamente utilizada devido à sua rapidez na geração de pesos e é especialmente adequada para problemas com apenas duas classes.
+Após as operações de convolução, são aplicadas funções de ativação, como a \textit{Softmax}, representada na Figura \ref{fig:softmax}, que converte a saída em uma probabilidade de pertencimento a uma das classes predefinidas. Sem essa função, as saídas dos neurônios são valores numéricos, onde o maior indica a classe vencedora. Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do inglês \textit{Rectified Linear Unit}), representada na Figura \ref{fig:relu}, atribui o valor zero a todas as entradas menores ou iguais à zero. É amplamente utilizada devido à sua rapidez na geração de pesos e é especialmente adequada para problemas com apenas duas classes.
 
 \begin{figure}[ht]
 \centering
@@ -183,11 +165,8 @@ Em contrapartida, a função de ativação Unidade Linear Retificada (ReLU, do i
 \end{figure}
 
 
-\subsubsection{\esp Camadas de \textit{Pooling}} \label{convs}
+A camada de \textit{Max Pooling} desempenha um papel importante na redução da dimensionalidade dos dados de entrada. Ela opera agrupando \textit{pixels} em regiões, o que ajuda a reduzir a sensibilidade a pequenas variações nos dados, ao mesmo tempo em que extrai características mais relevantes. Essa camada diminui a resolução da imagem, permitindo uma ênfase maior em características específicas, enquanto compacta o conjunto de dados mantendo as informações mais relevantes em uma seleção das regiões de maior destaque.
 
-A camada de \textit{Max Pooling} desempenha um papel importante na redução da dimensionalidade dos dados de entrada. Ela opera agrupando \textit{pixels} em regiões o que ajuda a reduzir a sensibilidade a pequenas variações nos dados, ao mesmo tempo em que extrai características mais relevantes. Essencialmente, essa camada diminui a resolução da imagem, permitindo uma ênfase maior em características específicas, enquanto compacta o conjunto de dados mantendo as informações mais relevantes em uma seleção das regiões de maior destaque.
-
-\subsubsection{\esp Camadas \textit{Fully-Connected}} \label{fully}
 
 Após os blocos residuais, a \textit{ResNet} possibilita a integração de camadas Totalmente Conectadas (do inglês, \textit{Fully-Connected}), também conhecidas como camadas \textit{Dense}. Essas camadas são responsáveis por tomar as características extraídas por camadas anteriores e transformá-las em uma saída final. No entanto, essas camadas não fazem parte dos próprios blocos residuais da \textit{ResNet}, uma vez que a arquitetura é focada em melhorar a eficácia das camadas convolucionais.
 
@@ -207,19 +186,7 @@ Por outro lado, \citeonline{comparing} ao utilizar outra abordagem de treinament
 
 Assim como o trabalho anterior, \citeonline{segmentacao} utilizaram da limiarização por refinamento adaptativo, todavia, com uma acurácia de 96\%. Foram introduzidos três parâmetros para avaliação, baseando-se na informação de que as pregas mamárias (área indicadora de limites inferiores da mama, pois possuem maior temperatura) podem variar de tamanho, dificultando a identificação das mamas. Os parâmetros determinam miliares mínimos de uma área medida em \textit{pixels} que a prega deve ter, além de definir a área mínima a ser medida em \textit{pixel} para duas componentes distintas. Com isso, foi possível determinar qual conjunto de parâmetros maximiza as métricas estatísticas apresentadas, indicando assim os resultados normalizados.
 
-Como aplicado em \citeonline{MachineVision}, foram desenvolvidas técnicas de Visão de Máquina (do inglês \textit{Machine Vision}), algoritmo que processa imagens e reconhece características básicas, em contrapartida à técnicas de processamento de imagens, em que a saída é outra imagem, entretanto, devidamente tratada. Com o uso de linguagens de alto nível confiáveis e eficientes, inúmeros algoritmos foram otimizados resultando na criação de poderosas ferramentas acessíveis para pesquisadores e cientistas, aumentando a precisão dos resultados. A discussão da Visão de Máquina básica e algoritmos de processamento de imagem do artigo foram implementados em cinco grupos principais: 
-\begin{enumerate}
-  \renewcommand{\labelenumi}{\alph{enumi})}
-    \item Técnicas de Segmentação ou Limiar em \textit{Grey-Level}: utilizando métodos como \textit{P-tile} (histogramas), \textit{Edge Pixel} e \textit{Interative};
-    
-    \item Técnicas de Detecção de Borda: localização da borda para aumentar o contraste, utilizando o algoritmo \textit{Canny Edge Detection};
-    
-    \item Morfologia Digital: filtra a imagem, além de fazer uma análise geométrica da estrutura dos elementos;
-    
-    \item Textura: observação da repetição de padrões a fim de substitui-los usando \textit{grey level};
-    
-    \item Algoritmos de Esqueletização e Encurtamento: definir propriedades globais dos objetos e reduzir a imagem em um modelo mais compacto para reconhecer padrões.
-\end{enumerate}
+Como aplicado em \citeonline{MachineVision}, foram desenvolvidas técnicas de Visão de Máquina (do inglês \textit{Machine Vision}), algoritmo que processa imagens e reconhece características básicas, em contrapartida à técnicas de processamento de imagens, em que a saída é outra imagem, entretanto, devidamente tratada. Com o uso de linguagens de alto nível confiáveis e eficientes, inúmeros algoritmos foram otimizados resultando na criação de poderosas ferramentas acessíveis para pesquisadores e cientistas, aumentando a precisão dos resultados. A discussão da Visão de Máquina básica e algoritmos de processamento de imagem do artigo foram implementados em cinco grupos principais: Técnicas de Segmentação ou Limiar em \textit{Grey-Level}; Técnicas de Detecção de Borda; Morfologia Digital; Textura; e Algoritmos de Esqueletização e Encurtamentos.
 
 
 Utilizando redes neurais para reconhecer imagens de câncer de pele e unindo técnicas de processamento de imagens digitais, \citeonline{botelho} possibilitaram a elaboração de um sistema que diferencia imagens de Melanomas. Para isso, quatro características são usadas para identificar uma lesão: assimetria, bordas irregulares, cor variada e diâmetro. Baseados nessas características, o modelo proposto implementa a rede neural \textit{Perceptron} de Camada Única, utilizando dois neurônios: um excitado por imagens de lesões Melanoma, e outro excitado por imagens de lesões não Melanoma. O \textit{Perceptron} identifica quando uma entrada é classificada erroneamente e ajusta os pesos por meio de uma regra de correção de erro, conhecida como Regra Delta. Com isso, a rede foi treinada somente quando todas as saídas corresponderam com a saída esperada, atingindo uma taxa de 69\% de acertos.
@@ -250,14 +217,11 @@ A fim de aprofundar os fundamentos do tema abordado, esta seção apresenta os r
 
 \subsection{\esp Materiais} \label{materiais}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%     BASE DE DADOS       %%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{\esp Base de Dados} \label{database}
-
-%%%%%
 As amostras de imagens mamográficas foram adquiridas a partir do desenvolvimento mencionado em \citeonline{newdatabase}, cujo objetivo é enfrentar o desafio comum associado a bancos de dados de imagens de mamografia, sejam eles de origem privada ou pública, caracterizados por seu tamanho limitado e restrições de acessibilidade, frequentemente dispondo de informações insuficientes.
 
-O Subconjunto de imagens de mama com curadoria DDSM\footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}} (do inglês, \textit{Curated Breast Imaging Subset DDSM}), desenvolvido em 2016, conta com imagens de x pacientes com câncer e x pacientes sem câncer, totalizando x pacientes. Cada paciente possui, em média, y imagens capturadas em diferentes posições, incluindo frontal, lateral direita, lateral esquerda e outros ângulos. Para ilustrar, a Figura \ref{fig:pcc} demonstra um exemplo de uma imagem utilizada para a predição de um paciente com câncer, enquanto a Figura \ref{fig:psc} exibe uma imagem de um paciente sem câncer. 
+O Subconjunto de Imagens de Mama com Curadoria DDSM\footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}} (do inglês, \textit{Curated Breast Imaging Subset DDSM}), desenvolvido em 2016, conta com um total de 277524 imagens, divididas em duas categorias principais: massa e calcificação. Cada uma dessas categorias é subdividida em três sub-categorias distintas. A primeira sub-categoria são as Mamografias Completas (do inglês \textit{Full Mammogram}), que contém imagens completas sem qualquer recorte. Em seguida, existem as Imagens Cortadas (do inglês \textit{Cropped Images}), que destacam áreas específicas do tumor. Por fim, as Regiões de Interesse (ROI, do inglês \textit{Region of Interest}), que se concentram exclusivamente em áreas que contém massas ou calcificações. 
+
+Para o modelo projetado, foram usadas unicamente imagens de massas e imagens cortadas. Dentro desses critérios, o conjunto de dados apresenta 1555 imagens, distribuídas entre 784 imagens de pacientes com tumor maligno (câncer) e 771 imagens de pacientes com tumor benigno (ausência de câncer). Para ilustrar, a Figura \ref{fig:pcc} demonstra um exemplo de uma imagem utilizada para a predição de um paciente com câncer, enquanto a Figura \ref{fig:psc} exibe uma imagem de um paciente sem câncer. 
 
 % \footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}}
 
@@ -283,41 +247,17 @@ O Subconjunto de imagens de mama com curadoria DDSM\footnote{\href{https://www.k
 \end{figure}
 
 
+Para desenvolver o algoritmo de classificação das imagens entre pacientes com câncer e pacientes sem câncer, foram empregadas diversas tecnologias e bibliotecas, em conjunto com uma linguagem de programação, visando facilitar o processo. Para reproduzir a implementação, foi necessário o uso do \textit{Python} 3.10, uma linguagem de programação de alto nível, interpretada e com tipagem dinâmica, além de incluir orientação a objetos, diversas bibliotecas e suporte a módulos e pacotes. A implementação foi realizada usando o \textit{Python} 3.10. 
 
-%%%%%%%%%%%%%%%%%%%%%%%     TECNOLOGIAS       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\esp Tecnologias} \label{techs}
-Para desenvolver o algoritmo de classificação das imagens entre pacientes com câncer e pacientes sem câncer, foram empregadas diversas tecnologias e bibliotecas, em conjunto com uma linguagem de programação, visando facilitar o processo. Para reproduzir a implementação, foi necessário configurar o sistema operacional do computador com o \textit{Python}, uma linguagem de programação de alto nível, interpretada e com tipagem dinâmica, além de incluir orientação a objetos, diversas bibliotecas e suporte a módulos e pacotes. A implementação foi realizada usando o \textit{Python} 3.10. Algumas das principais bibliotecas utilizadas são:
 
-% Adicionalmente, para gerenciar as dependências do projeto, foi utilizado um gerenciador de pacotes para o \textit{Python} (por exemplo, utilizando o comando "\textit{pip install <pacote>}", onde <pacote> representa o nome do pacote a ser instalado). 
 
-\begin{enumerate}[label=\alph*)]
-    \item \textit{TensorFlow}: desenvolve modelos de \textit{Machine Learning}.
-    
-    \item \textit{Keras}: usada em conjunto com o \textit{TensorFlow}, permitindo construção e treinamento de redes neurais.
-    
-    % \item \textit{PIL}: oferece recursos para o processamento de imagens, como abrir, manipular e salvar em diferentes formatos.
-        
-    \item \textit{matplotlib}: para visualização de dados, permitindo criar gráficos, \textit{plots}, histogramas, entre outros.
-    
-    \item \textit{numpy}: aplicada para computação e análise numérica, fornecendo uma estrutura de dados como vetores multidimensionais para armazenar grandes conjuntos de dados numéricos.
 
-    % \item \textit{os}: interage com o sistema operacional, permitindo manipulação de diretórios, entre outros.
 
-    \item \textit{cv2}: fornece funções para carregar, manipular e processar imagens.
+Algumas das principais bibliotecas utilizadas no desenvolvimento do modelo incluem o \textit{TensorFlow}, que desenvolve modelos de \textit{Machine Learning}, e o \textit{Keras}, que é frequentemente combinado com o \textit{TensorFlow} para a construção e treinamento de redes neurais. Além disso, a biblioteca \textit{matplotlib} é empregada para a visualização de dados, permitindo a criação de gráficos, \textit{plots}, histogramas, entre outros. O \textit{numpy} desempenha um papel fundamental na computação e análise numérica, fornecendo uma estrutura de dados versátil, como vetores multidimensionais, para o armazenamento de grandes conjuntos de dados numéricos. A biblioteca \textit{cv2} fornece funções essenciais para carregar, manipular e processar imagens, enquanto o \textit{ImageDataGenerator}, originado do \textit{TensorFlow}, simplifica a transformação de imagens em dados vetoriais, tornando os cálculos durante o treinamento do modelo mais eficientes.
 
-    % \item \textit{time}: medição de tempo e manipulação de datas.
 
-    % \item \textit{glob}: realiza operações de pesquisa de arquivos e diretórios.
-
-    % \item \textit{random}: gera números aleatórios e funções de aleatoriedades.
-
-     \item \textit{ImageDataGenerator}: Originada do TensorFlow, permite transformar as imagens em dados vetoriais, facilitando os cálculos necessários durante o treinamento do modelo.
-\end{enumerate}
-
-\subsubsection{\esp Arquitetura de CNN} \label{arqCNN}
-
-Apresentada na Subseção \ref{redesresiduais}, a arquitetura \textit{ResNet} destaca-se por sua ênfase no reconhecimento de imagens, além de ter conquistado o primeiro lugar no Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015 \cite{resnet50analisys}. Neste desafio, obteve uma taxa de erro top 5 de 3,6\% ao empregar uma CNN composta por 152 camadas, denominada \textit{ResNet152}.
+Apresentada na Subseção \ref{redesconvoleredesresidual}, a arquitetura \textit{ResNet} destaca-se por sua ênfase no reconhecimento de imagens, além de ter conquistado o primeiro lugar no Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015 \cite{resnet50analisys}. Neste desafio, obteve uma taxa de erro top 5 de 3,6\% ao empregar uma CNN composta por 152 camadas, denominada \textit{ResNet152}.
 
 No entanto, apesar do prestígio da \textit{ResNet152} como o modelo mais profundo, capaz de capturar recursos abstratos e complexos, essa profundidade também traz consigo um peso significativo em termos computacionais. Isso a torna mais custosa tanto no treinamento quanto na implementação em dispositivos com recursos limitados. A família de variantes \textit{ResNet} inclui modelos que aderem ao mesmo conceito, mas diferentes quantidades de camadas, como \textit{ResNet18}, \textit{ResNet34}, \textit{ResNet50} e \textit{ResNet101}. 
 
@@ -348,15 +288,16 @@ Nesta subseção, são apresentadas as metodologias para o treinamento de um mod
 %%%%%%%%%%%%%%%%%%%%%%%     PRÉ-PROCESSAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp Pré-Processamento} \label{preprocess}
-Inicialmente, foram carregadas 206 imagens como dados de treinamento (sendo 103 para pacientes sem câncer e 103 para paciente com câncer), 60 imagens como dados de validação (sendo 30 para pacientes sem câncer e 30 para pacientes com câncer), e 12 imagens para dados de teste (sendo 6 para pacientes sem câncer e 6 para pacientes com câncer). Totalizando 278 imagens, foi feita a divisão entre imagens para treinamento em 74,1\%, validação em 21,6\% e teste em 4,3\%.
+Inicialmente, foram carregadas 945 imagens como dados de treinamento (sendo 468 para pacientes sem câncer e 477 para paciente com câncer), 464 imagens como dados de validação (sendo 230 para pacientes sem câncer e 234 para pacientes com câncer), e 146 imagens para dados de teste (sendo 73 para pacientes sem câncer e 73 para pacientes com câncer). Totalizando 1555 imagens, foi feita a divisão entre imagens para treinamento em 60,8\%, validação em 29,8\% e teste em 9,4\%.
 
 Em seguida, o pré-processamento das imagens foi realizado. Foram utilizados métodos que realizam a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
 
-Além disso, foi utilizado um método originado da biblioteca \textit{Keras} para pré-processar os dados carregados para o treinamento. Nesse método, foi realizado o redimensionamento das imagens para 224x224, uma vez que a \textit{ResNet} requer esses valores \cite{kerasresnet50}, além da criação de um gerador que fornece lotes de imagens conforme o necessário durante o treinamento do modelo.
+Foi utilizado um método originado da biblioteca \textit{Keras} que cria uma estrutura que gera Lotes (do inglês \textit{Batches}) de dados sob demanda à medida que o modelo é treinado. Em vez de carregar todos os dados de treinamento de uma vez, o gerador carrega apenas um pequeno lote de dados por vez. O método também redimensiona das imagens para 224x224 \textit{pixels}, uma vez que a \textit{ResNet} requer esses valores \cite{kerasresnet50}, além de definir o modo de classificação em binário (pacientes sem câncer ou pacientes com câncer).
+
 
 %%%%%%%%%%%%%%%%%%%%%%%     TRANSFER LEARNING       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\esp \textit{Transfer Learning}} \label{transfer}
+\subsubsection{\esp Aplicação do \textit{Transfer Learning}} \label{transfer}
 
 A fim de empregar um modelo pré-treinado em uma determinada tarefa como ponto de partida para resolver um problema relacionado, o \textit{Transfer Learning} foi aplicado. Isso permite aproveitar o conhecimento adquirido por um modelo já pré-treinado, a fim de reconhecer padrões e características úteis nos dados. 
 
@@ -367,15 +308,18 @@ Na implementação do modelo de classificação de câncer, foi utilizada a arqu
 
 %%%%%%%%%%%%%%%%%%%%%%%     FUNÇÕES DE ATIVAÇÃO       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\esp Importação do Modelo de Rede Neural} \label{camadas}
+\subsubsection{\esp Declaração do Modelo de Rede Neural} \label{camadas}
 
 Com as imagens de treinamento e validação pré-processadas, procedeu-se com a incorporação da rede neural \textit{ResNet50} que aplica a técnica de \textit{Transfer Learning}. O modelo pré-treinado foi carregado, ajustando os parâmetros para excluir a camada superior do modelo, usando somente camadas convolucionais (camadas que fazem a extração dos atributos).
 
 Como citado na Subseção \ref{fully}, a \textit{ResNet} por mais que completa, disponibiliza os dados extraídos mas não implementa as camadas \textit{Fully Connected}. Como o modelo base contém somente camadas Convolucionais, foi feito um procedimento onde todas as camadas do modelo \textit{ResNet50} não fossem treinadas durante o processo de treinamento subsequente. Ao definir isso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
 
-Com base no modelo pré-treinado da \textit{ResNet50}, foi criado um modelo sequencial, com uma lista de camadas. Dentre elas, foi adicionada uma camada de \textit{Max-Pooling} global médio 2D que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas quatro camadas \textit{Fully-Connected} realizando transformações lineares nos dados de entrada. Dentre elas, três são \textit{Hidden Layers} e somente uma é \textit{Output Layer}.
+Com base no modelo pré-treinado da \textit{ResNet50}, foi criado um modelo sequencial, com uma lista de camadas. Dentre elas, foi adicionada uma camada de \textit{Max-Pooling} Global Médio 2D, que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas três camadas \textit{Fully-Connected} realizando transformações lineares nos dados de entrada. Dentre elas, duas são \textit{Hidden Layers} e somente uma é \textit{Output Layer}.
 
-As \textit{Hidden Layers} foram definidas com 1024, 128 e 36 neurônios, em conjunto com a função de ativação ReLU. Uma quantidade maior de neurônios em uma camada intermediária proporcionam à rede mais capacidade de aprender representações complexas e abstratas dos dados. Já a \textit{Output Layer} foi definida com somente 2 neurônios, que corresponde o número de classes em um problema de classificação (ou seja, uma classificação binária), em conjunto com a função de ativação \textit{Softmax}.
+As \textit{Hidden Layers} foram definidas com 128 e 2 neurônios, em conjunto com a função de ativação \textit{ReLU}. Uma quantidade maior de neurônios em uma camada intermediária proporcionam à rede mais capacidade de aprender representações complexas e abstratas dos dados. Já a \textit{Output Layer} foi definida com somente 2 neurônios, que corresponde o número de classes em um problema de classificação (ou seja, uma classificação binária), em conjunto com a função de ativação \textit{Softmax}.
+
+Entre duas camadas \textit{Fully-Connected}, uma camada de \textit{Dropout} com uma taxa de 0.2 foi inserida. Essa estratégia permite mitigar o Sobreajuste (do inglês \textit{Overfitting}), comportamento indesejável de \textit{Machine Learning} que ocorre quando o modelo fornece previsões precisas para dados de treinamento, mas não para novos dados. O \textit{Dropout} desativa aleatoriamente neurônios durante cada passagem, reduzindo a dependência excessiva entre eles. Esse processo aprimora a capacidade de generalização do modelo, tornando-o mais capaz de lidar com dados não vistos durante o treinamento. Com a taxa de \textit{Dropout} definida em 0.2, cerca de 20\% dos neurônios são desativados durante o treinamento, promovendo a robustez do modelo.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%     TREINAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
@@ -383,27 +327,27 @@ As \textit{Hidden Layers} foram definidas com 1024, 128 e 36 neurônios, em conj
 
 A fim de treinar o modelo para identificar padrões e classificar as imagens, o modelo foi compilado para treinamento utilizando uma função de otimização, uma função de perda e a métrica utilizada. 
 
-A função de otimização de Adam é um método de decida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. 
+A função de otimização de Adam é um método de descida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento. 
 
 Já a função de perda calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento, tendo dois ou mais rótulos de saída. Por fim, foi especificada a métrica utilizada para avaliar o desempenho do modelo durante o treinamento. A métrica escolhida foi a acurácia, que mede a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
 
 Após compilar o modelo, ele foi treinado utilizando os dados de treinamento. Foi atribuído ao histórico de treinamento, que contém métricas de perdas e avaliação, o treinamento do modelo utilizando os dados fornecidos. O método que realiza o treinamento requer a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento usados em cada atualização do modelo), e uma lista de Retornos de Chamada (do inglês \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. 
 
-No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Além disso, a quantidade de épocas foi definida em 10, juntamente com o tamanho do lote igual à 32, quantidades definidas a partir de testes empíricos.
+No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Adicionalmente, com base em testes empíricos, o número de épocas foi estabelecido em 15, juntamente com o tamanho do lote fixado em 32.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%      RESULTADOS      %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\esp Experimentos e Resultados} \label{results}
+\section{\esp Resultados} \label{results}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%     PRELIMINARES       %%%%%%%%%%%%%%%%%%%%%%
 
 % \subsection{\esp Resultados Preliminares} \label{prelim}
 
-Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Outrossim, foi feita a análise da acurácia e perda do modelo, onde o histórico do treino pode ser observado na Tabela \ref{tab:history10}. Além disso, as Figuras \ref{fig:acc10} e \ref{fig:loss10} representam os gráficos de acurácia e perda. Analisando os dados apresentados na Tabela \ref{tab:history10} em conjunto com a Figura \ref{fig:acc10}, é possível observar que a acurácia do modelo durante o treinamento demonstra um aumento gradual ao longo das épocas, registrando um notável aumento de 87\% desde a primeira até a última época. No entanto, durante a fase de validação, a acurácia oscila em uma escala menor. Começando em 48,8\%, ela estabiliza em 55\%, refletindo um aumento de 13,8\%. 
+Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Outrossim, foi feita a análise da acurácia e perda do modelo, onde o histórico do treino pode ser observado na Tabela \ref{tab:history10}. Além disso, as Figuras \ref{fig:acc10} e \ref{fig:loss10} representam os gráficos de acurácia e perda. Analisando os dados apresentados na Tabela \ref{tab:history10} em conjunto com a Figura \ref{fig:acc10}, é possível observar que a acurácia do modelo durante o treinamento demonstra um aumento gradual ao longo das épocas, registrando um notável aumento de 45,15\% desde a primeira até a última época. No entanto, durante a fase de validação, a acurácia oscila em uma escala menor. Começando em 55,48\%, ela estabiliza em 68,49\%, refletindo um aumento de 23,43\%. 
 
 \begin{table}[h]
   \centering
@@ -414,16 +358,21 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
   \hline
    épocas & \textit{loss} treinamento & \textit{accuracy} treinamento & \textit{loss} validação & \textit{accuracy} validação \\
   \hline
-    0 & 0.753520 & 0.524272 & 0.746499 & 0.483333 \\
-    1 & 0.635317 & 0.621359 & 0.718759 & 0.566667 \\
-    2 & 0.554994 & 0.752427 & 0.733762 & 0.516667 \\
-    3 & 0.467051 & 0.878641 & 0.739726 & 0.566667 \\
-    4 & 0.414687 & 0.888350 & 0.819429 & 0.550000 \\
-    5 & 0.372265 & 0.907767 & 0.762506 & 0.483333 \\
-    6 & 0.330910 & 0.936893 & 0.819286 & 0.566667 \\
-    7 & 0.276162 & 0.975728 & 0.797351 & 0.533333 \\
-    8 & 0.252824 & 0.961165 & 0.799594 & 0.550000 \\
-    9 & 0.224758 & 0.980583 & 0.916891 & 0.550000 \\
+    1 & 0.7770 & 0.5291 & 0.6806 & 0.5548 \\ 
+    2 & 0.6956 & 0.5820 & 0.6624 & 0.5616 \\
+    3 & 0.6508 & 0.6127 & 0.6406 & 0.6233 \\
+    4 & 0.6306 & 0.6540 & 0.6374 & 0.6233 \\
+    5 & 0.6212 & 0.6688 & 0.6294 & 0.6301 \\
+    6 & 0.5903 & 0.6815 & 0.6261 & 0.6918 \\
+    7 & 0.5809 & 0.7101 & 0.6160 & 0.6575 \\
+    8 & 0.5730 & 0.6857 & 0.6042 & 0.6849 \\
+    9 & 0.5569 & 0.7143 & 0.6151 & 0.6644 \\
+    10 & 0.5348 & 0.7386 & 0.6109 & 0.6712 \\ 
+    11 & 0.5101 & 0.7513 & 0.5972 & 0.6849 \\
+    12 & 0.5088 & 0.7587 & 0.5961 & 0.6781 \\
+    13 & 0.5088 & 0.7407 & 0.5963 & 0.6849 \\
+    14 & 0.4929 & 0.7735 & 0.5905 & 0.6849 \\
+    15 & 0.4776 & 0.7683 & 0.5879 & 0.6849 \\
   \hline
 \end{tabular}
 	\vspace{0.2cm}
@@ -455,16 +404,14 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
 \end{minipage}
 \end{figure}
 
-Além disso, na Figura \ref{fig:loss10}, observa-se que o erro de treinamento diminui no decorrer das épocas, comportamento esperado, uma vez que quanto menor o erro, maior será a acurácia da predição. Em contrapartida, o erro de validação aumenta à medida que o número de épocas aumenta, levando assim à uma perda de generalização. Isso é um sinal de Sobreajuste (do inglês \textit{Overfitting}), comportamento indesejável de \textit{Machine Learning} que ocorre quando o modelo fornece previsões precisas para dados de treinamento, mas não para novos dados.
+Além disso, na Figura \ref{fig:loss10}, observa-se que o erro de treinamento diminui no decorrer das épocas, comportamento esperado, uma vez que quanto menor o erro, maior será a acurácia da predição. Em contrapartida, o erro de validação aumenta à medida que o número de épocas aumenta, levando assim à uma perda de generalização. Isso é um sinal de \textit{Overfitting}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%     PREDIÇÕES       %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\esp Predição} \label{pred}
+\subsection{\esp Predições} \label{pred}
 
-Por fim, foi feita a predição do modelo de classificação com dados de teste. 
-
-O resultado da predição para um paciente sem câncer, disponível na Figura \ref{fig:predicao_sem}, retornou uma classificação correta, apontando que a imagem é de um paciente sem câncer. Entretanto, na Figura \ref{fig:predicao_com}, o modelo previu uma classificação incorreta, apontando que um paciente sem câncer tem a doença. Isso é devido à baixa acurácia que o modelo tem.
+Por fim, procedeu-se à avaliação do modelo de classificação utilizando dados do conjunto de imagens de teste. O resultado da predição para um paciente sem câncer, conforme ilustrado na Figura \ref{fig:predicao_sem}, demonstra uma classificação precisa, identificando corretamente a imagem como pertencente a um paciente sem câncer. No entanto, na Figura \ref{fig:predicao_com}, observou-se uma classificação incorreta, onde o modelo erroneamente indicou que um paciente sem câncer estava com a doença. Esta discrepância é atribuída à limitada acurácia do modelo na classificação de imagens.
 
 \begin{figure}[ht]
 \centering
