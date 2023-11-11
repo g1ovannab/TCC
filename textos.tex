@@ -344,7 +344,7 @@ No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar
 
 % \subsection{\esp Resultados Preliminares} \label{prelim}
 
-Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Outrossim, foi feita a análise da acurácia e perda do modelo, onde o histórico do treino pode ser observado na Tabela \ref{tab:history10}. Além disso, as Figuras \ref{fig:acc10} e \ref{fig:loss10} representam os gráficos de acurácia e perda. Analisando os dados apresentados na Tabela \ref{tab:history10} em conjunto com a Figura \ref{fig:acc10}, é possível observar que a acurácia do modelo durante o treinamento demonstra um aumento gradual ao longo das épocas, registrando um notável aumento de 43,27\% desde a primeira até a última época. No entanto, durante a fase de validação, a acurácia oscila em uma escala menor. Começando em 53,42\%, ela estabiliza em 73,29\%, refletindo um aumento de 37,22\%.
+Para avaliar o modelo proposto, foi utilizada a biblioteca \textit{Pandas} que manipula e faz a análise de dados. Outrossim, foi feita a análise da acurácia e perda do modelo, onde o histórico do treino pode ser observado na Tabela \ref{tab:history10}. Além disso, as Figuras \ref{fig:acc10} e \ref{fig:loss10} representam os gráficos de acurácia e perda. Analisando os dados apresentados na Tabela \ref{tab:history10} em conjunto com a Figura \ref{fig:acc10}, é possível observar que a acurácia do modelo durante o treinamento demonstra um aumento gradual ao longo das épocas, registrando um notável aumento de 43,27\% desde a primeira até a última época. No entanto, durante a fase de validação, a acurácia oscila em uma escala menor. Começando em 53,42\%, ela estabiliza em 73,29\%, refletindo um aumento de 37,22\%.
 
 \begin{table}[h]
   \centering
@@ -356,21 +356,35 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
    épocas & \textit{loss} treinamento & \textit{accuracy} treinamento & \textit{loss} validação & \textit{accuracy} validação \\
   \hline
     1 & 0.7826 & 0.5513 & 0.7033 & 0.5342 \\
-    2 & 0.7023 & 0.5841 & 0.6717 & 0.5685 \\
-    3 & 0.6649 & 0.6180 & 0.6552 & 0.5548 \\
-    4 & 0.6449 & 0.6392 & 0.6446 & 0.5822 \\
-    5 & 0.6189 & 0.6455 & 0.6437 & 0.6096 \\
-    6 & 0.5989 & 0.6868 & 0.6443 & 0.6301 \\
-    7 & 0.5678 & 0.7016 & 0.6551 & 0.5822 \\
-    8 & 0.5702 & 0.6984 & 0.6334 & 0.6164 \\
-    9 & 0.5534 & 0.7185 & 0.6253 & 0.6644 \\
-    10 & 0.5381 & 0.7259 & 0.6207 & 0.6233 \\ 
-    11 & 0.5188 & 0.7503 & 0.6178 & 0.6370 \\
-    12 & 0.5129 & 0.7376 & 0.6069 & 0.6781 \\
-    13 & 0.4916 & 0.7619 & 0.6010 & 0.6849 \\
-    14 & 0.4873 & 0.7767 & 0.6002 & 0.6986 \\
-    15 & 0.4674 & 0.7894 & 0.5903 & 0.7329 \\
   \hline
+    2 & 0.7023 & 0.5841 & 0.6717 & 0.5685 \\
+    \hline
+    3 & 0.6649 & 0.6180 & 0.6552 & 0.5548 \\
+    \hline
+    4 & 0.6449 & 0.6392 & 0.6446 & 0.5822 \\
+    \hline
+    5 & 0.6189 & 0.6455 & 0.6437 & 0.6096 \\
+    \hline
+    6 & 0.5989 & 0.6868 & 0.6443 & 0.6301 \\
+    \hline
+    7 & 0.5678 & 0.7016 & 0.6551 & 0.5822 \\
+    \hline
+    8 & 0.5702 & 0.6984 & 0.6334 & 0.6164 \\
+    \hline
+    9 & 0.5534 & 0.7185 & 0.6253 & 0.6644 \\
+    \hline
+    10 & 0.5381 & 0.7259 & 0.6207 & 0.6233 \\ 
+    \hline
+    11 & 0.5188 & 0.7503 & 0.6178 & 0.6370 \\
+    \hline
+    12 & 0.5129 & 0.7376 & 0.6069 & 0.6781 \\
+    \hline
+    13 & 0.4916 & 0.7619 & 0.6010 & 0.6849 \\
+    \hline
+    14 & 0.4873 & 0.7767 & 0.6002 & 0.6986 \\
+    \hline
+    15 & 0.4674 & 0.7894 & 0.5903 & 0.7329 \\
+    \hline
 \end{tabular}
 	\vspace{0.2cm}
      \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
@@ -402,6 +416,68 @@ Como resultado preliminares, para avaliar o modelo proposto, foi utilizada a bib
 \end{figure}
 
 Além disso, na Figura \ref{fig:loss10}, observa-se que o erro de treinamento diminui no decorrer das épocas, comportamento esperado, uma vez que quanto menor o erro, maior será a acurácia da predição. O erro de validação também diminui, mesmo que em uma escala menor.
+
+Em adição, foi gerada uma Matriz de Confusão, disponível para visualização na Tabela \ref{tab:confusion}. Essa matriz revela que o modelo alcançou 104 verdadeiros positivos, indicando sua capacidade de identificar corretamente casos de câncer. Da mesma forma, os 135 verdadeiros negativos evidenciam sua habilidade em reconhecer corretamente situações sem a presença da condição. No entanto, a presença de 130 falsos positivos e 95 falsos negativos destaca desafios na precisão do modelo, representando erros do Tipo I e Tipo II, respectivamente.
+
+\begin{table}[h]
+  \centering
+  \caption{Matriz de confusão}
+   \label{tab:confusion}
+   \vspace{-0.2cm}
+\begin{tabular}{|c|c|c|c|c|} 
+  \hline
+     & \textbf{Com câncer} & \textbf{Sem câncer}  \\
+  \hline
+    \textbf{Com câncer} & 104 & 130 \\
+  \hline
+    \textbf{Sem câncer} & 95 & 135 \\
+  \hline
+\end{tabular}
+	\vspace{0.2cm}
+     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
+\end{table}
+
+
+No cenário atual, métricas derivadas da matriz de confusão, como precisão, sensibilidade e pontuação F1, oferecem uma visão mais abrangente do desempenho do modelo. A precisão, calculada como 104 / (104 + 130), oferece uma medida da exatidão das classificações positivas. A sensibilidade, calculada como 104 / (104 + 95), revela a proporção de casos positivos identificados corretamente. 
+
+\begin{table}[h]
+  \centering
+  \caption{Matriz de confusão}
+   \label{tab:confusion}
+   \vspace{-0.2cm}
+\begin{tabular}{|c|c|c|c|c|} 
+  \hline
+    Classificação & Precisão & Sensibilidade & Pontuação F1 & Acurácia \\
+  \hline
+    Com câncer & 0.52 & 0.44 & 0.48 &\\
+  \hline
+    Sem câncer & 0.52 & 0.44 & 0.48 &\\
+  \hline
+\end{tabular}
+	\vspace{0.2cm}
+     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
+\end{table}
+
+
+% No atual cenário, métricas derivadas da matriz de confusão, como sensibilidade, especificidade e precisão, oferecem uma visão mais abrangente do desempenho do modelo. A sensibilidade, calculada como 104 / (104 + 95), revela a proporção de casos positivos identificados corretamente. A especificidade, determinada por 135 / (135 + 130), reflete a capacidade do modelo em reconhecer corretamente casos negativos. Já a precisão, calculada como 104 / (104 + 130), oferece uma medida da exatidão das classificações positivas. Essas métricas contribuem para uma compreensão aprofundada do modelo, essencial para aprimorar sua eficácia na detecção precoce de câncer.
+
+
+
+
+
+% A interpretação desses números depende do contexto específico do problema. No entanto, algumas métricas comuns derivadas da matriz de confusão incluem:
+
+% Sensibilidade (ou Recall): Proporção de casos positivos que foram corretamente identificados pelo modelo. Calcula-se como TP / (TP + FN). Neste caso, seria 104 / (104 + 95).
+
+% Especificidade: Proporção de casos negativos que foram corretamente identificados pelo modelo. Calcula-se como TN / (TN + FP). Neste caso, seria 135 / (135 + 130).
+
+% Precisão: Proporção de casos identificados como positivos que são realmente positivos. Calcula-se como TP / (TP + FP). Neste caso, seria 104 / (104 + 130).
+
+% Essas métricas ajudarão a fornecer uma compreensão mais detalhada do desempenho do seu modelo em relação à detecção de câncer
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%     PREDIÇÕES       %%%%%%%%%%%%%%%%%%%%%%
@@ -444,10 +520,11 @@ Os resultados obtidos durante a validação revelam uma taxa de acurácia de 73\
 
 
 % predicoes, avaliacao dos resultados do modelo, e metricas
-
-Primeiramente, é necessária a incorporação da técnica de Validação Cruzada (do inglês \textit{Cross-Validation}) para avaliar a estabilidade e generalização do modelo. Essa abordagem envolve a divisão do conjunto de dados em subconjuntos, permitindo que o modelo seja treinado e validado várias vezes em diferentes combinações de conjuntos de treinamento e teste. Isso fornece uma avaliação mais robusta do desempenho, garantindo que ele seja eficaz em diferentes conjuntos de dados e minimizando a possibilidade de \textit{Overfitting}.
+A incorporação da técnica de Validação Cruzada (do inglês \textit{Cross-Validation}) é essencial para avaliar a estabilidade e generalização do modelo. Ao dividir o conjunto de dados em subconjuntos, a técnica permite que o modelo seja treinado e validado várias vezes em diferentes combinações de conjuntos de treinamento e teste, garantindo uma avaliação mais robusta do desempenho, tornando-o mais eficaz em diferentes conjuntos de dados e minimizando a possibilidade de \textit{Overfitting}.
 
 Além disso, o modelo atual retorna uma classificação binária indicando a presença ou ausência de câncer de mama. Em futuras iterações, planeja-se expandir essa abordagem, introduzindo uma categorização mais refinada. A ideia é não apenas classificar a presença do câncer, mas também categorizar o estágio ou grau do câncer detectado, permitindo uma análise mais detalhada da condição do paciente.
+
+Adicionalmente, a remoção de ruídos e a segmentação de imagens são processos essenciais para o futuro. Esses processos desempenham papéis essenciais, aprimorando a eficácia da análise ao concentrar-se em regiões de interesse específicas. A remoção de ruídos, realizada por meio de métodos avançados como filtros de suavização, contribui para a obtenção de dados mais limpos e confiáveis. Simultaneamente, a segmentação possibilita uma compreensão mais detalhada da estrutura da imagem, tornando-a mais acessível aos modelos de predição. Assim, a integração desses processos visa otimizar a qualidade dos dados e elevar o desempenho geral do modelo.
 
 % Essas futuras melhorias visam não apenas consolidar a confiabilidade do modelo, mas também garantir que ele forneça insights mais específicos e detalhados sobre a condição do paciente. Ao integrar a validação cruzada e expandir a categorização, almejamos uma ferramenta mais sofisticada e precisa para o diagnóstico de câncer de mama, contribuindo assim para avanços significativos na área da saúde.
 
