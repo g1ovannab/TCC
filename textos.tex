@@ -221,7 +221,9 @@ As amostras de imagens mamográficas foram adquiridas a partir do desenvolviment
 
 O Subconjunto de Imagens de Mama com Curadoria DDSM\footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}} (do inglês, \textit{Curated Breast Imaging Subset DDSM}), desenvolvido em 2016, conta com um total de 277524 imagens, divididas em duas categorias principais: massa e calcificação. Cada uma dessas categorias é subdividida em três sub-categorias distintas. A primeira sub-categoria são as Mamografias Completas (do inglês \textit{Full Mammogram}), que contém imagens completas sem qualquer recorte. Em seguida, existem as Imagens Cortadas (do inglês \textit{Cropped Images}), que destacam áreas específicas do tumor. Por fim, as Regiões de Interesse (ROI, do inglês \textit{Region of Interest}), que se concentram exclusivamente em áreas que contém massas ou calcificações.
 
-Para o modelo projetado, foram usadas unicamente imagens de massas e imagens cortadas. Dentro desses critérios, o conjunto de dados apresenta 1555 imagens, distribuídas entre 784 imagens de pacientes com tumor maligno (câncer) e 771 imagens de pacientes com tumor benigno (ausência de câncer). Para ilustrar, a Figura \ref{fig:pcc} demonstra um exemplo de uma imagem utilizada para a predição de um paciente com câncer, enquanto a Figura \ref{fig:psc} exibe uma imagem de um paciente sem câncer. 
+Para o modelo projetado, foi definido unicamente o uso de imagens de massas e imagens cortadas. Dentro desses critérios, foi desenvolvido um algoritmo para realizar a segmentação das imagens utilizadas, uma vez que o banco de imagens apresenta uma abordagem não convencional em relação à sua categorização. Ao contrário de uma separação clara entre tumores benignos e tumores malignos, as imagens estão divididas em múltiplas pastas, na qual a identificação das imagens é feita por meio de arquivos CSVs, que indicam o identificador do paciente, a patologia do tumor e o caminho das imagens. A implementação do algoritmo está disponível publicamente no \textit{GitHub}\footnote{\href{https://github.com/g1ovannab/database-segmentation}{\textit{https://github.com/g1ovannab/database-segmentation}}}.
+
+Após executada a segmentação, o conjunto de dados apresentou 1555 imagens, distribuídas entre 784 imagens de pacientes com tumor maligno (câncer) e 771 imagens de pacientes com tumor benigno (ausência de câncer). Para ilustrar, a Figura \ref{fig:pcc} demonstra um exemplo de uma imagem utilizada para a predição de um paciente com câncer, enquanto a Figura \ref{fig:psc} exibe uma imagem de um paciente sem câncer. 
 
 % \footnote{\href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\textit{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}. Acesso em 13 de setembro de 2023.}}
 
@@ -251,7 +253,6 @@ Para desenvolver o algoritmo de classificação das imagens entre pacientes com 
 
 Algumas das principais bibliotecas utilizadas no desenvolvimento do modelo incluem o \textit{TensorFlow}, que desenvolve modelos de \textit{Machine Learning}, e o \textit{Keras}, que é frequentemente combinado com o \textit{TensorFlow} para a construção e treinamento de redes neurais. Além disso, a biblioteca \textit{matplotlib} é empregada para a visualização de dados, permitindo a criação de gráficos, \textit{plots}, histogramas, entre outros. O \textit{numpy} desempenha um papel fundamental na computação e análise numérica, fornecendo uma estrutura de dados versátil, como vetores multidimensionais, para o armazenamento de grandes conjuntos de dados numéricos. A biblioteca \textit{cv2} fornece funções essenciais para carregar, manipular e processar imagens, enquanto o \textit{ImageDataGenerator}, originado do \textit{TensorFlow}, simplifica a transformação de imagens em dados vetoriais, tornando os cálculos durante o treinamento do modelo mais eficientes.
 
-
 Apresentada na Subseção \ref{redesconvoleredesresidual}, a arquitetura \textit{ResNet} destaca-se por sua ênfase no reconhecimento de imagens, além de ter conquistado o primeiro lugar no Desafio de Reconhecimento Visual em Larga Escala ImageNet (ILSVRC, do inglês \textit{ImageNet Large Scale Visual Recognition Challenge}) em 2015 \cite{resnet50analisys}. Neste desafio, obteve uma taxa de erro top 5 de 3,6\% ao empregar uma CNN composta por 152 camadas, denominada \textit{ResNet152}.
 
 No entanto, apesar do prestígio da \textit{ResNet152} como o modelo mais profundo, capaz de capturar recursos abstratos e complexos, essa profundidade também traz consigo um peso significativo em termos computacionais. Isso a torna mais custosa tanto no treinamento quanto na implementação em dispositivos com recursos limitados. A família de variantes \textit{ResNet} inclui modelos que aderem ao mesmo conceito, mas diferentes quantidades de camadas, como \textit{ResNet18}, \textit{ResNet34}, \textit{ResNet50} e \textit{ResNet101}. 
@@ -265,7 +266,7 @@ Dentre essas, a \textit{ResNet50} se destaca por ter um equilíbrio na profundid
 
 \subsection{\esp Métodos} \label{metodos}
 
-Nesta subseção, são apresentadas as metodologias para o treinamento de um modelo de rede neural convolucional fazendo uso de bibliotecas do \textit{Python}. Disponíveis na Figura \ref{fig:diagrama}, o método proposto consiste em cinco etapas: base de imagens, pré-processamento, aplicação do método de \textit{Transfer Learning}, declaração do modelo e predições.
+Nesta subseção, são apresentadas as metodologias para o treinamento de um modelo de rede neural convolucional fazendo uso de bibliotecas do \textit{Python}. Disponíveis na Figura \ref{fig:diagrama}, o método proposto consiste em cinco etapas: pré-processamento, aplicação do método de \textit{Transfer Learning}, declaração do modelo da rede neural, treinamento do modelo e predições.
 
 \begin{figure}[ht]
  	\centering	
@@ -283,7 +284,8 @@ Nesta subseção, são apresentadas as metodologias para o treinamento de um mod
 %%%%%%%%%%%%%%%%%%%%%%%     PRÉ-PROCESSAMENTO       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{\esp Pré-Processamento} \label{preprocess}
-Inicialmente, foram carregadas 945 imagens como dados de treinamento (sendo 468 para pacientes sem câncer e 477 para paciente com câncer), 464 imagens como dados de validação (sendo 230 para pacientes sem câncer e 234 para pacientes com câncer), e 146 imagens para dados de teste (sendo 73 para pacientes sem câncer e 73 para pacientes com câncer). Totalizando 1555 imagens, foi feita a divisão entre imagens para treinamento em 60,8\%, validação em 29,8\% e teste em 9,4\%.
+
+Inicialmente, foi feita uma segunda segmentação, desta vez manual, para distribuir as imagens em diferentes conjuntos. Foram carregadas 945 imagens como dados de treinamento (sendo 468 para pacientes sem câncer e 477 para paciente com câncer), 464 imagens como dados de validação (sendo 230 para pacientes sem câncer e 234 para pacientes com câncer), e 146 imagens para dados de teste (sendo 73 para pacientes sem câncer e 73 para pacientes com câncer). Totalizando 1555 imagens, foi feita a divisão entre imagens para treinamento em 60,8\%, validação em 29,8\% e teste em 9,4\%.
 
 Em seguida, o pré-processamento das imagens foi realizado. Foram utilizados métodos que realizam a normalização dos valores dos \textit{pixels} das imagens, transformando os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
 
@@ -307,7 +309,7 @@ Na implementação do modelo de classificação de câncer, foi utilizada a arqu
 
 Com as imagens de treinamento e validação pré-processadas, procedeu-se com a incorporação da rede neural \textit{ResNet50} que aplica a técnica de \textit{Transfer Learning}. O modelo pré-treinado foi carregado, ajustando os parâmetros para excluir a camada superior do modelo, usando somente camadas convolucionais (camadas que fazem a extração dos atributos).
 
-Como citado na Subseção \ref{redesconvoleredesresidual}, a \textit{ResNet} por mais que completa, disponibiliza os dados extraídos mas não implementa as camadas \textit{Fully Connected}. Como o modelo base contém somente camadas Convolucionais, foi feito um procedimento onde todas as camadas do modelo \textit{ResNet50} não fossem treinadas durante o processo de treinamento subsequente. Ao definir isso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
+Como citado na Subseção \ref{redesconvoleredesresidual}, a \textit{ResNet}, por mais que completa, disponibiliza os dados extraídos mas não implementa as camadas \textit{Fully Connected}. Como o modelo base contém somente camadas Convolucionais, foi feito um procedimento onde todas as camadas do modelo \textit{ResNet50} não fossem treinadas durante o processo de treinamento subsequente. Ao definir isso, as camadas do modelo base permaneceram com os pesos pré-treinados e não foram atualizadas durante o treinamento adicional. 
 
 Com base no modelo pré-treinado da \textit{ResNet50}, foi criado um modelo sequencial, com uma lista de camadas. Dentre elas, foi adicionada uma camada de \textit{Max-Pooling} Global Médio 2D, que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas três camadas \textit{Fully-Connected} realizando transformações lineares nos dados de entrada. Dentre elas, duas são \textit{Hidden Layers} e somente uma é \textit{Output Layer}.
 
@@ -426,3 +428,27 @@ Por fim, procedeu-se à avaliação do modelo de classificação utilizando dado
         \textbf{\footnotesize Fonte: \href{https://www.kaggle.com/datasets/awsaf49/cbis-ddsm-breast-cancer-image-dataset}{\cite{newdatabase}}}
     \end{minipage}
 \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%      CONCLUSÃO      %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{\esp Conclusão} \label{conclusion}
+Baseando-se na existência de ferramentas auxiliares no diagnóstico do câncer de mama, o presente artigo propõe uma abordagem que utiliza \textit{Transfer Learning} em redes neurais para a identificação de câncer de mama em pacientes. A proposta visa integrar algoritmos de processamento de imagem, juntamente com estruturas de neurônios como Redes Convolucionais e Redes Residuais, na criação de um modelo de predição. 
+
+Para obter um modelo de predição satisfatório, o procedimento metodológico incluiu o pré-processamento das imagens, envolvendo redimensionamento e definição de \textit{batches} para otimizar a entrada no modelo. Adotou-se a técnica de \textit{Transfer Learning}, incorporando uma Rede Neural Residual (\textit{ResNet-50}) para aprimorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. Juntamente, foram adicionadas novas \textit{layers}, uma vez que a \textit{ResNet50} não implementa camadas \textit{Fully Connected}, responsáveis por transformar características extraídas em uma saída final. Com a inclusão de novas camadas, o treinamento do modelo foi possibilitado, utilizando funções de otimização e perda.
+
+Os resultados obtidos durante a validação revelam uma taxa de acurácia de 73\%, indicando a capacidade do do modelo em reconhecer padrões representativos de malignidade em imagens mamográficas. Embora tenha sido alcançado um resultado satisfatório, a evolução contínua do estudo em trabalhos futuros é considerada para aprimorar a robustez e aplicabilidade do modelo de detecção de câncer de mama. 
+
+
+% predicoes, avaliacao dos resultados do modelo, e metricas
+
+Primeiramente, é necessária a incorporação da técnica de Validação Cruzada (do inglês \textit{Cross-Validation}) para avaliar a estabilidade e generalização do modelo. Essa abordagem envolve a divisão do conjunto de dados em subconjuntos, permitindo que o modelo seja treinado e validado várias vezes em diferentes combinações de conjuntos de treinamento e teste. Isso fornece uma avaliação mais robusta do desempenho, garantindo que ele seja eficaz em diferentes conjuntos de dados e minimizando a possibilidade de \textit{Overfitting}.
+
+Além disso, o modelo atual retorna uma classificação binária indicando a presença ou ausência de câncer de mama. Em futuras iterações, planeja-se expandir essa abordagem, introduzindo uma categorização mais refinada. A ideia é não apenas classificar a presença do câncer, mas também categorizar o estágio ou grau do câncer detectado, permitindo uma análise mais detalhada da condição do paciente.
+
+% Essas futuras melhorias visam não apenas consolidar a confiabilidade do modelo, mas também garantir que ele forneça insights mais específicos e detalhados sobre a condição do paciente. Ao integrar a validação cruzada e expandir a categorização, almejamos uma ferramenta mais sofisticada e precisa para o diagnóstico de câncer de mama, contribuindo assim para avanços significativos na área da saúde.
+
+% Apesar do sucesso observado, reconhecemos que há espaço para aprimoramentos e expansões em estudos futuros. Recomendamos investigações mais aprofundadas na otimização dos parâmetros do modelo, exploração de outras arquiteturas de redes neurais, e inclusão de conjuntos de dados mais diversificados. Além disso, a consideração de abordagens multi-modal, como a combinação de dados de diferentes modalidades de imagem, pode fortalecer ainda mais a robustez do modelo. Essas sugestões visam aprimorar a generalização do modelo e, assim, contribuir para avanços significativos na detecção precoce e precisa do câncer de mama.
