@@ -313,7 +313,7 @@ A fim de treinar o modelo para identificar padrões e classificar as imagens, o 
 
 A função de otimização de Adam é um método de descida de gradiente estocástico baseado na estimativa adaptativa de momentos de primeira e segunda ordem, que ajusta os pesos da rede neural durante o treinamento. De acordo com \citeonline{adam}, o método é computacionalmente eficiente, tem pouco requisito de memória, é invariante ao reescalonamento diagonal de gradientes e é adequado para problemas grandes em termos de dados. Para isso, foi definido uma taxa de aprendizado de \ensuremath{1 \times 10^{-4}}, que controla o tamanho dos passos dados pelo otimizador durante o treinamento.
 
-Já a função de perda calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento, tendo dois ou mais rótulos de saída. Por fim, foi especificada a métrica utilizada para avaliar o desempenho do modelo durante o treinamento. A métrica escolhida foi a acurácia, que mede a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
+Já a função de perda calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento, tendo dois ou mais rótulos de saída. Por fim, definiu-se a acurácia como a métrica primária para avaliar o desempenho do modelo durante o treinamento, representando a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
 
 Após compilar o modelo, ele foi treinado utilizando os dados de treinamento, associando ao histórico de treinamento métricas de perda e avaliação. O método que realiza o treinamento exige a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento usados em cada atualização do modelo), e uma lista de Retornos de Chamada (do inglês \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Adicionalmente, com base em testes empíricos, o número de épocas foi estabelecido em 15, juntamente com o tamanho do lote fixado em 32.
 
@@ -329,9 +329,9 @@ Após compilar o modelo, ele foi treinado utilizando os dados de treinamento, as
 
 % \subsection{\esp Resultados Preliminares} \label{prelim}
 
-Para avaliar o modelo proposto, empregou-se a biblioteca \textit{Pandas} para a manipulação e análise de dados. Analisando o gráfico apresentados da Figura \ref{fig:acc}, é possível observar que a acurácia do modelo durante o treinamento (linha azul) e durante a validação (linha laranja) demonstram um aumento gradual ao longo das épocas, com a acurácia da validação estabilizando em 73,29\%.
+Para avaliar o modelo proposto, empregou-se a biblioteca \textit{Pandas} para a manipulação e análise de dados. Analisando o gráfico apresentado na Figura \ref{fig:acc}, é possível observar que a acurácia do modelo durante o treinamento e durante a validação, demonstram um aumento gradual ao longo das épocas, com a acurácia da validação estabilizando em 73,29\%.
 
-Já na Figura \ref{fig:loss}, observa-se que o erro de treinamento diminui no decorrer das épocas, comportamento esperado, uma vez que quanto menor o erro, maior será a acurácia da predição. O erro de validação também diminui, mesmo que em uma escala menor.
+Já na Figura \ref{fig:loss}, observa-se que a perda de treinamento diminui no decorrer das épocas, comportamento esperado uma vez que quanto menor a perda, maior será a acurácia da predição. A perda de validação também diminui, mesmo que em uma escala menor.
 
 \begin{figure}[ht]
 \centering
@@ -357,7 +357,7 @@ Já na Figura \ref{fig:loss}, observa-se que o erro de treinamento diminui no de
 \end{minipage}
 \end{figure}
 
-
+Na avaliação do modelo, adotou-se a estratégia conhecida como HoldOut, na qual 9,4\% do conjunto de imagens foram separadas para teste, assegurando que o modelo fosse testado com dados não previamente observados. O teste resultou em uma perda de 60,12\%, além de uma acurácia, métrica definida na Subseção \ref{treinamento}, de 68,75\%.
 
 Em adição, foi gerada uma Matriz de Confusão, disponível para visualização na Tabela \ref{tab:confusion}. Essa matriz revela que o modelo alcançou 104 verdadeiros positivos, indicando sua capacidade de identificar corretamente casos de câncer. Da mesma forma, os 135 verdadeiros negativos evidenciam sua habilidade em reconhecer corretamente situações sem a presença da condição. No entanto, a presença de 130 falsos positivos e 95 falsos negativos destaca desafios na precisão do modelo, representando erros do Tipo I e Tipo II, respectivamente.
 
@@ -380,53 +380,39 @@ Em adição, foi gerada uma Matriz de Confusão, disponível para visualização
 \end{table}
 
 
-% No cenário atual, métricas derivadas da matriz de confusão, como precisão, sensibilidade e pontuação F1, oferecem uma visão mais abrangente do desempenho do modelo. A precisão, calculada como 104 / (104 + 130), oferece uma medida da exatidão das classificações positivas. A sensibilidade, calculada como 104 / (104 + 95), revela a proporção de casos positivos identificados corretamente. 
-
-% \begin{table}[h]
-%   \centering
-%   \caption{Métricas}
-%    \label{tab:metricas}
-%    \vspace{-0.2cm}
-% \begin{tabular}{|c|c|c|c|c|} 
-%   \hline
-%     Classificação & Precisão & Sensibilidade & Pontuação F1 & Acurácia \\
-%   \hline
-%     Com câncer & 0.52 & 0.44 & 0.48 &\\
-%   \hline
-%     Sem câncer & 0.52 & 0.44 & 0.48 &\\
-%   \hline
-% \end{tabular}
-% 	\vspace{0.2cm}
-%      \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-% \end{table}
 
 
-% No atual cenário, métricas derivadas da matriz de confusão, como sensibilidade, especificidade e precisão, oferecem uma visão mais abrangente do desempenho do modelo. A sensibilidade, calculada como 104 / (104 + 95), revela a proporção de casos positivos identificados corretamente. A especificidade, determinada por 135 / (135 + 130), reflete a capacidade do modelo em reconhecer corretamente casos negativos. Já a precisão, calculada como 104 / (104 + 130), oferece uma medida da exatidão das classificações positivas. Essas métricas contribuem para uma compreensão aprofundada do modelo, essencial para aprimorar sua eficácia na detecção precoce de câncer.
+No cenário atual, métricas derivadas da matriz de confusão, como precisão e sensibilidade. Disponíveis na Tabela \ref{tab:metricas}, as métricas oferecem uma visão mais abrangente do desempenho do modelo. A precisão oferece uma medida da exatidão das classificações positivas, representando a proporção de casos identificados como positivos que são realmente positivos. 
+
+% Em contrapartida, a sensibilidade revela a proporção de casos positivos identificados corretamente. Adicionalmente, a pontuação F1 oferece um equilíbrio entre precisão e sensibilidade. 
+
+\begin{table}[h]
+  \centering
+  \caption{Métricas}
+   \label{tab:metricas}
+   \vspace{-0.2cm}
+\begin{tabular}{|c|c|c|c|c|} 
+  \hline
+    Classificação & Precisão & Sensibilidade  \\ % & Pontuação F1
+  \hline
+    Com câncer & 0.52 & 0.44 \\ % & 0.48
+  \hline
+    Sem câncer & 0.51 & 0.59 \\ % & 0.55
+  \hline
+\end{tabular}
+	\vspace{0.2cm}
+     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
+\end{table}
 
 
-
-
-
-% A interpretação desses números depende do contexto específico do problema. No entanto, algumas métricas comuns derivadas da matriz de confusão incluem:
-
-% Sensibilidade (ou Recall): Proporção de casos positivos que foram corretamente identificados pelo modelo. Calcula-se como TP / (TP + FN). Neste caso, seria 104 / (104 + 95).
-
-% Especificidade: Proporção de casos negativos que foram corretamente identificados pelo modelo. Calcula-se como TN / (TN + FP). Neste caso, seria 135 / (135 + 130).
-
-% Precisão: Proporção de casos identificados como positivos que são realmente positivos. Calcula-se como TP / (TP + FP). Neste caso, seria 104 / (104 + 130).
-
-% Essas métricas ajudarão a fornecer uma compreensão mais detalhada do desempenho do seu modelo em relação à detecção de câncer
-
-
-
-
+Finalmente, obteve-se o resultado do cálculo da acurácia, usando dados da matriz de confusão. Dado que a acurácia é resultada pelo número total de acertos, pelo número total de predições, a acurácia do modelo nesse sentido resultou em 52\%.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%     PREDIÇÕES       %%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\esp Predições} \label{pred}
 
-Por fim, procedeu-se à avaliação do modelo de classificação utilizando dados do conjunto de imagens de teste. O resultado da predição para um paciente sem câncer, conforme ilustrado na Figura \ref{fig:predicao_sem}, demonstra uma classificação precisa, identificando corretamente a imagem como pertencente a um paciente sem câncer. No entanto, na Figura \ref{fig:predicao_com}, observou-se uma classificação incorreta, onde o modelo erroneamente indicou que um paciente sem câncer estava com a doença. Esta discrepância é atribuída à limitada acurácia do modelo na classificação de imagens.
+Procedeu-se à avaliação do modelo de classificação utilizando dados do conjunto de imagens de teste. O resultado da predição para um paciente sem câncer, conforme ilustrado na Figura \ref{fig:predicao_sem}, demonstra uma classificação precisa, identificando corretamente a imagem como pertencente a um paciente sem câncer. Assim como na predição anterior, na Figura \ref{fig:predicao_com} observou-se uma classificação correta.
 
 \begin{figure}[ht]
 \centering
@@ -458,8 +444,7 @@ Baseando-se na existência de ferramentas auxiliares no diagnóstico do câncer 
 
 Para obter um modelo de predição satisfatório, o procedimento metodológico incluiu o pré-processamento das imagens, envolvendo redimensionamento e definição de \textit{batches} para otimizar a entrada no modelo. Adotou-se a técnica de \textit{Transfer Learning}, incorporando uma Rede Neural Residual (\textit{ResNet-50}) para aprimorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. Juntamente, foram adicionadas novas \textit{layers}, uma vez que a \textit{ResNet50} não implementa camadas \textit{Fully Connected}, responsáveis por transformar características extraídas em uma saída final. Com a inclusão de novas camadas, o treinamento do modelo foi possibilitado, utilizando funções de otimização e perda.
 
-% colocar mais resultados aqui
-Os resultados obtidos durante a validação revelam uma taxa de acurácia de 73\%, indicando a capacidade do do modelo em reconhecer padrões representativos de malignidade em imagens mamográficas. 
+Os resultados obtidos revelam uma taxa de acurácia de 73,29\% durante a validação e 68,75\% durante o teste, indicando a capacidade do do modelo em reconhecer padrões representativos de malignidade em imagens mamográficas. 
 
 
 Embora resultados tenham sido alcançados, a evolução contínua do estudo em trabalhos futuros visa aprimorar a robustez e aplicabilidade do modelo de detecção de câncer de mama. A incorporação da Validação Cruzada (do inglês \textit{Cross-Validation}) é essencial para avaliar a estabilidade e generalização do modelo. Ao dividir o conjunto de dados em subconjuntos, a técnica permite treinar e validar o modelo várias vezes em diferentes combinações de conjuntos de treinamento e validação, garantindo uma avaliação mais robusta do desempenho, minimizando a possibilidade de \textit{Overfitting}.
