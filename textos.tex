@@ -23,7 +23,7 @@ Diante do contexto levantado, o presente artigo propõe uma metodologia para ide
 
 Para criar um modelo de classificação binária (com câncer e sem câncer), foi utilizado o método de Aprendizado Profundo (do inglês \textit{Deep Learning}), que consiste em uma técnica avançada de Aprendizado de Máquina (do inglês \textit{Machine Learning}). Após o treinamento do modelo, a acurácia do modelo foi avaliada por meio de testes. Uma vez devidamente treinado, o algoritmo demonstrou a capacidade de analisar as imagens de mamografia, realizando uma classificação precisa e automatizada do câncer de mama.
 
-O restante deste artigo está estruturado da seguinte maneira: a Seção \ref{fundteorica} apresenta o referencial teórico, na Seção \ref{trabcorr} é fornecida uma visão geral dos trabalhos correlatos encontrados na literatura, a Seção \ref{metodologia} descreve a metodologia, dividida em materiais e métodos, e, por fim, a Seção \ref{results} apresenta os resultados com métricas e predições. 
+O restante deste artigo está estruturado da seguinte maneira: a Seção \ref{fundteorica} apresenta o referencial teórico, na Seção \ref{trabcorr} é fornecida uma visão geral dos trabalhos correlatos encontrados na literatura, a Seção \ref{metodologia} descreve a metodologia, dividida em materiais e métodos, a Seção \ref{results} apresenta os resultados com métricas e predições, e, por fim, a Seção \ref{conclusion} fornece conclusões sobre o trabalho, juntamente com trabalhos futuros.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,7 +33,7 @@ O restante deste artigo está estruturado da seguinte maneira: a Seção \ref{fu
 
 \section{\esp Fundamentação teórica}  \label{fundteorica}
 
-De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, esta seção retrata conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de mamografias. Além disso, será discutida a técnica de \textit{Deep Learning}, com ênfase em Redes Neurais e Redes Residuais. Além disso, são abordadas as camadas típicas de uma Rede Neural e as funções de ativação comuns.
+De modo a fornecer informações mais detalhadas sobre os tópicos vitais para a compreensão do presente artigo, esta seção retrata conceitos fundamentais sobre o câncer de mama, exames e tratamentos para a doença, bem como técnicas de processamento de mamografias. Além disso, será discutida a técnica de \textit{Deep Learning}, com ênfase em Redes Convolucionais e Redes Residuais. Além disso, são abordadas as camadas típicas de uma Rede Neural e as funções de ativação comuns.
 
 %%%%%%%%%%%%%%%%%%%%%%      CÂNCER DE MAMA       %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -278,7 +278,9 @@ Nesta subseção, são apresentadas as metodologias para o treinamento de um mod
 
 \subsubsection{\esp Pré-Processamento} \label{preprocess}
 
-Inicialmente, foi feita uma segunda segmentação, desta vez manual, para distribuir as imagens em conjuntos distintos. O conjunto de treinamento consistiu em 945 imagens (sendo 468 para pacientes sem câncer e 477 para paciente com câncer), 464 imagens como dados de validação (sendo 230 para pacientes sem câncer e 234 para pacientes com câncer), e 146 imagens para dados de teste (sendo 73 para pacientes sem câncer e 73 para pacientes com câncer). Totalizando 1555 imagens, a distribuição resultou em 60,8\% para treinamento, 29,8\% validação e 9,4\% para teste.
+Para validar as predições realizadas na Seção \ref{results}, adotou-se a estratégia de \textit{Holdout}, na qual o conjunto de dados é particionado em três subconjuntos distintos: treinamento, validação e teste. Essa abordagem permite treinar o modelo com um conjunto específico de dados, validar seu desempenho com dados distintos do treinamento e, por fim, avaliar objetivamente o modelo utilizando dados de teste que não foram previamente utilizados. Essa técnica ajuda a evitar o Sobreajuste (do inglês \textit{Overfitting}), comportamento indesejável de \textit{Machine Learning}, onde o modelo se ajusta excessivamente aos dados de treinamento, comprometendo sua capacidade de generalização para novos dados.
+
+Além da segmentação das imagens em conjuntos de pacientes com câncer e sem câncer, realizada por meio de um código citado na Subseção \ref{materiais}, foi efetuada uma segunda segmentação, empregando a técnica de \textit{Holdout} para distribuir as imagens em conjuntos distintos. O conjunto de treinamento consistiu em 945 imagens (sendo 468 para pacientes sem câncer e 477 para paciente com câncer), 464 imagens como dados de validação (sendo 230 para pacientes sem câncer e 234 para pacientes com câncer), e 146 imagens para dados de teste (sendo 73 para pacientes sem câncer e 73 para pacientes com câncer). Essa divisão resultou em um total de 1555 imagens, visando garantir uma distribuição representativa. As proporções foram definidas por meio de testes empíricos, culminando em 60,8\% para imagens de treinamento, 29,8\% para imagens de validação, e 9,4\% para imagens de teste.
 
 Em seguida, as imagens foram pré-processadas utilizando métodos transformam os valores originais dos \textit{pixels} em uma escala específica. Geralmente, essa escala é utilizada com o valor de 1/255, uma vez que as imagens utilizadas na implementação consistem em coeficientes Vermelho, Verde, Azul (RGB, do inglês \textit{Red, Green, Blue}), ou seja, cada \textit{pixel} tem um valor entre 0 e 255. Entretanto, esses valores são grandes demais para o modelo proposto processar, conforme a taxa de aprendizado comum. Por conta disso, os valores foram realinhados para se distinguir entre 0 e 1.
 
@@ -302,7 +304,7 @@ Com as imagens de treinamento e validação pré-processadas, a rede neural \tex
 
 Com base no modelo pré-treinado da \textit{ResNet50}, foi construído um modelo sequencial com uma camada de \textit{Max-Pooling} Global Médio 2D, que reduz a dimensionalidade dos recursos extraídos pelas camadas anteriores. Além disso, foram adicionadas três camadas \textit{Fully-Connected}, sendo duas \textit{Hidden Layers} com 128 e 2 neurônios, ambas usando a função de ativação \textit{ReLU}. A \textit{Output Layer} foi configurada com 2 neurônios, número que corresponde a quantidade de classes em um problema de classificação (ou seja, uma classificação binária), em conjunto com a função de ativação \textit{Softmax}.
 
-Entre duas camadas \textit{Fully-Connected}, foi inserida uma camada de \textit{Dropout} com uma taxa de 0.2 para mitigar o Sobreajuste (do inglês \textit{Overfitting}), comportamento indesejável de \textit{Machine Learning} que ocorre quando o modelo fornece previsões precisas para dados de treinamento, mas não para novos dados. O \textit{Dropout} desativa aleatoriamente neurônios durante cada passagem, reduzindo a dependência excessiva entre eles, promovendo a generalização modelo e tornando-o mais capaz de lidar com dados não vistos durante o treinamento. A taxa de \textit{Dropout} definida em 0.2 implica que cerca de 20\% dos neurônios são desativados durante o treinamento, fortalecendo a robustez do modelo.
+Entre duas camadas \textit{Fully-Connected}, foi inserida uma camada de \textit{Dropout} com uma taxa de 0.2 para mitigar o \textit{Overfitting}. O \textit{Dropout} desativa aleatoriamente neurônios durante cada passagem, reduzindo a dependência excessiva entre eles, promovendo a generalização modelo e tornando-o mais capaz de lidar com dados não vistos durante o treinamento. A taxa de \textit{Dropout} definida em 0.2 implica que cerca de 20\% dos neurônios são desativados durante o treinamento, fortalecendo a robustez do modelo.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%     TREINAMENTO       %%%%%%%%%%%%%%%%%%%%%%
@@ -315,7 +317,23 @@ A função de otimização de Adam é um método de descida de gradiente estocá
 
 Já a função de perda calcula a diferença entre as probabilidades preditas pelo modelo e as classes reais dos dados de treinamento, tendo dois ou mais rótulos de saída. Por fim, definiu-se a acurácia como a métrica primária para avaliar o desempenho do modelo durante o treinamento, representando a proporção de exemplos classificados corretamente em relação ao total de exemplos. 
 
-Após compilar o modelo, ele foi treinado utilizando os dados de treinamento, associando ao histórico de treinamento métricas de perda e avaliação. O método que realiza o treinamento exige a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento usados em cada atualização do modelo), e uma lista de Retornos de Chamada (do inglês \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Adicionalmente, com base em testes empíricos, o número de épocas foi estabelecido em 15, juntamente com o tamanho do lote fixado em 32.
+Após compilar o modelo, ele foi treinado utilizando os dados de treinamento, associando ao histórico de treinamento métricas de perda e avaliação. O método que realiza o treinamento exige a quantidade de épocas (passagem completa pelos dados de treinamento), tamanho do lote (número de exemplos de treinamento usados em cada atualização do modelo), e uma lista de Retornos de Chamada (do inglês \textit{Callback}), que executam ações específicas em momentos específicos durante o treinamento. No modelo proposto um único \textit{Callback} foi atribuído, usado para salvar os \textit{logs} do treinamento em um formato para visualização posterior. Adicionalmente, com base em testes empíricos, o número de épocas foi estabelecido em 15, juntamente com o tamanho do lote fixado em 16.
+
+Com o intuito de aprofundar a análise dos resultados da execução do modelo, são empregadas métricas derivadas de uma matriz de confusão, com ênfase em parâmetros como precisão, sensibilidade e acurácia, oferecendo uma visão mais abrangente do desempenho do modelo. A precisão analisa a capacidade do modelo em identificar corretamente as classificações verdadeiras em relação aos falsos positivos, conforme expressa na Equação \ref{eq:precisao}.
+
+\begin{equation}\label{eq:precisao}
+Precis\tilde{a}o = \frac{Verdadeiros\;Positivos}{Verdadeiros\;Positivos\;+\;Falsos\;Positivos}
+\end{equation}
+
+Em contrapartida, a sensibilidade destaca a capacidade do modelo em identificar classificações verdadeiras em relação aos falsos negativos, como demonstrado na Equação \ref{eq:sensibilidade}. Além disso, a acurácia fornece uma visão geral do desempenho, expressa como porcentagem de acertos do modelo, apresentada na Equação \ref{eq:acuracia}
+
+\begin{equation}\label{eq:sensibilidade}
+Sensibilidade = \frac{Verdadeiros\;Positivos}{Verdadeiros\;Positivos\;+\;Falsos\;Negativos}
+\end{equation}
+
+\begin{equation}\label{eq:acuracia}
+Acur\acute{a}cia = \frac{Total\;de\;Acertos}{Total\;de\;Predi\c{ç}\tilde{o}es}
+\end{equation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -324,95 +342,7 @@ Após compilar o modelo, ele foi treinado utilizando os dados de treinamento, as
 
 \section{\esp Resultados} \label{results}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%     PRELIMINARES       %%%%%%%%%%%%%%%%%%%%%%
-
-% \subsection{\esp Resultados Preliminares} \label{prelim}
-
-Para avaliar o modelo proposto, empregou-se a biblioteca \textit{Pandas} para a manipulação e análise de dados. Analisando o gráfico apresentado na Figura \ref{fig:acc}, é possível observar que a acurácia do modelo durante o treinamento e durante a validação, demonstram um aumento gradual ao longo das épocas, com a acurácia da validação estabilizando em 73,29\%.
-
-Já na Figura \ref{fig:loss}, observa-se que a perda de treinamento diminui no decorrer das épocas, comportamento esperado uma vez que quanto menor a perda, maior será a acurácia da predição. A perda de validação também diminui, mesmo que em uma escala menor.
-
-\begin{figure}[ht]
-\centering
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de acurácia}
-  \vspace{-0.4cm}
-  \includegraphics[width=\linewidth]{figuras/accuracy.png}
-  \captionsetup{justification=centering}
-  \vspace{-0.2cm}
-  \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-  \label{fig:acc}
-\end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-  \centering
-  \caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de perda}
-  \vspace{-0.4cm}
-  \includegraphics[width=\linewidth]{figuras/loss.png}
-  \captionsetup{justification=centering}
-  \vspace{-0.2cm}
-  \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-  \label{fig:loss}
-\end{minipage}
-\end{figure}
-
-Na avaliação do modelo, adotou-se a estratégia conhecida como HoldOut, na qual 9,4\% do conjunto de imagens foram separadas para teste, assegurando que o modelo fosse testado com dados não previamente observados. O teste resultou em uma perda de 60,12\%, além de uma acurácia, métrica definida na Subseção \ref{treinamento}, de 68,75\%.
-
-Em adição, foi gerada uma Matriz de Confusão, disponível para visualização na Tabela \ref{tab:confusion}. Essa matriz revela que o modelo alcançou 104 verdadeiros positivos, indicando sua capacidade de identificar corretamente casos de câncer. Da mesma forma, os 135 verdadeiros negativos evidenciam sua habilidade em reconhecer corretamente situações sem a presença da condição. No entanto, a presença de 130 falsos positivos e 95 falsos negativos destaca desafios na precisão do modelo, representando erros do Tipo I e Tipo II, respectivamente.
-
-\begin{table}[h]
-  \centering
-  \caption{Matriz de confusão}
-   \label{tab:confusion}
-   \vspace{-0.2cm}
-\begin{tabular}{|c|c|c|c|c|} 
-  \hline
-     & \textbf{Com câncer} & \textbf{Sem câncer}  \\
-  \hline
-    \textbf{Com câncer} & 104 & 130 \\
-  \hline
-    \textbf{Sem câncer} & 95 & 135 \\
-  \hline
-\end{tabular}
-	\vspace{0.2cm}
-     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-\end{table}
-
-
-
-
-No cenário atual, métricas derivadas da matriz de confusão, como precisão e sensibilidade. Disponíveis na Tabela \ref{tab:metricas}, as métricas oferecem uma visão mais abrangente do desempenho do modelo. A precisão oferece uma medida da exatidão das classificações positivas, representando a proporção de casos identificados como positivos que são realmente positivos. 
-
-% Em contrapartida, a sensibilidade revela a proporção de casos positivos identificados corretamente. Adicionalmente, a pontuação F1 oferece um equilíbrio entre precisão e sensibilidade. 
-
-\begin{table}[h]
-  \centering
-  \caption{Métricas}
-   \label{tab:metricas}
-   \vspace{-0.2cm}
-\begin{tabular}{|c|c|c|c|c|} 
-  \hline
-    Classificação & Precisão & Sensibilidade  \\ % & Pontuação F1
-  \hline
-    Com câncer & 0.52 & 0.44 \\ % & 0.48
-  \hline
-    Sem câncer & 0.51 & 0.59 \\ % & 0.55
-  \hline
-\end{tabular}
-	\vspace{0.2cm}
-     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
-\end{table}
-
-
-Finalmente, obteve-se o resultado do cálculo da acurácia, usando dados da matriz de confusão. Dado que a acurácia é resultada pelo número total de acertos, pelo número total de predições, a acurácia do modelo nesse sentido resultou em 52\%.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%     PREDIÇÕES       %%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{\esp Predições} \label{pred}
-
-Procedeu-se à avaliação do modelo de classificação utilizando dados do conjunto de imagens de teste. O resultado da predição para um paciente sem câncer, conforme ilustrado na Figura \ref{fig:predicao_sem}, demonstra uma classificação precisa, identificando corretamente a imagem como pertencente a um paciente sem câncer. Assim como na predição anterior, na Figura \ref{fig:predicao_com} observou-se uma classificação correta.
+A fim de realizar predições, o modelo de classificação foi executado utilizando dados do conjunto de imagens de teste. O resultado da predição para um paciente sem câncer, conforme ilustrado na Figura \ref{fig:predicao_sem}, demonstra uma classificação precisa, identificando corretamente a imagem como pertencente a um paciente sem câncer. Assim como na predição anterior, na Figura \ref{fig:predicao_com} observou-se uma classificação correta.
 
 \begin{figure}[ht]
 \centering
@@ -434,6 +364,70 @@ Procedeu-se à avaliação do modelo de classificação utilizando dados do conj
 \end{figure}
 
 
+%TODO: VER SE FAZ SENTIDO DEIXAR ISSO
+% Empregando o uso do \textit{HoldOut}, o modelo é avaliado com 9,4\% do conjunto total de imagens, para teste, revelando uma perda de 60,12\%, juntamente com uma acurácia de 68,75\%, conforme definido na Subseção \ref{treinamento}.
+
+Para avaliar o modelo proposto durante o treinamento e a validação, empregou-se a biblioteca \textit{Pandas} para a manipulação e análise de dados. Analisando o gráfico apresentado na Figura \ref{fig:acc}, é possível observar que a acurácia do modelo durante o treinamento e durante a validação, demonstram um aumento gradual ao longo das épocas, com a acurácia do treinamento estabilizando em 77,78\% e durante a validação em 67,67\%. Já na Figura \ref{fig:loss}, observa-se que a perda de treinamento diminui no decorrer das épocas, comportamento esperado uma vez que quanto menor a perda, maior será a acurácia da predição. A perda de validação também diminui, mesmo que em uma escala menor.
+
+\begin{figure}[ht]
+\centering
+\begin{minipage}{0.45\textwidth}
+  \centering
+  \caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de acurácia}
+  \vspace{-0.4cm}
+  \includegraphics[width=\linewidth]{figuras/acurácia.png}
+  \captionsetup{justification=centering}
+  \vspace{-0.2cm}
+  \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
+  \label{fig:acc}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+  \centering
+  \caption[\hspace{0.1cm}Grade Computacional.]{Gráfico de perda}
+  \vspace{-0.4cm}
+  \includegraphics[width=\linewidth]{figuras/perda.png}
+  \captionsetup{justification=centering}
+  \vspace{-0.2cm}
+  \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
+  \label{fig:loss}
+\end{minipage}
+\end{figure}
+
+Em adição, foi gerada uma Matriz de Confusão, disponível para visualização na Tabela \ref{tab:confusion}. Essa matriz revela que o modelo alcançou 44 verdadeiros positivos, indicando sua capacidade de identificar corretamente casos de câncer. Da mesma forma, os 40 verdadeiros negativos evidenciam sua habilidade em reconhecer corretamente situações sem a presença da condição. No entanto, a avaliação do modelo revelou 29 falsos positivos e 33 falsos negativos, apontando desafios na precisão. Esses resultados representam os Erros do Tipo I e Tipo II, respectivamente. No contexto do modelo, o Erro do Tipo I ocorre quando o modelo erroneamente indica a presença de câncer em casos que não o possuem, enquanto o Erro do Tipo II se manifesta quando o modelo falha em detectar casos reais de câncer, indicando sua ausência.
+
+\begin{table}[h]
+  \centering
+  \caption{Matriz de confusão}
+   \label{tab:confusion}
+   \vspace{-0.2cm}
+\begin{tabular}{|c|c|c|c|c|} 
+  \hline
+    Classes Reais/Predição & \textbf{Com câncer} & \textbf{Sem câncer}  \\
+  \hline
+    \textbf{Com câncer} & 44 & 29 \\
+  \hline
+    \textbf{Sem câncer} & 33 & 40 \\
+  \hline
+\end{tabular}
+	\vspace{0.2cm}
+     \\\textbf{\footnotesize Fonte: Elaborado pelos autores}
+\end{table}
+
+
+% A partir da análise da matriz de confusão, foram geradas as métricas de precisão e sensibilidade, citadas na Subseção \ref{treinamento}. O modelo atingiu uma precisão de 57,14\% para classificar casos de pacientes com câncer, assim como uma sensibilidade de 60,27\% para o mesmo caso. Para uma avaliação geral do desempenho, a acurácia foi calculada, resultando em 57,53\%.
+
+A partir da análise da matriz de confusão, foram derivadas métricas cruciais de desempenho, como precisão e sensibilidade, conforme mencionado na Subseção \ref{treinamento}. O modelo alcançou uma precisão de 57,14\%, evidenciando sua habilidade em classificar corretamente casos de pacientes com câncer. Da mesma forma, apresentou uma sensibilidade de 60,27\% para identificar com sucesso casos positivos. Para uma avaliação abrangente do desempenho global, a acurácia foi calculada, resultando em 57,53\%.
+
+
+\subsection{Limitações da pesquisa}
+
+Em uma análise mais detalhada do resultado do modelo, observa-se que a acurácia, registrada em 57,53\%, está abaixo do ideal. Uma possível explicação para esse resultado pode ser associada à qualidade das imagens da base de dados utilizada. A limitação do volume de dados, aliada à presença de ruídos e à ausência de um tratamento adequado das imagens, por meio de aplicações de filtros para aprimorar áreas de interesse, podem ter impactado negativamente no desempenho do modelo. É reconhecido que o êxito de modelos de \textit{Deep Learning} depende da qualidade e consistência dos dados de entrada.
+
+É imperativo ressaltar a importância do uso de técnicas como Validação Cruzada (do inglês \textit{Cross-Validation}) para avaliar a estabilidade e generalização do modelo. Ao implementar a técnica, é obtida uma avaliação mais robusta do desempenho, considerando diferentes conjuntos de treinamento, validação e teste. Além disso, realizar novos experimentos com ajustes de parâmetros pode ser uma estratégia eficaz para otimizar o desempenho, identificando configurações que se adaptem melhor à natureza específica dos dados.
+
+Considerando limitações de tempo, algumas estratégias mais avançadas para o modelo poderiam ser usadas para melhorar o desempenho. Com um prazo mais estendido e uma base de dados mais abrangente, seria possível realizar refinamentos significativos no pré-processamento e explorar diferentes arquiteturas de modelos, para efetivamente proporcionar uma abordagem mais otimizada.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%      CONCLUSÃO      %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -444,10 +438,9 @@ Baseando-se na existência de ferramentas auxiliares no diagnóstico do câncer 
 
 Para obter um modelo de predição satisfatório, o procedimento metodológico incluiu o pré-processamento das imagens, envolvendo redimensionamento e definição de \textit{batches} para otimizar a entrada no modelo. Adotou-se a técnica de \textit{Transfer Learning}, incorporando uma Rede Neural Residual (\textit{ResNet-50}) para aprimorar a eficiência no treinamento e resolver problemas associados à degradação de desempenho. Juntamente, foram adicionadas novas \textit{layers}, uma vez que a \textit{ResNet50} não implementa camadas \textit{Fully Connected}, responsáveis por transformar características extraídas em uma saída final. Com a inclusão de novas camadas, o treinamento do modelo foi possibilitado, utilizando funções de otimização e perda.
 
-Os resultados obtidos revelam uma taxa de acurácia de 73,29\% durante a validação e 68,75\% durante o teste, indicando a capacidade do do modelo em reconhecer padrões representativos de malignidade em imagens mamográficas. 
+Os resultados obtidos revelam uma taxa de acurácia de 77,78\% durante o treinamento e 67,67\% durante a validação, indicando a capacidade do do modelo em reconhecer padrões representativos de malignidade em imagens mamográficas. Além disso, derivando da matriz de confusão, foi possível obter a acurácia do modelo, ao utilizar um conjunto de imagens de testes, imagens ainda não vistas pelo modelo. A acurácia se deu em 57,53\%. 
 
-
-Embora resultados tenham sido alcançados, a evolução contínua do estudo em trabalhos futuros visa aprimorar a robustez e aplicabilidade do modelo de detecção de câncer de mama. A incorporação da Validação Cruzada (do inglês \textit{Cross-Validation}) é essencial para avaliar a estabilidade e generalização do modelo. Ao dividir o conjunto de dados em subconjuntos, a técnica permite treinar e validar o modelo várias vezes em diferentes combinações de conjuntos de treinamento e validação, garantindo uma avaliação mais robusta do desempenho, minimizando a possibilidade de \textit{Overfitting}.
+Embora uma acurácia acima de 50\% tenha sido alcançada, a evolução contínua do estudo em trabalhos futuros visa aprimorar a robustez e aplicabilidade do modelo de detecção de câncer de mama. A incorporação do \textit{Cross-Validation} é essencial para avaliar a estabilidade e generalização do modelo. Ao dividir o conjunto de dados em subconjuntos, a técnica permite treinar e validar o modelo várias vezes em diferentes combinações de conjuntos de treinamento e validação, garantindo uma avaliação mais robusta do desempenho, minimizando a possibilidade de \textit{Overfitting}.
 
 Outrossim, o modelo atual retorna uma classificação binária indicando a presença ou ausência de câncer de mama. Em futuras iterações, planeja-se expandir essa abordagem introduzindo uma categorização mais refinada, identificando o estágio ou grau do câncer detectado, permitindo uma análise mais detalhada da condição do paciente.
 
